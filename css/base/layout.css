@@ -1,0 +1,46 @@
+/* =========================================================
+   Загальні layout-класи
+   ========================================================= */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Бічні відступи головної сторінки (як у макеті) */
+.page-inset { margin: 0 15px; }
+
+/* Темний фон внутрішніх сторінок */
+.page-dark {
+  background: var(--navy-deep);
+  color: var(--white);
+}
+
+/* ---------------------------------------------------------
+   Контейнер під зображення.
+   Поки файлу з фото немає — показується сірий плейсхолдер
+   "IMAGE PLACEHOLDER" (клас .media--empty ставить js/main.js)
+   --------------------------------------------------------- */
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--placeholder);
+}
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media--empty img { visibility: hidden; }
+.media--empty::after {
+  content: "IMAGE PLACEHOLDER";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: #9aa0ab;
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Автопарк — RetroRent</title>
+  <meta name="description" content="Каталог ретро-автомобілів RetroRent: весілля, фотосесії та self-drive.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <a class="header__logo" href="../index.html" aria-label="RetroRent — на головну">
+      <img src="../assets/icons/logo.svg" alt="RetroRent">
+    </a>
+
+    <nav class="nav" data-nav aria-label="Головне меню">
+      <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
+        <span class="nav__toggle-text">Меню</span>
+        <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+
+      <ul class="nav__list" id="nav-list">
+        <li><a class="nav__link" href="../pages/cars.html" aria-current="page">Автомобілі</a></li>
+        <li><a class="nav__link" href="../index.html#services">Послуги</a></li>
+        <li><a class="nav__link" href="../pages/about.html">Про нас</a></li>
+      </ul>
+    </nav>
+
+    <!-- Кнопка «Бронювати»: куди скролить — задається в href -->
+    <a class="btn btn--primary header__btn" href="#fleet">Бронювати</a>
+  </header>
+
+  <main class="page-dark">
+    <section class="fleet" id="fleet" data-filter-root>
+      <div class="container">
+        <h1 class="fleet__title">Наш автопарк</h1>
+
+        <!-- Фільтр по класах. data-filter має збігатися з data-category у картці -->
+        <div class="filters" role="group" aria-label="Фільтр за класом">
+          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Усі</button>
+          <button class="chip" type="button" data-filter="wedding" aria-pressed="false">Весілля</button>
+          <button class="chip" type="button" data-filter="photo" aria-pressed="false">Фотосесія</button>
+          <button class="chip" type="button" data-filter="self-drive" aria-pressed="false">Self-drive</button>
+        </div>
+
+        <div class="fleet__grid">
+          <article class="car-card car-card--catalog" data-category="self-drive">
+            <!-- ФОТО: assets/images/cars/ford-mustang-1967.jpg -->
+            <div class="car-card__media media">
+              <img src="../assets/images/cars/1967mustang.jpg" alt="Ford Mustang 1967" loading="lazy">
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__head">
+                <h2 class="car-card__name">Ford Mustang 1967</h2>
+                <span class="tag tag--soft">Self-Drive</span>
+              </div>
+              <p class="car-card__price"><b>159$</b>/доба</p>
+              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/ford-mustang-1967.html" aria-label="Обрати авто Ford Mustang 1967">
+                <span class="btn__label btn__label--default">Обрати авто</span>
+                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              </a>
+            </div>
+          </article>
+          <article class="car-card car-card--catalog" data-category="wedding">
+            <!-- ФОТО: assets/images/cars/mercedes-benz-220se.jpg -->
+            <div class="car-card__media media">
+              <img src="../assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__head">
+                <h2 class="car-card__name">Mercedes-Benz 220SE</h2>
+                <span class="tag tag--soft">Весілля</span>
+              </div>
+              <p class="car-card__price"><b>399$</b>/доба</p>
+              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/mercedes-benz-220se.html" aria-label="Обрати авто Mercedes-Benz 220SE">
+                <span class="btn__label btn__label--default">Обрати авто</span>
+                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              </a>
+            </div>
+          </article>
+          <article class="car-card car-card--catalog" data-category="photo">
+            <!-- ФОТО: assets/images/cars/mercedes-benz-c140.jpg -->
+            <div class="car-card__media media">
+              <img src="../assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140" loading="lazy">
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__head">
+                <h2 class="car-card__name">Mercedes-Benz C140</h2>
+                <span class="tag tag--soft">Фотосесія</span>
+              </div>
+              <p class="car-card__price"><b>299$</b>/доба</p>
+              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/mercedes-benz-c140.html" aria-label="Обрати авто Mercedes-Benz C140">
+                <span class="btn__label btn__label--default">Обрати авто</span>
+                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              </a>
+            </div>
+          </article>
+          <article class="car-card car-card--catalog" data-category="self-drive">
+            <!-- ФОТО: assets/images/cars/chevrolet-bel-air-1957.jpg -->
+            <div class="car-card__media media">
+              <img src="../assets/images/cars/chevrolet-bel-air-1957.jpg" alt="Chevrolet Bel Air 1957" loading="lazy">
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__head">
+                <h2 class="car-card__name">Chevrolet Bel Air 1957</h2>
+                <span class="tag tag--soft">Self-Drive</span>
+              </div>
+              <p class="car-card__price"><b>189$</b>/доба</p>
+              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/chevrolet-bel-air-1957.html" aria-label="Обрати авто Chevrolet Bel Air 1957">
+                <span class="btn__label btn__label--default">Обрати авто</span>
+                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              </a>
+            </div>
+          </article>
+          <article class="car-card car-card--catalog" data-category="wedding">
+            <!-- ФОТО: assets/images/cars/jaguar-e-type-1961.jpg -->
+            <div class="car-card__media media">
+              <img src="../assets/images/cars/jaguar-e-type-1961.jpg" alt="Jaguar E-Type 1961" loading="lazy">
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__head">
+                <h2 class="car-card__name">Jaguar E-Type 1961</h2>
+                <span class="tag tag--soft">Весілля</span>
+              </div>
+              <p class="car-card__price"><b>499$</b>/доба</p>
+              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/jaguar-e-type-1961.html" aria-label="Обрати авто Jaguar E-Type 1961">
+                <span class="btn__label btn__label--default">Обрати авто</span>
+                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              </a>
+            </div>
+          </article>
+          <article class="car-card car-card--catalog" data-category="photo">
+            <!-- ФОТО: assets/images/cars/toyota-2000gt-1967.jpg -->
+            <div class="car-card__media media">
+              <img src="../assets/images/cars/toyota-2000gt-1967.jpg" alt="Toyota 2000GT 1967" loading="lazy">
+            </div>
+            <div class="car-card__body">
+              <div class="car-card__head">
+                <h2 class="car-card__name">Toyota 2000GT 1967</h2>
+                <span class="tag tag--soft">Фотосесія</span>
+              </div>
+              <p class="car-card__price"><b>349$</b>/доба</p>
+              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/toyota-2000gt-1967.html" aria-label="Обрати авто Toyota 2000GT 1967">
+                <span class="btn__label btn__label--default">Обрати авто</span>
+                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="fleet__empty" data-filter-empty hidden>У цій категорії поки немає авто.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/icons/logo_white.svg" alt="RetroRent">
+        <p class="footer__slogan">Оренда ретро-автомобіля без дрібного шрифту</p>
+      </div>
+
+      <div class="footer__nav">
+        <div class="footer__col">
+          <h4 class="footer__heading">Меню</h4>
+          <ul class="footer__list">
+            <li><a href="../index.html">Головна</a></li>
+            <li><a href="../pages/about.html#advantages">Переваги</a></li>
+            <li><a href="../pages/cars.html">Автомобілі</a></li>
+            <li><a href="../index.html#services">Послуги</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__heading">Зв’язок</h4>
+          <ul class="footer__list">
+            <li>Номер телефону: <a href="tel:08002232245">0 800 223 224 5</a></li>
+            <li>Email: <a href="mailto:RetroRent@gmail.com">RetroRent@gmail.com</a></li>
+            <li>
+              <a class="social" href="#">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+                Retro_Rent
+              </a>
+            </li>
+            <li>
+              <a class="social" href="#">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.9 8.2-2 9.3c-.1.7-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.5-5c.2-.2 0-.3-.4-.1l-6.8 4.3-2.9-.9c-.6-.2-.6-.6.1-.9l11.4-4.4c.5-.2 1 .1.8.9Z"/></svg>
+                RR_Auto
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__legal">
+        <p class="footer__rights">Всі права<br>захищено</p>
+        <p class="footer__copy">© 2026 RetroRent</p>
+        <a class="footer__policy" href="#">Політика конфіденційності</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/catalog-filter.js" defer></script>
+</body>
+</html>

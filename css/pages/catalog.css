@@ -1,0 +1,69 @@
+/* =========================================================
+   Каталог автомобілів (pages/cars.html)
+   ========================================================= */
+
+.fleet { padding: 56px 0 96px; }
+
+.fleet__title {
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.15;
+}
+
+/* ---------- Фільтри по класах ---------- */
+.filters {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chip {
+  height: 34px;
+  padding: 0 18px;
+  border-radius: var(--radius-xs);
+  background: var(--white);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color var(--t), color var(--t);
+}
+.chip:hover { background: #dfe5f3; }
+.chip.is-active {
+  background: var(--royal);
+  color: var(--white);
+}
+.chip:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* ---------- Сітка карток ---------- */
+.fleet__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.fleet__empty {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .fleet__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .fleet { padding: 40px 0 72px; }
+  .fleet__title { font-size: 36px; }
+  .fleet__grid {
+    grid-template-columns: minmax(0, 380px);
+    justify-content: center;
+  }
+}

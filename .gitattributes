@@ -1,0 +1,10 @@
+# Однакові закінчення рядків (LF) у репозиторії на Mac і Windows
+* text=auto eol=lf
+
+# Двійкові файли — не чіпати
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
+*.docx binary

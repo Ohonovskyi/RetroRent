@@ -1,0 +1,62 @@
+/* =========================================================
+   Дизайн-токени: кольори, шрифти, розміри
+   Змінюйте значення тут — вони підтягнуться по всьому сайту
+   ========================================================= */
+
+:root {
+  /* Бренд */
+  --navy: #0d1526;          /* кнопки, темні картки, футер */
+  --navy-deep: #0a0f1a;     /* фон внутрішніх сторінок */
+  --ink: #03060d;           /* натиснута кнопка */
+  --royal: #0d2a7a;         /* hover кнопки, активний пункт меню */
+  --cream: #faf7f2;         /* фон картки авто на головній */
+  --white: #ffffff;
+
+  /* Текст */
+  --text: #0d1526;
+  --text-secondary: #6b7080;
+  --muted: #c4c6cf;         /* другорядний світлий текст на темному */
+
+  /* Поверхні та лінії */
+  --surface: #f3f4f7;
+  --placeholder: #eef0f3;
+  --border: #e4e6ec;
+  --line-dark: #4a5063;
+
+  /* Акценти */
+  --green: #0a9a0a;
+  --brown: #b87a30;
+  --blue: #1a6fe0;
+  --blue-soft: #e1eafc;
+  --orange: #f5a33a;        /* рамка обраної/фокусної кнопки */
+  --success: #2f9e55;
+  --success-soft: #e5f4ea;
+  --disabled-bg: #808080;
+  --disabled-text: #4d4d4d;
+
+  /* Шрифти */
+  --font-head: "Nunito", sans-serif;
+  --font-text: "Nunito Sans", sans-serif;
+
+  /* Розміри */
+  --header-h: 89px;
+  --container: 1120px;
+  --gutter: 24px;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+
+  --shadow-card: 0 8px 24px rgba(13, 21, 38, .25);
+  --shadow-pop: 0 12px 32px rgba(13, 21, 38, .18);
+
+  --t: .2s ease;
+}
+
+@media (max-width: 560px) {
+  :root {
+    --header-h: 68px;
+    --gutter: 16px;
+  }
+}

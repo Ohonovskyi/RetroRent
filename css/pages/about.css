@@ -1,0 +1,92 @@
+/* =========================================================
+   Про нас (pages/about.html)
+   ========================================================= */
+
+.about { padding-block: 72px 96px; }
+
+.about__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+}
+
+.about__title {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.1;
+}
+
+.about__text {
+  max-width: 470px;
+  margin-top: 28px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #c8cad2;
+}
+
+.about__media {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+}
+
+/* ---------- Наші переваги ---------- */
+.advantages { margin-top: 72px; }
+
+.advantages__title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 26px;
+}
+
+.advantages__grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.advantage {
+  min-height: 152px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--white);
+  color: var(--text);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.advantage__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.advantage__title {
+  max-width: 180px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .about__intro { grid-template-columns: 1fr; gap: 40px; }
+  .about__media { aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 700px) {
+  .about { padding-block: 48px 72px; }
+  .about__title { font-size: 42px; }
+  .advantages__grid { grid-template-columns: 1fr; }
+}

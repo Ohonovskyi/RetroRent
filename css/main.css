@@ -1,0 +1,27 @@
+/* =========================================================
+   RetroRent — головний файл стилів
+   Підключається на кожній сторінці. Порядок імпортів важливий:
+   base → components → pages.
+
+   Шрифти: Nunito (заголовки, кнопки), Nunito Sans (текст)
+   ========================================================= */
+
+/* Base */
+@import url("base/variables.css");
+@import url("base/reset.css");
+@import url("base/layout.css");
+
+/* Components */
+@import url("components/buttons.css");
+@import url("components/header.css");
+@import url("components/footer.css");
+@import url("components/tag.css");
+@import url("components/car-card.css");
+@import url("components/datepicker.css");
+@import url("components/modal.css");
+
+/* Pages */
+@import url("pages/home.css");
+@import url("pages/catalog.css");
+@import url("pages/about.css");
+@import url("pages/car.css");

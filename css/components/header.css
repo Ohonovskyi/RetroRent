@@ -1,0 +1,140 @@
+/* =========================================================
+   Header + навігація
+   Десктоп: логотип | 3 пункти меню | кнопка "Бронювати"
+   ≤ 768px: пункти ховаються у випадне меню "Меню"
+   ========================================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  padding: 0 86px 0 88px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: 16px;
+  background: var(--white);
+  box-shadow: 0 1px 0 rgba(13, 21, 38, .08);
+}
+
+.header__logo { justify-self: start; }
+.header__logo img { width: 88px; height: auto; }
+
+.header__btn {
+  justify-self: end;
+  width: 149px;
+  height: 43px;
+  font-size: 17px;
+}
+
+/* ---------- Навігація ---------- */
+.nav { position: relative; }
+
+.nav__list {
+  display: flex;
+  gap: 29px;
+}
+
+.nav__link,
+.nav__toggle-text {
+  position: relative;
+  display: inline-block;
+  padding: 6px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  transition: color var(--t);
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--royal);
+  font-weight: 600;
+}
+
+/* Підкреслення при наведенні — того ж кольору, що й текст пункту */
+.nav__link::after,
+.nav__toggle-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after,
+.nav__toggle:hover .nav__toggle-text::after,
+.nav__toggle:focus-visible .nav__toggle-text::after,
+.nav.is-open .nav__toggle-text::after {
+  transform: scaleX(1);
+}
+.nav__link:focus-visible,
+.nav__toggle:focus-visible { outline: none; }
+
+/* Кнопка "Меню" — видно лише на вузьких екранах */
+.nav__toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+}
+.nav__chevron { transition: transform var(--t); }
+.nav.is-open .nav__chevron { transform: rotate(180deg); }
+
+/* =========================================================
+   Адаптив
+   ========================================================= */
+@media (max-width: 1100px) {
+  .header { padding: 0 32px; }
+}
+
+@media (max-width: 768px) {
+  .header { grid-template-columns: auto 1fr auto; }
+  .nav { justify-self: center; }
+
+  .nav__toggle { display: inline-flex; }
+  .nav__toggle-text { font-size: 17px; font-weight: 600; }
+
+  .nav__list {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    min-width: 200px;
+    padding: 8px;
+    flex-direction: column;
+    gap: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-pop);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -6px);
+    transition: opacity var(--t), transform var(--t), visibility var(--t);
+  }
+  .nav.is-open .nav__list {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+
+  .nav__list li { padding: 6px 14px; }
+  .nav__link { font-size: 17px; }
+}
+
+@media (max-width: 560px) {
+  .header { padding: 0 16px; column-gap: 8px; }
+  .header__logo img { width: 64px; }
+  .header__btn {
+    width: auto;
+    height: 38px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+}

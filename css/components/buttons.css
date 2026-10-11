@@ -1,0 +1,178 @@
+/* =========================================================
+   Кнопки
+   Стани кнопки .btn--primary відповідають референсу з Figma:
+     1. звичайна        — темно-синя, "ОБРАТИ АВТО"
+     2. hover           — royal, "ПЕРЕЙТИ" (для карток авто)
+     3. обрана / фокус  — помаранчева рамка (.is-pressed, :focus-visible)
+     4. недоступна      — сіра, "НЕ ДОСТУПНО" (:disabled / .is-disabled)
+     5. натиснута       — майже чорна (:active)
+     6. завантаження    — спінер замість тексту (.is-loading)
+   ========================================================= */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  font-family: var(--font-text);
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--t),
+    color var(--t),
+    border-color var(--t),
+    box-shadow var(--t),
+    opacity var(--t),
+    transform .1s ease;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--orange);
+}
+
+/* ---------- Primary (референс Figma) ---------- */
+.btn--primary {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+}
+.btn--primary:hover { background: var(--royal); }
+.btn--primary:active {
+  background: var(--ink);
+  transform: scale(.98);
+}
+/* Короткий стан "обрано" після кліку (ставить js/main.js) */
+.btn--primary.is-pressed {
+  background: var(--navy);
+  box-shadow: inset 0 0 0 3px var(--orange);
+}
+
+/* ---------- Light: біла кнопка на темному фоні ---------- */
+.btn--light {
+  background: var(--white);
+  color: var(--royal);
+  border-radius: var(--radius-xs);
+}
+.btn--light:hover {
+  background: var(--royal);
+  color: var(--white);
+}
+.btn--light:active {
+  background: var(--ink);
+  color: var(--white);
+  transform: scale(.98);
+}
+.btn--light.is-pressed {
+  background: var(--white);
+  color: var(--royal);
+  box-shadow: inset 0 0 0 3px var(--orange);
+}
+
+/* ---------- Hero: окремий стиль, референс НЕ застосовується ---------- */
+.btn--hero {
+  background: var(--white);
+  color: var(--royal);
+  border-radius: var(--radius-xs);
+}
+.btn--hero:hover { opacity: .88; }
+
+/* ---------- Outline: біла з рамкою (модалка) ---------- */
+.btn--outline {
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--navy);
+  border-radius: var(--radius-sm);
+  text-transform: none;
+}
+.btn--outline:hover {
+  background: var(--royal);
+  border-color: var(--royal);
+  color: var(--white);
+}
+.btn--outline:active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+  transform: scale(.98);
+}
+
+/* ---------- Розміри ---------- */
+.btn--lg {
+  width: 436px;
+  max-width: 100%;
+  height: 94px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 22px;
+}
+.btn--block { width: 100%; }
+
+/* ---------- Недоступна ---------- */
+.btn:disabled,
+.btn.is-disabled,
+.btn[aria-disabled="true"] {
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------- Завантаження ---------- */
+.btn.is-loading {
+  color: transparent;
+  pointer-events: none;
+}
+.btn.is-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 1.5px dashed var(--white);
+  border-radius: 50%;
+  animation: btn-spin 1s linear infinite;
+}
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+/* ---------------------------------------------------------
+   Кнопка зі зміною тексту при наведенні
+   <a class="btn btn--primary btn--swap">
+     <span class="btn__label btn__label--default">Обрати авто</span>
+     <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+   </a>
+   --------------------------------------------------------- */
+.btn--swap { overflow: hidden; }
+
+.btn__label { transition: opacity var(--t), transform var(--t); }
+
+.btn__label--hover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40%);
+}
+
+@media (hover: hover) {
+  .btn--swap:hover .btn__label--default {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+  .btn--swap:hover .btn__label--hover {
+    opacity: 1;
+    transform: none;
+  }
+}

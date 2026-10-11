@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercedes-Benz C140 — оренда | RetroRent</title>
+  <meta name="description" content="Оренда Mercedes-Benz C140 від 299$ за добу. КАСКО включено, без прихованих доплат.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <a class="header__logo" href="../../index.html" aria-label="RetroRent — на головну">
+      <img src="../../assets/icons/logo.svg" alt="RetroRent">
+    </a>
+
+    <nav class="nav" data-nav aria-label="Головне меню">
+      <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
+        <span class="nav__toggle-text">Меню</span>
+        <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+
+      <ul class="nav__list" id="nav-list">
+        <li><a class="nav__link" href="../../pages/cars.html" aria-current="page">Автомобілі</a></li>
+        <li><a class="nav__link" href="../../index.html#services">Послуги</a></li>
+        <li><a class="nav__link" href="../../pages/about.html">Про нас</a></li>
+      </ul>
+    </nav>
+
+    <!-- Кнопка «Бронювати»: куди скролить — задається в href -->
+    <a class="btn btn--primary header__btn" href="#booking">Бронювати</a>
+  </header>
+
+  <main class="page-dark car-page">
+    <div class="container">
+
+      <nav class="breadcrumbs" aria-label="Навігаційний ланцюжок">
+        <a href="../cars.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Автомобілі</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span aria-current="page">Mercedes-Benz C140</span>
+      </nav>
+
+      <div class="car-layout">
+
+        <!-- ФОТО: assets/images/cars/mercedes-benz-c140.jpg -->
+        <div class="car-media media">
+          <img src="../../assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140">
+        </div>
+
+        <!-- ===== БРОНЮВАННЯ ===== -->
+        <!-- data-price — ціна за добу, з неї рахується підсумок у js/booking.js -->
+        <form class="booking" id="booking" data-booking data-car="Mercedes-Benz C140" data-price="299" novalidate>
+          <input type="hidden" name="car" value="mercedes-benz-c140">
+
+          <div class="booking__head">
+            <h1 class="booking__title">Mercedes-Benz C140</h1>
+            <span class="tag tag--lg tag--blue">Фотосесія</span>
+          </div>
+          <p class="booking__price">299$<span>/доба</span></p>
+
+          <ul class="specs">
+            <li class="spec">
+              <svg class="spec__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <b class="spec__value">4 місця</b>
+              <span class="spec__label">Пасажири</span>
+            </li>
+            <li class="spec">
+              <svg class="spec__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+              <b class="spec__value">Автомат</b>
+              <span class="spec__label">Трансмісія</span>
+            </li>
+            <li class="spec">
+              <svg class="spec__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7.5 18a4.5 4.5 0 0 1 9 0"/><path d="M10 3v2h4V3"/></svg>
+              <b class="spec__value">Категорія B</b>
+              <span class="spec__label">Посвідчення</span>
+            </li>
+          </ul>
+
+          <fieldset>
+            <legend class="booking__section-title">Оберіть дати оренди</legend>
+
+            <div class="booking__dates">
+              <div class="datepicker" data-datepicker="pickup">
+                <span class="datepicker__label" id="pickup-label">Дата отримання</span>
+                <button class="datepicker__field" type="button" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="pickup-label pickup-value">
+                  <span id="pickup-value" data-datepicker-value>Оберіть дату</span>
+                  <svg class="datepicker__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </button>
+                <input type="hidden" name="pickup">
+                <div class="datepicker__popover" role="dialog" aria-label="Календар: дата отримання" hidden></div>
+              </div>
+
+              <div class="datepicker datepicker--end" data-datepicker="return">
+                <span class="datepicker__label" id="return-label">Дата повернення</span>
+                <button class="datepicker__field" type="button" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="return-label return-value">
+                  <span id="return-value" data-datepicker-value>Оберіть дату</span>
+                  <svg class="datepicker__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </button>
+                <input type="hidden" name="return">
+                <div class="datepicker__popover" role="dialog" aria-label="Календар: дата повернення" hidden></div>
+              </div>
+            </div>
+
+            <p class="booking__note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span data-booking-note>3 доби · повернення в той самий час</span>
+            </p>
+          </fieldset>
+
+          <label class="kasko">
+            <input class="kasko__input visually-hidden" type="checkbox" name="kasko" data-kasko checked>
+            <span class="kasko__box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span class="kasko__text">
+              <b>Повне страхування (КАСКО)</b>
+              <small>Включено у вартість оренди</small>
+            </span>
+            <svg class="kasko__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </label>
+
+          <dl class="summary">
+            <div class="summary__row">
+              <dt data-summary-rent-label>Оренда · 299$ × 3 доби</dt>
+              <dd data-summary-rent>897$</dd>
+            </div>
+            <div class="summary__row">
+              <dt>Повне КАСКО</dt>
+              <dd data-summary-kasko>Включено</dd>
+            </div>
+          </dl>
+
+          <div class="summary__total">
+            <span>Загальна вартість</span>
+            <strong data-summary-total>897$</strong>
+          </div>
+
+          <button class="btn btn--primary btn--block booking__submit" type="submit">Забронювати</button>
+          <p class="booking__hint">Без дрібного шрифту. Без прихованих доплат.</p>
+        </form>
+
+        <!-- ===== ОПИС ===== -->
+        <article class="car-story">
+          <p class="car-story__eyebrow">Класика 90-х · S-клас купе</p>
+          <h2 class="car-story__title">Стиль, якому не потрібні слова.</h2>
+          <p class="car-story__lead">Сріблястий кузов, довгий силует і вікна без центральної стійки. C140 поєднує стриману розкіш із виразним характером — для кадрів, у яких автомобіль стає частиною історії, а не просто фоном.</p>
+
+          <div class="car-story__facts">
+            <p class="car-story__years">
+              1992–1998
+              <small>Роки виробництва</small>
+            </p>
+            <p class="car-story__history">Купе на платформі W140 дебютувало у 1992 році як флагман Mercedes-Benz. У 1996-му модель отримала назву CL — започаткувавши окрему лінію розкішних гран-турерів.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER (міні) ===== -->
+  <footer class="footer-mini">
+    <div class="container footer-mini__inner">
+      <p>© 2026 RetroRent</p>
+      <nav class="footer-mini__links" aria-label="Документи">
+        <a href="#">Умови оренди</a>
+        <a href="#">Політика конфіденційності</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===== МОДАЛКА: БРОНЮВАННЯ ПІДТВЕРДЖЕНО ===== -->
+  <div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
+    <div class="modal__dialog">
+      <div class="modal__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2 class="modal__title" id="success-title">Бронювання<br>підтверджено!</h2>
+      <p class="modal__text">
+        Дякуємо! Ваша заявка на Mercedes-Benz C140 успішно прийнята. Наш менеджер зв’яжеться з вами протягом 10 хвилин.
+      </p>
+      <a class="btn btn--outline btn--block modal__btn" href="../../index.html" data-modal-focus>Повернутися на головну</a>
+    </div>
+  </div>
+
+  <script src="../../js/main.js" defer></script>
+  <script src="../../js/booking.js" defer></script>
+</body>
+</html>

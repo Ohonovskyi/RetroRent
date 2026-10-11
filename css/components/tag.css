@@ -1,0 +1,36 @@
+/* =========================================================
+   Теги категорій: Self-Drive / Весілля / Фотосесія
+   ========================================================= */
+
+.tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 14px;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.tag--green { background: var(--green); }
+.tag--brown { background: var(--brown); }
+.tag--blue  { background: var(--blue); }
+
+/* Світлий тег (каталог) */
+.tag--soft {
+  padding: 2px 8px;
+  background: var(--blue-soft);
+  color: var(--royal);
+  font-size: 10px;
+}
+
+/* Великий тег (сторінка авто) */
+.tag--lg {
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}

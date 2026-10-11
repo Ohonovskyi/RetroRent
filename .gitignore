@@ -1,0 +1,22 @@
+# Системне сміття macOS
+.DS_Store
+._*
+
+# Системне сміття Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Налаштування редакторів
+.vscode/
+.idea/
+
+# Тимчасові файли Word (з'являються, коли .docx відкритий)
+~$*
+
+# На майбутнє (якщо з'явиться npm / збірка / секрети)
+node_modules/
+dist/
+.env

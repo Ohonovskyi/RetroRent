@@ -1,0 +1,118 @@
+/* =========================================================
+   Datepicker — поле дати + випадний календар
+   Розмітка календаря генерується в js/booking.js
+   ========================================================= */
+
+.datepicker { position: relative; }
+
+.datepicker__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.datepicker__field {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  font-size: 14px;
+  color: var(--text);
+  text-align: left;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.datepicker__field:hover { border-color: #b9bdc8; }
+.datepicker__field:focus-visible,
+.datepicker.is-open .datepicker__field {
+  outline: none;
+  border-color: var(--royal);
+  box-shadow: 0 0 0 3px rgba(13, 42, 122, .15);
+}
+.datepicker__icon { flex: none; color: var(--text-secondary); }
+
+/* ---------- Випадний квадратик з місяцем ---------- */
+.datepicker__popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  width: 284px;
+  padding: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-pop);
+}
+/* Календар "дата повернення" відкривається від правого краю */
+.datepicker--end .datepicker__popover { left: auto; right: 0; }
+
+.calendar__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.calendar__title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 15px;
+}
+.calendar__nav {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--text);
+  transition: background-color var(--t);
+}
+.calendar__nav:hover { background: var(--surface); }
+.calendar__nav:disabled { opacity: .3; cursor: default; background: none; }
+
+.calendar__weekdays,
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px 0;
+}
+.calendar__weekdays span {
+  padding: 4px 0;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.calendar__day {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text);
+  transition: background-color var(--t), color var(--t);
+}
+.calendar__day:hover { background: var(--surface); }
+.calendar__day:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+
+.calendar__day.is-today { font-weight: 800; color: var(--royal); }
+
+.calendar__day.is-range {
+  background: var(--blue-soft);
+  border-radius: 0;
+}
+.calendar__day.is-selected {
+  background: var(--navy);
+  color: var(--white);
+}
+.calendar__day:disabled {
+  background: none;
+  color: #c3c6cf;
+  cursor: not-allowed;
+}
