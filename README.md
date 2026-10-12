@@ -66,7 +66,7 @@ RetroRent/
 
 `<slug>` — це назва сторінки авто без `.html`, наприклад `assets/images/cars/mercedes-benz-c140.jpg`.
 
-Ваші старі файли достатньо перейменувати: `1967mustang.jpg` → `ford-mustang-1967.jpg`, `mercedes_benz_w111.jpg` → `mercedes-benz-220se.jpg`, `mercedes_c140.jpg` → `mercedes-benz-c140.jpg`, `hero_bg.jpg` → `home/hero-bg.jpg`.
+Ваші старі файли достатньо перейменувати: `назва_файлу` → `1967mustang.jpg`, `назва_файлу` → `mercedes_benz_w111.jpg`, `назва_файлу` → `mercedes_c140.jpg`, `hero_bg.jpg` → `home/hero-bg.jpg`.
 
 ## Як це працює
 
