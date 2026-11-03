@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth scroll-pt-20 motion-reduce:scroll-auto md:scroll-pt-28">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,153 +8,167 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../css/main.css">
+  <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/tailwind.config.js"></script>
+
+  <!-- Власні стилі: лише те, що незручно робити класами Tailwind -->
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
-<body>
+<body class="bg-navy-deep font-sans text-navy antialiased">
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <a class="header__logo" href="../../index.html" aria-label="RetroRent — на головну">
-      <img src="../../assets/icons/logo.svg" alt="RetroRent">
+  <!-- ===== HEADER =====
+       Mobile: логотип | «Меню» | CTA.  md+: «Меню» ховається (md:hidden), пункти в рядок (hidden md:flex) -->
+  <header class="sticky top-0 z-50 flex h-header-sm items-center justify-between gap-2 bg-white px-4 shadow-header md:h-header md:gap-4 md:px-8 xl:px-20">
+    <a class="shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../../index.html" aria-label="RetroRent — на головну">
+      <img class="w-16 md:w-[88px]" src="../../assets/icons/logo.svg" alt="RetroRent" width="88" height="88">
     </a>
 
-    <nav class="nav" data-nav aria-label="Головне меню">
-      <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
-        <span class="nav__toggle-text">Меню</span>
-        <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    <nav class="relative" data-nav aria-label="Головне меню">
+      <button class="group inline-flex min-h-11 items-center gap-1.5 px-2 text-[17px] font-semibold text-navy focus-visible:outline-none md:hidden"
+              type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
+        <span class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 py-1.5 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 group-aria-expanded:after:scale-x-100">Меню</span>
+        <svg class="transition-transform duration-200 group-aria-expanded:rotate-180" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </button>
 
-      <ul class="nav__list" id="nav-list">
-        <li><a class="nav__link" href="../../pages/cars.html" aria-current="page">Автомобілі</a></li>
-        <li><a class="nav__link" href="../../index.html#services">Послуги</a></li>
-        <li><a class="nav__link" href="../../pages/about.html">Про нас</a></li>
+      <ul id="nav-list" data-nav-list
+          class="absolute left-1/2 top-full mt-3 hidden min-w-[200px] -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-2 shadow-pop
+                 md:static md:mt-0 md:flex md:min-w-0 md:translate-x-0 md:gap-7 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-semibold text-royal hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../../pages/cars.html" aria-current="page">Автомобілі</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../../index.html#services">Послуги</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../../pages/about.html">Про нас</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../../index.html#contacts">Контакти</a></li>
       </ul>
     </nav>
 
-    <!-- Кнопка «Бронювати»: куди скролить — задається в href -->
-    <a class="btn btn--primary header__btn" href="#booking">Бронювати</a>
+    <!-- CTA «Бронювати»: куди скролить — задається в href -->
+    <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-11 shrink-0 px-4 text-sm md:w-[149px] md:px-0 md:text-[17px]" href="#booking">Бронювати</a>
   </header>
 
-  <main class="page-dark car-page">
-    <div class="container">
+  <main class="bg-navy-deep pb-20 pt-7 text-white">
+    <div class="mx-auto w-full max-w-6xl px-4 md:px-6">
 
-      <nav class="breadcrumbs" aria-label="Навігаційний ланцюжок">
-        <a href="../cars.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Автомобілі</a>
+      <nav class="flex flex-wrap items-center gap-2.5 text-sm text-muted" aria-label="Навігаційний ланцюжок">
+        <a class="inline-flex items-center gap-2 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../cars.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Автомобілі</a>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        <span aria-current="page">Jaguar E-Type 1961</span>
+        <span class="text-white" aria-current="page">Jaguar E-Type 1961</span>
       </nav>
 
-      <div class="car-layout">
+      <!-- Mobile: фото → бронювання → опис.  lg: 5 колонок — фото й опис (3) | бронювання (2) -->
+      <div class="mt-6 grid grid-cols-1 items-start gap-4 lg:grid-cols-5 lg:grid-rows-[auto_1fr] lg:gap-x-6">
 
-        <!-- ФОТО: assets/images/cars/jaguar-e-type-1961.jpg -->
-        <div class="car-media media">
-          <img src="../../assets/images/cars/jaguar-e-type-1961.jpg" alt="Jaguar E-Type 1961">
+        <div class="media aspect-[16/10] overflow-hidden bg-placeholder lg:col-span-3 lg:row-start-1">
+          <img class="h-full w-full object-cover" src="../../assets/images/cars/jaguar-e-type-1961.jpg" alt="Jaguar E-Type 1961">
         </div>
 
-        <!-- ===== БРОНЮВАННЯ ===== -->
-        <!-- data-price — ціна за добу, з неї рахується підсумок у js/booking.js -->
-        <form class="booking" id="booking" data-booking data-car="Jaguar E-Type 1961" data-price="499" novalidate>
+        <!-- ===== БРОНЮВАННЯ ===== data-price — ціна за добу для js/booking.js -->
+        <form class="rounded bg-white px-4 pb-5 pt-6 text-navy sm:px-6 lg:sticky lg:top-28 lg:col-span-2 lg:col-start-4 lg:row-span-2 lg:row-start-1"
+              id="booking" data-booking data-car="Jaguar E-Type 1961" data-price="499" novalidate>
           <input type="hidden" name="car" value="jaguar-e-type-1961">
 
-          <div class="booking__head">
-            <h1 class="booking__title">Jaguar E-Type 1961</h1>
-            <span class="tag tag--lg tag--brown">Весілля</span>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <h1 class="font-head text-2xl font-extrabold leading-tight">Jaguar E-Type 1961</h1>
+            <span class="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide text-white bg-brand-brown">Весілля</span>
           </div>
-          <p class="booking__price">499$<span>/доба</span></p>
+          <p class="mt-2 font-head text-3xl font-extrabold text-brand-green">499$<span class="text-sm font-semibold">/доба</span></p>
 
-          <ul class="specs">
-            <li class="spec">
-              <svg class="spec__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <b class="spec__value">2 місця</b>
-              <span class="spec__label">Пасажири</span>
+          <ul class="mt-5 grid grid-cols-3 gap-3 border-b border-gray-200 pb-5">
+            <li class="flex flex-col">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <b class="mt-2 text-sm">2 місця</b>
+              <span class="mt-0.5 text-xs text-gray-500">Пасажири</span>
             </li>
-            <li class="spec">
-              <svg class="spec__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
-              <b class="spec__value">Механіка</b>
-              <span class="spec__label">Трансмісія</span>
+            <li class="flex flex-col">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+              <b class="mt-2 text-sm">Механіка</b>
+              <span class="mt-0.5 text-xs text-gray-500">Трансмісія</span>
             </li>
-            <li class="spec">
-              <svg class="spec__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7.5 18a4.5 4.5 0 0 1 9 0"/><path d="M10 3v2h4V3"/></svg>
-              <b class="spec__value">Категорія B</b>
-              <span class="spec__label">Посвідчення</span>
+            <li class="flex flex-col">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7.5 18a4.5 4.5 0 0 1 9 0"/><path d="M10 3v2h4V3"/></svg>
+              <b class="mt-2 text-sm">Категорія B</b>
+              <span class="mt-0.5 text-xs text-gray-500">Посвідчення</span>
             </li>
           </ul>
 
           <fieldset>
-            <legend class="booking__section-title">Оберіть дати оренди</legend>
+            <legend class="mt-5 font-head text-lg font-extrabold">Оберіть дати оренди</legend>
 
-            <div class="booking__dates">
-              <div class="datepicker" data-datepicker="pickup">
-                <span class="datepicker__label" id="pickup-label">Дата отримання</span>
-                <button class="datepicker__field" type="button" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="pickup-label pickup-value">
+            <div class="mt-3.5 grid grid-cols-2 gap-2 sm:gap-3">
+              <div class="relative" data-datepicker="pickup">
+                <span class="mb-2 block text-xs font-semibold" id="pickup-label">Дата отримання</span>
+                <button class="flex h-11 w-full items-center justify-between gap-2 rounded border border-gray-200 bg-white px-2.5 text-left text-[13px] text-navy transition hover:border-gray-400 focus-visible:border-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-royal/15 aria-expanded:border-royal aria-expanded:ring-3 aria-expanded:ring-royal/15 sm:px-3 sm:text-sm"
+                        type="button" data-datepicker-field aria-haspopup="dialog" aria-expanded="false" aria-labelledby="pickup-label pickup-value">
                   <span id="pickup-value" data-datepicker-value>Оберіть дату</span>
-                  <svg class="datepicker__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  <svg class="flex-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                 </button>
                 <input type="hidden" name="pickup">
-                <div class="datepicker__popover" role="dialog" aria-label="Календар: дата отримання" hidden></div>
+                <div class="absolute left-0 top-full z-20 mt-1.5 w-72 rounded-xl border border-gray-200 bg-white p-3.5 shadow-pop"
+                     data-datepicker-popover role="dialog" aria-label="Календар: дата отримання" hidden></div>
               </div>
 
-              <div class="datepicker datepicker--end" data-datepicker="return">
-                <span class="datepicker__label" id="return-label">Дата повернення</span>
-                <button class="datepicker__field" type="button" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="return-label return-value">
+              <div class="relative" data-datepicker="return">
+                <span class="mb-2 block text-xs font-semibold" id="return-label">Дата повернення</span>
+                <button class="flex h-11 w-full items-center justify-between gap-2 rounded border border-gray-200 bg-white px-2.5 text-left text-[13px] text-navy transition hover:border-gray-400 focus-visible:border-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-royal/15 aria-expanded:border-royal aria-expanded:ring-3 aria-expanded:ring-royal/15 sm:px-3 sm:text-sm"
+                        type="button" data-datepicker-field aria-haspopup="dialog" aria-expanded="false" aria-labelledby="return-label return-value">
                   <span id="return-value" data-datepicker-value>Оберіть дату</span>
-                  <svg class="datepicker__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  <svg class="flex-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                 </button>
                 <input type="hidden" name="return">
-                <div class="datepicker__popover" role="dialog" aria-label="Календар: дата повернення" hidden></div>
+                <div class="absolute right-0 top-full z-20 mt-1.5 w-72 rounded-xl border border-gray-200 bg-white p-3.5 shadow-pop"
+                     data-datepicker-popover role="dialog" aria-label="Календар: дата повернення" hidden></div>
               </div>
             </div>
 
-            <p class="booking__note">
+            <p class="mt-3 flex items-center gap-2 text-xs text-gray-500">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
               <span data-booking-note>3 доби · повернення в той самий час</span>
             </p>
           </fieldset>
 
-          <label class="kasko">
-            <input class="kasko__input visually-hidden" type="checkbox" name="kasko" data-kasko checked>
-            <span class="kasko__box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <span class="kasko__text">
-              <b>Повне страхування (КАСКО)</b>
-              <small>Включено у вартість оренди</small>
+          <label class="mt-5 flex cursor-pointer items-center gap-3.5 rounded-md bg-gray-100 p-3.5">
+            <input class="peer sr-only" type="checkbox" name="kasko" data-kasko checked>
+            <span class="grid h-5 w-5 flex-none place-items-center rounded border-[1.5px] border-navy bg-white text-white transition-colors peer-checked:bg-navy peer-focus-visible:ring-3 peer-focus-visible:ring-brand-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span class="flex flex-1 flex-col gap-0.5">
+              <b class="text-sm">Повне страхування (КАСКО)</b>
+              <small class="text-xs text-gray-500">Включено у вартість оренди</small>
             </span>
-            <svg class="kasko__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <svg class="flex-none text-gray-500" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
           </label>
 
-          <dl class="summary">
-            <div class="summary__row">
+          <dl class="mt-5 flex flex-col gap-2.5 text-sm">
+            <div class="flex justify-between gap-4 text-gray-500">
               <dt data-summary-rent-label>Оренда · 499$ × 3 доби</dt>
-              <dd data-summary-rent>1497$</dd>
+              <dd class="font-bold text-navy" data-summary-rent>1497$</dd>
             </div>
-            <div class="summary__row">
+            <div class="flex justify-between gap-4 text-gray-500">
               <dt>Повне КАСКО</dt>
-              <dd data-summary-kasko>Включено</dd>
+              <dd class="font-bold text-navy" data-summary-kasko>Включено</dd>
             </div>
           </dl>
 
-          <div class="summary__total">
-            <span>Загальна вартість</span>
-            <strong data-summary-total>1497$</strong>
+          <div class="mt-4 flex items-center justify-between gap-4 border-t border-gray-200 pt-4 font-head font-extrabold">
+            <span class="text-lg">Загальна вартість</span>
+            <strong class="text-3xl" data-summary-total>1497$</strong>
           </div>
 
-          <button class="btn btn--primary btn--block booking__submit" type="submit">Забронювати</button>
-          <p class="booking__hint">Без дрібного шрифту. Без прихованих доплат.</p>
+          <button class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text mt-5 h-12 w-full text-sm font-bold" type="submit">Забронювати</button>
+          <p class="mt-3 text-center text-xs text-gray-500">Без дрібного шрифту. Без прихованих доплат.</p>
         </form>
 
         <!-- ===== ОПИС ===== -->
-        <article class="car-story">
-          <p class="car-story__eyebrow">Класика 60-х · Британський родстер</p>
-          <h2 class="car-story__title">Найкрасивіший автомобіль в історії.</h2>
-          <p class="car-story__lead">Безкінечно довгий капот, плавні лінії й салон лише на двох. E-Type створений для моментів, де головні — ви двоє: весільний виїзд, освідчення чи вечір, коли кожен погляд на перехожих — на вас.</p>
+        <article class="rounded bg-white px-4 py-6 text-navy sm:px-6 sm:py-7 lg:col-span-3 lg:row-start-2">
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-500">Класика 60-х · Британський родстер</p>
+          <h2 class="mt-2.5 font-head text-2xl font-extrabold leading-tight">Найкрасивіший автомобіль в історії.</h2>
+          <p class="mt-3.5 leading-relaxed text-gray-500">Безкінечно довгий капот, плавні лінії й салон лише на двох. E-Type створений для моментів, де головні — ви двоє: весільний виїзд, освідчення чи вечір, коли кожен погляд перехожих — на вас.</p>
 
-          <div class="car-story__facts">
-            <p class="car-story__years">
+          <div class="mt-5 grid grid-cols-1 gap-3 border-t border-gray-200 pt-5 sm:grid-cols-4 sm:gap-6">
+            <p class="font-head text-lg font-extrabold">
               1961–1975
-              <small>Роки виробництва</small>
+              <small class="mt-1 block font-sans text-xs font-normal text-gray-500">Роки виробництва</small>
             </p>
-            <p class="car-story__history">E-Type представили на Женевському автосалоні 1961 року. Кажуть, сам Енцо Феррарі назвав його найкрасивішим автомобілем, будь-коли створеним. Модель поєднувала технології гоночного D-Type з ціною, значно нижчою за конкурентів.</p>
+            <p class="text-sm leading-relaxed text-gray-500 sm:col-span-3">E-Type представили на Женевському автосалоні 1961 року. Кажуть, сам Енцо Феррарі назвав його найкрасивішим автомобілем, будь-коли створеним. Модель поєднувала технології гоночного D-Type з ціною, значно нижчою за конкурентів.</p>
           </div>
         </article>
 
@@ -163,25 +177,26 @@
   </main>
 
   <!-- ===== FOOTER (міні) ===== -->
-  <footer class="footer-mini">
-    <div class="container footer-mini__inner">
+  <footer class="border-t border-white/10 bg-navy-deep text-sm text-muted">
+    <div class="mx-auto w-full max-w-6xl px-4 md:px-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5">
       <p>© 2026 RetroRent</p>
-      <nav class="footer-mini__links" aria-label="Документи">
-        <a href="#">Умови оренди</a>
-        <a href="#">Політика конфіденційності</a>
+      <nav class="flex flex-wrap gap-6" aria-label="Документи">
+        <a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#">Умови оренди</a>
+        <a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#">Політика конфіденційності</a>
       </nav>
     </div>
   </footer>
 
-  <!-- ===== МОДАЛКА: БРОНЮВАННЯ ПІДТВЕРДЖЕНО ===== -->
-  <div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
-    <div class="modal__dialog">
-      <div class="modal__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <h2 class="modal__title" id="success-title">Бронювання<br>підтверджено!</h2>
-      <p class="modal__text">
+  <!-- ===== МОДАЛКА: БРОНЮВАННЯ ПІДТВЕРДЖЕНО ===== (клас is-visible додає js/booking.js) -->
+  <div class="group fixed inset-0 z-[100] flex items-center justify-center bg-navy-deep/95 p-6 opacity-0 transition-opacity duration-300 [&.is-visible]:opacity-100"
+       data-modal role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
+    <div class="w-full max-w-[426px] translate-y-3 scale-98 rounded bg-white px-6 py-9 text-center text-navy transition-transform duration-300 group-[.is-visible]:translate-y-0 group-[.is-visible]:scale-100 sm:p-12">
+      <div class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-green-600"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2 class="font-head text-2xl font-extrabold leading-tight sm:text-[26px]" id="success-title">Бронювання<br>підтверджено!</h2>
+      <p class="mt-3 text-sm leading-relaxed text-gray-500">
         Дякуємо! Ваша заявка на Jaguar E-Type 1961 успішно прийнята. Наш менеджер зв’яжеться з вами протягом 10 хвилин.
       </p>
-      <a class="btn btn--outline btn--block modal__btn" href="../../index.html" data-modal-focus>Повернутися на головну</a>
+      <a class="inline-flex items-center justify-center rounded-md border border-navy bg-white text-navy transition duration-200 hover:border-royal hover:bg-royal hover:text-white active:scale-98 active:border-ink active:bg-ink active:text-white focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-7 h-12 w-full text-base font-medium" href="../../index.html" data-modal-focus>Повернутися на головну</a>
     </div>
   </div>
 

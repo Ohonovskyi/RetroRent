@@ -28,6 +28,14 @@
   const DEFAULT_DURATION = 3;     // за замовчуванням 3 доби
   const FAKE_REQUEST_MS = 1200;   // імітація запиту на сервер
 
+  /* ---------- Класи Tailwind для календаря ---------- */
+  const NAV_BTN = 'grid h-8 w-8 place-items-center rounded-full transition-colors hover:bg-gray-100 '
+    + 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange '
+    + 'disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent';
+  const DAY_BTN = 'aspect-square text-[13px] transition-colors '
+    + 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-orange '
+    + 'disabled:cursor-not-allowed disabled:bg-transparent disabled:text-gray-300';
+
   /* ---------- Утиліти для дат ---------- */
   const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
   const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
@@ -76,10 +84,10 @@
 
   function createPicker(root) {
     const key = root.dataset.datepicker; // "pickup" | "return"
-    const field = root.querySelector('.datepicker__field');
+    const field = root.querySelector('[data-datepicker-field]');
     const valueEl = root.querySelector('[data-datepicker-value]');
     const input = root.querySelector('input[type="hidden"]');
-    const popover = root.querySelector('.datepicker__popover');
+    const popover = root.querySelector('[data-datepicker-popover]');
     let view = null; // перше число місяця, що зараз показаний
 
     const minDate = () => (key === 'pickup' ? today : addDays(state.pickup, 1));
@@ -94,17 +102,17 @@
       const canGoBack = new Date(year, month, 0) >= min;
 
       let html = `
-        <div class="calendar__head">
-          <button type="button" class="calendar__nav" data-step="-1" aria-label="Попередній місяць" ${canGoBack ? '' : 'disabled'}>
+        <div class="mb-2.5 flex items-center justify-between">
+          <button type="button" class="${NAV_BTN}" data-step="-1" aria-label="Попередній місяць" ${canGoBack ? '' : 'disabled'}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
           </button>
-          <span class="calendar__title" aria-live="polite">${MONTHS[month]} ${year}</span>
-          <button type="button" class="calendar__nav" data-step="1" aria-label="Наступний місяць">
+          <span class="font-head text-base font-extrabold" aria-live="polite">${MONTHS[month]} ${year}</span>
+          <button type="button" class="${NAV_BTN}" data-step="1" aria-label="Наступний місяць">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
           </button>
         </div>
-        <div class="calendar__weekdays">${WEEKDAYS.map((d) => `<span>${d}</span>`).join('')}</div>
-        <div class="calendar__grid">`;
+        <div class="grid grid-cols-7">${WEEKDAYS.map((d) => `<span class="py-1 text-center text-xs font-semibold text-gray-500">${d}</span>`).join('')}</div>
+        <div class="grid grid-cols-7 gap-y-0.5">`;
 
       for (let i = 0; i < offset; i += 1) html += '<span></span>';
 
@@ -112,12 +120,15 @@
         const date = new Date(year, month, day);
         const isSelected = isSameDay(date, state.pickup) || isSameDay(date, state.return);
         const inRange = date > state.pickup && date < state.return;
-        const classes = ['calendar__day'];
-        if (isSameDay(date, today)) classes.push('is-today');
-        if (isSelected) classes.push('is-selected');
-        if (inRange) classes.push('is-range');
+        const isToday = isSameDay(date, today);
 
-        html += `<button type="button" class="${classes.join(' ')}" data-day="${day}"
+        // Класи Tailwind для стану дня (не змішуємо конфліктні класи)
+        let look = 'rounded-md hover:bg-gray-100';
+        if (isSelected) look = 'rounded-md bg-navy text-white';
+        else if (inRange) look = 'rounded-none bg-brand-blue-soft';
+        if (isToday) look += isSelected ? ' font-extrabold' : ' font-extrabold text-royal';
+
+        html += `<button type="button" class="${DAY_BTN} ${look}" data-day="${day}"
           aria-label="${formatLong(date)}" aria-pressed="${isSelected}" ${date < min ? 'disabled' : ''}>${day}</button>`;
       }
 
@@ -133,7 +144,7 @@
       popover.hidden = false;
       root.classList.add('is-open');
       field.setAttribute('aria-expanded', 'true');
-      const current = popover.querySelector('.calendar__day.is-selected:not([disabled])');
+      const current = popover.querySelector('[data-day][aria-pressed="true"]:not([disabled])');
       if (current) current.focus();
     }
 
@@ -199,7 +210,7 @@
     pickers.forEach((p) => {
       if (p.root.classList.contains('is-open')) {
         p.close();
-        p.root.querySelector('.datepicker__field').focus();
+        p.root.querySelector('[data-datepicker-field]').focus();
       }
     });
   });
@@ -237,14 +248,14 @@
   function openModal() {
     lastFocused = document.activeElement;
     modal.hidden = false;
-    document.documentElement.classList.add('is-locked');
+    document.documentElement.classList.add('overflow-hidden'); // блокуємо скрол сторінки
     requestAnimationFrame(() => modal.classList.add('is-visible'));
     modal.querySelector('[data-modal-focus]').focus();
   }
 
   function closeModal() {
     modal.classList.remove('is-visible');
-    document.documentElement.classList.remove('is-locked');
+    document.documentElement.classList.remove('overflow-hidden');
     window.setTimeout(() => { modal.hidden = true; }, 250);
     if (lastFocused) lastFocused.focus();
   }

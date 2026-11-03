@@ -1,0 +1,125 @@
+/* =========================================================
+   RetroRent — власні стилі (доповнення до Tailwind CSS)
+
+   Тут лише те, що незручно або неможливо зробити
+   утилітарними класами Tailwind:
+     1. виправлення атрибута hidden;
+     2. фонове фото Hero;
+     3. плейсхолдер для зображень, яких ще немає;
+     4. стани кнопок, які вмикає JavaScript (.is-pressed, .is-loading);
+     5. анімація спінера;
+     6. адаптивні вбудовані відео та карта (iframe).
+   Усе інше (кольори, відступи, сітки, адаптив, hover/focus)
+   зроблено класами Tailwind прямо в HTML.
+   ========================================================= */
+
+/* Змінні для вбудованих медіа (відео, карта) — одне місце для всіх розмірів */
+:root {
+  --embed-max-width: 960px;
+  --embed-radius: 12px;
+  --embed-shadow: 0 8px 24px rgba(13, 21, 38, .25);
+  --embed-bg: #0a0f1a;
+  --embed-map-min-height: 360px;
+}
+
+/* ---------- 1. hidden ----------
+   Класи Tailwind на кшталт .flex мають ту саму специфічність,
+   що й [hidden], і перебивають його. Тому елемент з атрибутом
+   hidden ховаємо примусово (картки у фільтрі, модалка, календар). */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- 2. Фон Hero ---------- */
+.hero-bg {
+  background-image: url("../assets/images/home/hero_bg.jpg");
+}
+
+/* ---------- 3. Плейсхолдер зображення ----------
+   Клас .media--empty ставить js/main.js, якщо файл з фото
+   не знайдено. Тоді замість «битої» картинки — сірий блок. */
+.media {
+  position: relative;
+}
+.media--empty img {
+  visibility: hidden;
+}
+.media--empty::after {
+  content: "IMAGE PLACEHOLDER";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: #9aa0ab;
+}
+
+/* ---------- 4. Стани кнопок, які вмикає JS ---------- */
+
+/* Короткий стан «обрано» після кліку — помаранчева рамка з референсу */
+.is-pressed {
+  box-shadow: inset 0 0 0 3px #f5a33a;
+}
+
+/* Завантаження: текст ховається, по центру крутиться спінер */
+.is-loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+.is-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 1.5px dashed #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ---------- 5. Анімація ---------- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-loading::after { animation-duration: 3s; }
+}
+
+/* ---------- 6. Вбудовані медіа (YouTube, Google Maps) ----------
+   aspect-ratio резервує місце під iframe ще до завантаження,
+   тому сторінка не «стрибає» (немає зсуву макета). */
+.embed {
+  width: 100%;
+  max-width: var(--embed-max-width);
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--embed-radius);
+  box-shadow: var(--embed-shadow);
+  background: var(--embed-bg);
+}
+
+.embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Карта: на телефоні пропорція 4:3, на десктопі — на всю висоту колонки */
+.embed--map {
+  max-width: none;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 1024px) {
+  .embed--map {
+    aspect-ratio: auto;
+    min-height: var(--embed-map-min-height);
+  }
+}

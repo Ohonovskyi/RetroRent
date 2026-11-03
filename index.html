@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth scroll-pt-20 motion-reduce:scroll-auto md:scroll-pt-28">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,192 +8,355 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/main.css">
+  <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <!-- Власні стилі: лише те, що незручно робити класами Tailwind -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-white font-sans text-navy antialiased">
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <a class="header__logo" href="index.html" aria-label="RetroRent — на головну">
-      <img src="assets/icons/logo.svg" alt="RetroRent">
+  <!-- ===== HEADER =====
+       Mobile: логотип | «Меню» | CTA.  md+: «Меню» ховається (md:hidden), пункти в рядок (hidden md:flex) -->
+  <header class="sticky top-0 z-50 flex h-header-sm items-center justify-between gap-2 bg-white px-4 shadow-header md:h-header md:gap-4 md:px-8 xl:px-20">
+    <a class="shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="index.html" aria-label="RetroRent — на головну">
+      <img class="w-16 md:w-[88px]" src="assets/icons/logo.svg" alt="RetroRent" width="88" height="88">
     </a>
 
-    <nav class="nav" data-nav aria-label="Головне меню">
-      <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
-        <span class="nav__toggle-text">Меню</span>
-        <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    <nav class="relative" data-nav aria-label="Головне меню">
+      <button class="group inline-flex min-h-11 items-center gap-1.5 px-2 text-[17px] font-semibold text-navy focus-visible:outline-none md:hidden"
+              type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
+        <span class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 py-1.5 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 group-aria-expanded:after:scale-x-100">Меню</span>
+        <svg class="transition-transform duration-200 group-aria-expanded:rotate-180" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </button>
 
-      <ul class="nav__list" id="nav-list">
-        <li><a class="nav__link" href="pages/cars.html">Автомобілі</a></li>
-        <li><a class="nav__link" href="#services">Послуги</a></li>
-        <li><a class="nav__link" href="pages/about.html">Про нас</a></li>
+      <ul id="nav-list" data-nav-list
+          class="absolute left-1/2 top-full mt-3 hidden min-w-[200px] -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-2 shadow-pop
+                 md:static md:mt-0 md:flex md:min-w-0 md:translate-x-0 md:gap-7 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="pages/cars.html">Автомобілі</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="#services">Послуги</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="pages/about.html">Про нас</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="#contacts">Контакти</a></li>
       </ul>
     </nav>
 
-    <!-- Кнопка «Бронювати»: куди скролить — задається в href -->
-    <a class="btn btn--primary header__btn" href="#cars">Бронювати</a>
+    <!-- CTA «Бронювати»: куди скролить — задається в href -->
+    <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-11 shrink-0 px-4 text-sm md:w-[149px] md:px-0 md:text-[17px]" href="#cars">Бронювати</a>
   </header>
 
-  <div class="page-inset">
+  <div class="md:mx-[15px]">
     <main>
 
-      <!-- ===== HERO ===== -->
-      <!-- ФОН: assets/images/home/hero-bg.jpg (шлях задано в css/pages/home.css) -->
-      <section class="hero">
-        <h1 class="hero__title">
-          Легендарні ретро-авто для твоїх<br>
-          найважливіших<br>
+      <!-- ===== HERO ===== фон — клас .hero-bg у css/style.css -->
+      <section class="hero-bg bg-navy-deep bg-cover bg-center bg-no-repeat px-5 pb-10 pt-8 text-zinc-200 md:min-h-[536px] md:px-8 md:pt-6 lg:px-16">
+        <h1 class="max-w-5xl text-4xl font-light leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight">
+          Легендарні ретро-авто для твоїх<br class="hidden sm:inline">
+          найважливіших<br class="hidden sm:inline">
           моментів
         </h1>
-        <p class="hero__text">
+        <p class="mt-3 max-w-md text-lg leading-snug text-zinc-300">
           Обирай авто за сценарієм: від весільних кабріолетів до культових JDM та American Muscle для стильних вікендів. З водієм або self-drive.
         </p>
-        <a class="btn btn--hero btn--lg hero__btn" href="#cars">Обрати авто під подію</a>
+        <a class="inline-flex items-center justify-center rounded bg-white text-center uppercase text-royal transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-10 h-20 w-full max-w-md font-head text-lg font-extrabold md:mt-12 md:h-24 md:text-2xl" href="#cars">Обрати авто під подію</a>
       </section>
 
-      <!-- ===== ПЕРЕВАГИ / ПОСЛУГИ ===== -->
-      <section class="benefits" id="services">
-        <h2 class="benefits__title">Оренда без дрібного шрифту</h2>
+      <!-- ===== ПЕРЕВАГИ ===== Mobile: 1 колонка · lg: 3 -->
+      <section class="px-4 pb-14 pt-8 lg:px-6 lg:pb-16" id="benefits">
+        <h2 class="text-center font-head text-3xl font-black uppercase leading-tight md:text-5xl lg:text-6xl">Оренда без дрібного шрифту</h2>
 
-        <div class="benefits__grid">
-          <article class="benefit">
-            <div class="benefit__icon">
-              <img src="assets/icons/shield.svg" alt="">
+        <div class="mx-auto mt-12 grid max-w-md grid-cols-1 gap-7 md:mt-16 lg:max-w-none lg:grid-cols-3">
+          <article class="flex min-h-[460px] flex-col items-center rounded-xl bg-navy px-5 pb-12 pt-10 text-center text-white shadow-card lg:min-h-[553px] lg:pb-16 lg:pt-12">
+            <div class="flex h-60 w-full items-center justify-center">
+              <img class="max-h-56 w-auto" src="assets/icons/shield.svg" alt="" loading="lazy">
             </div>
-            <h3 class="benefit__title">Перевірені застраховані авто</h3>
-            <p class="benefit__text">Повне КАСКО та регулярний техогляд вже включені у вартість</p>
+            <h3 class="flex min-h-32 items-center justify-center font-head text-3xl font-extrabold leading-tight lg:text-4xl lg:leading-tight">Перевірені застраховані авто</h3>
+            <p class="mt-6 max-w-sm font-head text-lg font-extrabold leading-snug text-muted lg:mt-auto">Повне КАСКО та регулярний техогляд вже включені у вартість</p>
           </article>
-
-          <article class="benefit">
-            <div class="benefit__icon">
-              <img src="assets/icons/calendar.svg" alt="">
+          <article class="flex min-h-[460px] flex-col items-center rounded-xl bg-navy px-5 pb-12 pt-10 text-center text-white shadow-card lg:min-h-[553px] lg:pb-16 lg:pt-12">
+            <div class="flex h-60 w-full items-center justify-center">
+              <img class="max-h-56 w-auto" src="assets/icons/calendar.svg" alt="" loading="lazy">
             </div>
-            <h3 class="benefit__title">Зручний вибір дат</h3>
-            <p class="benefit__text">Бронюйте авто на один вечір, стильні вихідні або цілий місяць</p>
+            <h3 class="flex min-h-32 items-center justify-center font-head text-3xl font-extrabold leading-tight lg:text-4xl lg:leading-tight">Зручний вибір дат</h3>
+            <p class="mt-6 max-w-sm font-head text-lg font-extrabold leading-snug text-muted lg:mt-auto">Бронюйте авто на один вечір, стильні вихідні або цілий місяць</p>
           </article>
-
-          <article class="benefit">
-            <div class="benefit__icon">
-              <img src="assets/icons/wheel.svg" alt="">
+          <article class="flex min-h-[460px] flex-col items-center rounded-xl bg-navy px-5 pb-12 pt-10 text-center text-white shadow-card lg:min-h-[553px] lg:pb-16 lg:pt-12">
+            <div class="flex h-60 w-full items-center justify-center">
+              <img class="max-h-56 w-auto" src="assets/icons/wheel.svg" alt="" loading="lazy">
             </div>
-            <h3 class="benefit__title">Керуйте авто самостійно</h3>
-            <p class="benefit__text">Жодних спецкатегорій! Підійде ваше посвідчення категорії B</p>
+            <h3 class="flex min-h-32 items-center justify-center font-head text-3xl font-extrabold leading-tight lg:text-4xl lg:leading-tight">Керуйте авто самостійно</h3>
+            <p class="mt-6 max-w-sm font-head text-lg font-extrabold leading-snug text-muted lg:mt-auto">Жодних спецкатегорій! Підійде ваше посвідчення категорії B</p>
           </article>
         </div>
       </section>
 
-      <!-- ===== ОБЕРИ СВОЄ РЕТРО ===== -->
-      <!-- Сюди скролить кнопка «Бронювати» в хедері (id="cars") -->
-      <section class="showcase" id="cars">
-        <h2 class="showcase__title">Обери своє ретро</h2>
+      <!-- ===== ПОСЛУГИ ===== Mobile: 1 · sm: 2 · lg: 4 колонки -->
+      <section class="bg-cream px-4 py-16 md:px-8 md:py-20" id="services" aria-labelledby="services-title">
+        <div class="mx-auto max-w-6xl">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="services-title">Послуги</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Підберемо ретро-авто під ваш сценарій — від весільного кортежу до фотосесії чи подорожі вихідного дня.</p>
 
-        <div class="showcase__grid">
-          <article class="car-card">
-            <!-- ФОТО: assets/images/cars/ford-mustang-1967.jpg -->
-            <div class="car-card__media media">
-              <img src="assets/images/cars/1967mustang.jpg" alt="Ford Mustang 1967" loading="lazy">
+          <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-navy text-white"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="14" r="6"/><path d="m10 3 2 3 2-3"/></svg></span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Весілля</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-gray-500">Елегантні кабріолети та седани для головного дня. Авто можна замовити з водієм — і думати лише про свято.</p>
+            <a class="mt-5 inline-flex items-center gap-2 self-start font-semibold text-royal transition-colors hover:text-navy rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="pages/cars.html?category=wedding">Авто для весілля <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-navy text-white"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3"/></svg></span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Фотосесії</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-gray-500">Автомобіль, який стає героєм кадру: від S-класу 90-х до японської легенди 2000GT. Для love story, реклами та кліпів.</p>
+            <a class="mt-5 inline-flex items-center gap-2 self-start font-semibold text-royal transition-colors hover:text-navy rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="pages/cars.html?category=photo">Авто для зйомки <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-navy text-white"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/><path d="M12 14v8M10 12H2M14 12h8"/></svg></span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Self-drive</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-gray-500">Сідайте за кермо самі — достатньо посвідчення категорії B. Mustang чи Bel Air для подорожі вихідного дня.</p>
+            <a class="mt-5 inline-flex items-center gap-2 self-start font-semibold text-royal transition-colors hover:text-navy rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="pages/cars.html?category=self-drive">Авто для self-drive <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <span class="grid h-12 w-12 place-items-center rounded-full bg-navy text-white"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Авто з водієм</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-gray-500">Не хочете кермувати? Водій доставить вас на подію й назад, а ви насолоджуйтесь атмосферою.</p>
+            <a class="mt-5 inline-flex items-center gap-2 self-start font-semibold text-royal transition-colors hover:text-navy rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="pages/cars.html">Весь автопарк <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ОБЕРИ СВОЄ РЕТРО ===== сюди скролить «Бронювати» (id="cars") -->
+      <section class="flex flex-col items-center bg-navy px-5 pb-20 pt-16 text-white md:pb-28 md:pt-24" id="cars">
+        <h2 class="text-center text-4xl font-light leading-tight md:text-5xl lg:text-6xl">Обери своє ретро</h2>
+
+        <!-- Сітка карток: 1 → sm: 2 → lg: 3 колонки, без фіксованої ширини -->
+        <div class="mt-8 grid w-full max-w-sm grid-cols-1 gap-6 sm:max-w-2xl sm:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 lg:gap-12">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-cream text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="media aspect-[16/11] bg-placeholder">
+              <img class="h-full w-full object-cover" src="assets/images/cars/1967mustang.jpg" alt="Ford Mustang 1967" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h3 class="car-card__name">Ford Mustang 1967</h3>
-                <span class="tag tag--green">Self-Drive</span>
+            <div class="flex flex-1 flex-col px-5 pb-5 pt-8">
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-[17px] font-semibold">Ford Mustang 1967</h3>
+                <span class="whitespace-nowrap rounded-full px-1.5 py-0.5 text-[11px] font-bold leading-[14px] text-white bg-brand-green">Self-Drive</span>
               </div>
-              <p class="car-card__price"><b>159$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="pages/cars/ford-mustang-1967.html" aria-label="Обрати авто Ford Mustang 1967">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              <p class="mb-3.5 mt-5 text-[17px] font-bold"><b class="text-brand-green">159$</b>/доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-[61px] w-full text-[17px] font-normal" href="pages/cars/ford-mustang-1967.html" aria-label="Обрати авто Ford Mustang 1967">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card">
-            <!-- ФОТО: assets/images/cars/mercedes-benz-220se.jpg -->
-            <div class="car-card__media media">
-              <img src="assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-cream text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="media aspect-[16/11] bg-placeholder">
+              <img class="h-full w-full object-cover" src="assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h3 class="car-card__name">Mercedes-Benz 220SE</h3>
-                <span class="tag tag--brown">Весілля</span>
+            <div class="flex flex-1 flex-col px-5 pb-5 pt-8">
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-[17px] font-semibold">Mercedes-Benz 220SE</h3>
+                <span class="whitespace-nowrap rounded-full px-1.5 py-0.5 text-[11px] font-bold leading-[14px] text-white bg-brand-brown">Весілля</span>
               </div>
-              <p class="car-card__price"><b>399$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="pages/cars/mercedes-benz-220se.html" aria-label="Обрати авто Mercedes-Benz 220SE">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              <p class="mb-3.5 mt-5 text-[17px] font-bold"><b class="text-brand-green">399$</b>/доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-[61px] w-full text-[17px] font-normal" href="pages/cars/mercedes-benz-220se.html" aria-label="Обрати авто Mercedes-Benz 220SE">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card">
-            <!-- ФОТО: assets/images/cars/mercedes-benz-c140.jpg -->
-            <div class="car-card__media media">
-              <img src="assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-cream text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="media aspect-[16/11] bg-placeholder">
+              <img class="h-full w-full object-cover" src="assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h3 class="car-card__name">Mercedes-Benz C140</h3>
-                <span class="tag tag--blue">Фотосесія</span>
+            <div class="flex flex-1 flex-col px-5 pb-5 pt-8">
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-[17px] font-semibold">Mercedes-Benz C140</h3>
+                <span class="whitespace-nowrap rounded-full px-1.5 py-0.5 text-[11px] font-bold leading-[14px] text-white bg-brand-blue">Фотосесія</span>
               </div>
-              <p class="car-card__price"><b>299$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="pages/cars/mercedes-benz-c140.html" aria-label="Обрати авто Mercedes-Benz C140">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+              <p class="mb-3.5 mt-5 text-[17px] font-bold"><b class="text-brand-green">299$</b>/доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-[61px] w-full text-[17px] font-normal" href="pages/cars/mercedes-benz-c140.html" aria-label="Обрати авто Mercedes-Benz C140">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
         </div>
 
-        <a class="btn btn--light btn--lg showcase__more" href="pages/cars.html">Більше автомобілів</a>
+        <a class="js-press rounded bg-white text-royal hover:bg-royal hover:text-white active:bg-ink active:text-white relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text mt-8 h-20 w-full max-w-md font-head text-lg font-extrabold md:h-24 md:text-2xl" href="pages/cars.html">Більше автомобілів</a>
+      </section>
+
+
+      <!-- ===== ЯК ЦЕ ПРАЦЮЄ ===== Mobile: 1 · md: 3 колонки -->
+      <section class="px-4 py-16 md:px-8 md:py-20" id="how" aria-labelledby="how-title">
+        <div class="mx-auto max-w-6xl">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center md:text-left" id="how-title">Як це працює</h2>
+
+          <ol class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+          <li class="flex flex-col items-center text-center md:items-start md:text-left">
+            <span class="grid h-14 w-14 place-items-center rounded-full bg-royal font-head text-2xl font-black text-white" aria-hidden="true">1</span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Оберіть авто</h3>
+            <p class="mt-2 max-w-xs leading-relaxed text-gray-500">Перегляньте автопарк і відфільтруйте авто за подією: весілля, фотосесія чи self-drive.</p>
+          </li>
+          <li class="flex flex-col items-center text-center md:items-start md:text-left">
+            <span class="grid h-14 w-14 place-items-center rounded-full bg-royal font-head text-2xl font-black text-white" aria-hidden="true">2</span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Вкажіть дати</h3>
+            <p class="mt-2 max-w-xs leading-relaxed text-gray-500">Оберіть дату отримання та повернення в календарі — вартість з КАСКО порахується одразу.</p>
+          </li>
+          <li class="flex flex-col items-center text-center md:items-start md:text-left">
+            <span class="grid h-14 w-14 place-items-center rounded-full bg-royal font-head text-2xl font-black text-white" aria-hidden="true">3</span>
+            <h3 class="mt-5 font-head text-xl font-extrabold">Підтвердіть бронювання</h3>
+            <p class="mt-2 max-w-xs leading-relaxed text-gray-500">Натисніть «Забронювати», і менеджер зв’яжеться з вами протягом 10 хвилин.</p>
+          </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== ВІДЕО ===== адаптивний плеєр — клас .embed у css/style.css -->
+      <section class="bg-navy-deep px-4 py-16 text-white md:px-8 md:py-20" id="video" aria-labelledby="video-title">
+        <div class="mx-auto max-w-6xl">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="video-title">Ретро-авто в русі</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed mx-auto text-center text-slate-300">Подивіться, як класичні автомобілі виглядають на дорозі, — саме такі емоції чекають і на вас.</p>
+
+          <figure class="mt-10">
+            <div class="embed">
+              <!-- ВІДЕО: YouTube → «Поділитися» → «Вбудувати», скопіюйте ID з адреси
+                   (частина після /embed/) і вставте замість VIDEO_ID -->
+              <iframe src="https://www.youtube-nocookie.com/embed/-rbHpTKYxx4?si=HyTNN9BKV8DeDOV6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>"
+                      title="Відео: ретро-автомобілі в русі"
+                      loading="lazy"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen></iframe>
+            </div>
+            <figcaption class="mt-3 text-center text-sm text-muted">Відео відтворюється з YouTube.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ===== ЧАСТІ ЗАПИТАННЯ ===== details/summary — розгортається без JavaScript -->
+      <section class="bg-cream px-4 py-16 md:px-8 md:py-20" id="faq" aria-labelledby="faq-title">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="faq-title">Часті запитання</h2>
+
+          <div class="mt-10 flex flex-col gap-3">
+            <details class="group rounded-xl border border-gray-200 bg-white" open>
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
+                Яке посвідчення потрібне для self-drive?
+                <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">Достатньо звичайного посвідчення категорії B — жодних спецкатегорій не потрібно.</p>
+            </details>
+            <details class="group rounded-xl border border-gray-200 bg-white">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
+                Чи входить страховка у вартість?
+                <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">Так. Повне КАСКО вже включене у вартість оренди, без прихованих доплат.</p>
+            </details>
+            <details class="group rounded-xl border border-gray-200 bg-white">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
+                На який термін можна орендувати авто?
+                <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">Від однієї доби: на вечір події, стильні вихідні або цілий місяць. Дати обираються в календарі на сторінці авто.</p>
+            </details>
+            <details class="group rounded-xl border border-gray-200 bg-white">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
+                Чи можна орендувати авто з водієм?
+                <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">Так. Ви можете керувати самостійно (self-drive) або замовити авто з водієм.</p>
+            </details>
+            <details class="group rounded-xl border border-gray-200 bg-white">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
+                Коли зі мною зв’яжуться після бронювання?
+                <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">Протягом 10 хвилин після заявки менеджер зв’яжеться з вами, щоб підтвердити деталі.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ЗАКЛИК ДО ДІЇ ===== -->
+      <section class="bg-royal px-4 py-16 text-white md:px-8 md:py-20" aria-labelledby="cta-title">
+        <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="cta-title">Готові до поїздки в стилі ретро?</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-blue-100">Оберіть авто, вкажіть дати — і бронювання буде готове за кілька хвилин.</p>
+
+          <div class="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <a class="js-press relative inline-flex h-14 items-center justify-center rounded-md bg-white px-8 font-head text-lg font-extrabold uppercase text-royal shadow-md transition duration-200 hover:bg-cream hover:shadow-xl active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" href="pages/cars.html">Обрати авто</a>
+            <a class="inline-flex h-14 items-center justify-center rounded-md border-2 border-white/70 px-8 font-head text-lg font-extrabold text-white transition duration-200 hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" href="tel:08002232245" title="Зателефонувати в RetroRent">0 800 223 224 5</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== КОНТАКТИ + КАРТА ===== Mobile: 1 колонка · lg: 2 -->
+      <section class="px-4 py-16 md:px-8 md:py-20" id="contacts" aria-labelledby="contacts-title">
+        <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
+          <div>
+            <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="contacts-title">Контакти</h2>
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Приїжджайте подивитися авто наживо або зв’яжіться з нами зручним способом.</p>
+
+            <address class="mt-8 flex flex-col gap-5 not-italic">
+              <p class="flex gap-3"><svg class="mt-0.5 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><b class="block">Адреса</b><span class="text-gray-500">Львів, площа Ринок</span></span></p>
+              <p class="flex gap-3"><svg class="mt-0.5 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><span><b class="block">Телефон</b><a class="text-gray-500 transition-colors hover:text-royal rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="tel:08002232245" title="Зателефонувати">0 800 223 224 5</a></span></p>
+              <p class="flex gap-3"><svg class="mt-0.5 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span><b class="block">Email</b><a class="text-gray-500 transition-colors hover:text-royal rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="mailto:RetroRent@gmail.com" title="Написати на email">RetroRent@gmail.com</a></span></p>
+            </address>
+
+            <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-8 h-12 w-full px-6 text-sm font-bold sm:w-auto"
+               href="https://www.google.com/maps/search/?api=1&amp;query=Rynok+Square,+Lviv" target="_blank" rel="noopener" title="Відкрити маршрут у Google Maps (нова вкладка)">Прокласти маршрут</a>
+          </div>
+
+          <!-- КАРТА: Google Maps → «Поділитися» → «Вбудовування карти» — можна замінити src на свій -->
+          <figure class="embed embed--map">
+            <iframe src="https://maps.google.com/maps?q=Rynok+Square,+Lviv&amp;z=16&amp;hl=uk&amp;output=embed"
+                    title="Карта: RetroRent, Львів, площа Ринок"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+          </figure>
+        </div>
       </section>
 
     </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img class="footer__logo" src="assets/icons/logo_white.svg" alt="RetroRent">
-        <p class="footer__slogan">Оренда ретро-автомобіля без дрібного шрифту</p>
+  <!-- ===== FOOTER =====  Mobile: 1 колонка · md: 2 · lg: 4 -->
+  <footer class="bg-navy text-white">
+    <div class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-10 px-5 pb-11 pt-10 text-center md:grid-cols-2 md:px-8 md:text-left lg:grid-cols-4 lg:gap-8 xl:px-20">
+
+      <div class="flex flex-col items-center text-center lg:pt-6">
+        <img class="w-48 xl:w-56" src="assets/icons/logo_white.svg" alt="RetroRent" width="216" height="216" loading="lazy">
+        <p class="mt-2.5 max-w-[260px] font-head text-lg font-extrabold leading-6 text-muted">Оренда ретро-автомобіля без дрібного шрифту</p>
       </div>
 
-      <div class="footer__nav">
-        <div class="footer__col">
-          <h4 class="footer__heading">Меню</h4>
-          <ul class="footer__list">
-            <li><a href="#">Головна</a></li>
-            <li><a href="pages/about.html#advantages">Переваги</a></li>
-            <li><a href="pages/cars.html">Автомобілі</a></li>
-            <li><a href="#services">Послуги</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__col">
-          <h4 class="footer__heading">Зв’язок</h4>
-          <ul class="footer__list">
-            <li>Номер телефону: <a href="tel:08002232245">0 800 223 224 5</a></li>
-            <li>Email: <a href="mailto:RetroRent@gmail.com">RetroRent@gmail.com</a></li>
-            <li>
-              <a class="social" href="#">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
-                Retro_Rent
-              </a>
-            </li>
-            <li>
-              <a class="social" href="#">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.9 8.2-2 9.3c-.1.7-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.5-5c.2-.2 0-.3-.4-.1l-6.8 4.3-2.9-.9c-.6-.2-.6-.6.1-.9l11.4-4.4c.5-.2 1 .1.8.9Z"/></svg>
-                RR_Auto
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="lg:pt-14">
+        <h2 class="mb-3 font-head text-2xl font-extrabold md:text-3xl">Меню</h2>
+        <ul>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#">Головна</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="pages/about.html#advantages">Переваги</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="pages/cars.html">Автомобілі</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#services">Послуги</a></li>
+        </ul>
       </div>
 
-      <div class="footer__legal">
-        <p class="footer__rights">Всі права<br>захищено</p>
-        <p class="footer__copy">© 2026 RetroRent</p>
-        <a class="footer__policy" href="#">Політика конфіденційності</a>
+      <div class="lg:pt-14">
+        <h2 class="mb-3 font-head text-2xl font-extrabold md:text-3xl">Зв’язок</h2>
+        <ul>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted">Номер телефону: <a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="tel:08002232245">0 800 223 224 5</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted">Email: <a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="mailto:RetroRent@gmail.com">RetroRent@gmail.com</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="inline-flex items-center gap-2 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg> Retro_Rent</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="inline-flex items-center gap-2 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.9 8.2-2 9.3c-.1.7-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.5-5c.2-.2 0-.3-.4-.1l-6.8 4.3-2.9-.9c-.6-.2-.6-.6.1-.9l11.4-4.4c.5-.2 1 .1.8.9Z"/></svg> RR_Auto</a></li>
+        </ul>
       </div>
+
+      <div class="flex flex-col items-center border-t border-line pt-8 text-center md:border-l md:border-t-0 md:pt-0 lg:min-h-[258px] lg:pt-6">
+        <p class="font-head text-2xl font-extrabold leading-tight 2xl:text-3xl">Всі права<br>захищено</p>
+        <p class="mt-6 font-head text-2xl font-bold 2xl:text-3xl">© 2026 RetroRent</p>
+        <a class="mt-6 font-head text-sm font-extrabold text-muted lg:mt-16 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#">Політика конфіденційності</a>
+      </div>
+
     </div>
   </footer>
   </div>

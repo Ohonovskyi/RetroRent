@@ -4,6 +4,8 @@
      [data-filter-root]          — обгортка
      [data-filter="wedding"]     — кнопка фільтра
      [data-category="wedding"]   — картка авто
+   Вигляд активної кнопки задають класи Tailwind aria-pressed:*,
+   тому JS лише перемикає атрибут aria-pressed.
    Підтримує посилання виду cars.html?category=wedding
    ========================================================= */
 
@@ -21,9 +23,7 @@
     let visible = 0;
 
     buttons.forEach((button) => {
-      const active = button.dataset.filter === category;
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute('aria-pressed', String(button.dataset.filter === category));
     });
 
     cards.forEach((card) => {

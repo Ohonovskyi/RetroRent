@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth scroll-pt-20 motion-reduce:scroll-auto md:scroll-pt-28">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,203 +8,186 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/main.css">
+  <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind.config.js"></script>
+
+  <!-- Власні стилі: лише те, що незручно робити класами Tailwind -->
+  <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="bg-navy-deep font-sans text-navy antialiased">
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <a class="header__logo" href="../index.html" aria-label="RetroRent — на головну">
-      <img src="../assets/icons/logo.svg" alt="RetroRent">
+  <!-- ===== HEADER =====
+       Mobile: логотип | «Меню» | CTA.  md+: «Меню» ховається (md:hidden), пункти в рядок (hidden md:flex) -->
+  <header class="sticky top-0 z-50 flex h-header-sm items-center justify-between gap-2 bg-white px-4 shadow-header md:h-header md:gap-4 md:px-8 xl:px-20">
+    <a class="shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../index.html" aria-label="RetroRent — на головну">
+      <img class="w-16 md:w-[88px]" src="../assets/icons/logo.svg" alt="RetroRent" width="88" height="88">
     </a>
 
-    <nav class="nav" data-nav aria-label="Головне меню">
-      <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
-        <span class="nav__toggle-text">Меню</span>
-        <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    <nav class="relative" data-nav aria-label="Головне меню">
+      <button class="group inline-flex min-h-11 items-center gap-1.5 px-2 text-[17px] font-semibold text-navy focus-visible:outline-none md:hidden"
+              type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-list">
+        <span class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 py-1.5 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 group-aria-expanded:after:scale-x-100">Меню</span>
+        <svg class="transition-transform duration-200 group-aria-expanded:rotate-180" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </button>
 
-      <ul class="nav__list" id="nav-list">
-        <li><a class="nav__link" href="../pages/cars.html" aria-current="page">Автомобілі</a></li>
-        <li><a class="nav__link" href="../index.html#services">Послуги</a></li>
-        <li><a class="nav__link" href="../pages/about.html">Про нас</a></li>
+      <ul id="nav-list" data-nav-list
+          class="absolute left-1/2 top-full mt-3 hidden min-w-[200px] -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-2 shadow-pop
+                 md:static md:mt-0 md:flex md:min-w-0 md:translate-x-0 md:gap-7 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-semibold text-royal hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../pages/cars.html" aria-current="page">Автомобілі</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../index.html#services">Послуги</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../pages/about.html">Про нас</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../index.html#contacts">Контакти</a></li>
       </ul>
     </nav>
 
-    <!-- Кнопка «Бронювати»: куди скролить — задається в href -->
-    <a class="btn btn--primary header__btn" href="#fleet">Бронювати</a>
+    <!-- CTA «Бронювати»: куди скролить — задається в href -->
+    <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-11 shrink-0 px-4 text-sm md:w-[149px] md:px-0 md:text-[17px]" href="#fleet">Бронювати</a>
   </header>
 
-  <main class="page-dark">
-    <section class="fleet" id="fleet" data-filter-root>
-      <div class="container">
-        <h1 class="fleet__title">Наш автопарк</h1>
+  <main class="bg-navy-deep text-white">
+    <section class="py-10 pb-20 md:pb-24 md:pt-14" id="fleet" data-filter-root>
+      <div class="mx-auto w-full max-w-6xl px-4 md:px-6">
+        <h1 class="text-center font-head text-4xl font-black md:text-5xl">Наш автопарк</h1>
 
         <!-- Фільтр по класах. data-filter має збігатися з data-category у картці -->
-        <div class="filters" role="group" aria-label="Фільтр за класом">
-          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Усі</button>
-          <button class="chip" type="button" data-filter="wedding" aria-pressed="false">Весілля</button>
-          <button class="chip" type="button" data-filter="photo" aria-pressed="false">Фотосесія</button>
-          <button class="chip" type="button" data-filter="self-drive" aria-pressed="false">Self-drive</button>
+        <div class="mt-7 flex flex-wrap justify-center gap-2.5" role="group" aria-label="Фільтр за класом">
+          <button class="h-11 rounded bg-white px-5 text-sm font-semibold text-navy transition-colors hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-navy-deep aria-pressed:bg-royal aria-pressed:text-white aria-pressed:hover:bg-royal" type="button" data-filter="all" aria-pressed="true">Усі</button>
+          <button class="h-11 rounded bg-white px-5 text-sm font-semibold text-navy transition-colors hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-navy-deep aria-pressed:bg-royal aria-pressed:text-white aria-pressed:hover:bg-royal" type="button" data-filter="wedding" aria-pressed="false">Весілля</button>
+          <button class="h-11 rounded bg-white px-5 text-sm font-semibold text-navy transition-colors hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-navy-deep aria-pressed:bg-royal aria-pressed:text-white aria-pressed:hover:bg-royal" type="button" data-filter="photo" aria-pressed="false">Фотосесія</button>
+          <button class="h-11 rounded bg-white px-5 text-sm font-semibold text-navy transition-colors hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-navy-deep aria-pressed:bg-royal aria-pressed:text-white aria-pressed:hover:bg-royal" type="button" data-filter="self-drive" aria-pressed="false">Self-drive</button>
         </div>
 
-        <div class="fleet__grid">
-          <article class="car-card car-card--catalog" data-category="self-drive">
-            <!-- ФОТО: assets/images/cars/ford-mustang-1967.jpg -->
-            <div class="car-card__media media">
-              <img src="../assets/images/cars/1967mustang.jpg" alt="Ford Mustang 1967" loading="lazy">
+        <!-- Сітка: mobile 1 колонка → sm: 2 → lg: 3 -->
+        <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="self-drive">
+            <div class="media aspect-video bg-placeholder">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/1967mustang.jpg" alt="Ford Mustang 1967" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h2 class="car-card__name">Ford Mustang 1967</h2>
-                <span class="tag tag--soft">Self-Drive</span>
-              </div>
-              <p class="car-card__price"><b>159$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/ford-mustang-1967.html" aria-label="Обрати авто Ford Mustang 1967">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+            <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
+              <h2 class="text-lg font-semibold">Ford Mustang 1967</h2>
+              <span class="mt-1.5 self-start whitespace-nowrap rounded-full bg-brand-blue-soft px-2 py-0.5 text-[11px] font-bold text-royal">Self-Drive</span>
+              <p class="mb-3.5 mt-3 font-bold text-brand-green">159$ /доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-12 w-full text-base" href="../pages/cars/ford-mustang-1967.html" aria-label="Обрати авто Ford Mustang 1967">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card car-card--catalog" data-category="wedding">
-            <!-- ФОТО: assets/images/cars/mercedes-benz-220se.jpg -->
-            <div class="car-card__media media">
-              <img src="../assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="wedding">
+            <div class="media aspect-video bg-placeholder">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h2 class="car-card__name">Mercedes-Benz 220SE</h2>
-                <span class="tag tag--soft">Весілля</span>
-              </div>
-              <p class="car-card__price"><b>399$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/mercedes-benz-220se.html" aria-label="Обрати авто Mercedes-Benz 220SE">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+            <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
+              <h2 class="text-lg font-semibold">Mercedes-Benz 220SE</h2>
+              <span class="mt-1.5 self-start whitespace-nowrap rounded-full bg-brand-blue-soft px-2 py-0.5 text-[11px] font-bold text-royal">Весілля</span>
+              <p class="mb-3.5 mt-3 font-bold text-brand-green">399$ /доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-12 w-full text-base" href="../pages/cars/mercedes-benz-220se.html" aria-label="Обрати авто Mercedes-Benz 220SE">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card car-card--catalog" data-category="photo">
-            <!-- ФОТО: assets/images/cars/mercedes-benz-c140.jpg -->
-            <div class="car-card__media media">
-              <img src="../assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="photo">
+            <div class="media aspect-video bg-placeholder">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h2 class="car-card__name">Mercedes-Benz C140</h2>
-                <span class="tag tag--soft">Фотосесія</span>
-              </div>
-              <p class="car-card__price"><b>299$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/mercedes-benz-c140.html" aria-label="Обрати авто Mercedes-Benz C140">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+            <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
+              <h2 class="text-lg font-semibold">Mercedes-Benz C140</h2>
+              <span class="mt-1.5 self-start whitespace-nowrap rounded-full bg-brand-blue-soft px-2 py-0.5 text-[11px] font-bold text-royal">Фотосесія</span>
+              <p class="mb-3.5 mt-3 font-bold text-brand-green">299$ /доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-12 w-full text-base" href="../pages/cars/mercedes-benz-c140.html" aria-label="Обрати авто Mercedes-Benz C140">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card car-card--catalog" data-category="self-drive">
-            <!-- ФОТО: assets/images/cars/chevrolet-bel-air-1957.jpg -->
-            <div class="car-card__media media">
-              <img src="../assets/images/cars/chevrolet-bel-air-1957.jpg" alt="Chevrolet Bel Air 1957" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="self-drive">
+            <div class="media aspect-video bg-placeholder">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/chevrolet-bel-air-1957.jpg" alt="Chevrolet Bel Air 1957" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h2 class="car-card__name">Chevrolet Bel Air 1957</h2>
-                <span class="tag tag--soft">Self-Drive</span>
-              </div>
-              <p class="car-card__price"><b>189$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/chevrolet-bel-air-1957.html" aria-label="Обрати авто Chevrolet Bel Air 1957">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+            <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
+              <h2 class="text-lg font-semibold">Chevrolet Bel Air 1957</h2>
+              <span class="mt-1.5 self-start whitespace-nowrap rounded-full bg-brand-blue-soft px-2 py-0.5 text-[11px] font-bold text-royal">Self-Drive</span>
+              <p class="mb-3.5 mt-3 font-bold text-brand-green">189$ /доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-12 w-full text-base" href="../pages/cars/chevrolet-bel-air-1957.html" aria-label="Обрати авто Chevrolet Bel Air 1957">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card car-card--catalog" data-category="wedding">
-            <!-- ФОТО: assets/images/cars/jaguar-e-type-1961.jpg -->
-            <div class="car-card__media media">
-              <img src="../assets/images/cars/jaguar-e-type-1961.jpg" alt="Jaguar E-Type 1961" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="wedding">
+            <div class="media aspect-video bg-placeholder">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/jaguar-e-type-1961.jpg" alt="Jaguar E-Type 1961" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h2 class="car-card__name">Jaguar E-Type 1961</h2>
-                <span class="tag tag--soft">Весілля</span>
-              </div>
-              <p class="car-card__price"><b>499$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/jaguar-e-type-1961.html" aria-label="Обрати авто Jaguar E-Type 1961">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+            <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
+              <h2 class="text-lg font-semibold">Jaguar E-Type 1961</h2>
+              <span class="mt-1.5 self-start whitespace-nowrap rounded-full bg-brand-blue-soft px-2 py-0.5 text-[11px] font-bold text-royal">Весілля</span>
+              <p class="mb-3.5 mt-3 font-bold text-brand-green">499$ /доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-12 w-full text-base" href="../pages/cars/jaguar-e-type-1961.html" aria-label="Обрати авто Jaguar E-Type 1961">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
-          <article class="car-card car-card--catalog" data-category="photo">
-            <!-- ФОТО: assets/images/cars/toyota-2000gt-1967.jpg -->
-            <div class="car-card__media media">
-              <img src="../assets/images/cars/toyota-2000gt-1967.jpg" alt="Toyota 2000GT 1967" loading="lazy">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="photo">
+            <div class="media aspect-video bg-placeholder">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/toyota-2000gt-1967.jpg" alt="Toyota 2000GT 1967" loading="lazy">
             </div>
-            <div class="car-card__body">
-              <div class="car-card__head">
-                <h2 class="car-card__name">Toyota 2000GT 1967</h2>
-                <span class="tag tag--soft">Фотосесія</span>
-              </div>
-              <p class="car-card__price"><b>349$</b>/доба</p>
-              <a class="btn btn--primary btn--swap car-card__btn" href="../pages/cars/toyota-2000gt-1967.html" aria-label="Обрати авто Toyota 2000GT 1967">
-                <span class="btn__label btn__label--default">Обрати авто</span>
-                <span class="btn__label btn__label--hover" aria-hidden="true">Перейти</span>
+            <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
+              <h2 class="text-lg font-semibold">Toyota 2000GT 1967</h2>
+              <span class="mt-1.5 self-start whitespace-nowrap rounded-full bg-brand-blue-soft px-2 py-0.5 text-[11px] font-bold text-royal">Фотосесія</span>
+              <p class="mb-3.5 mt-3 font-bold text-brand-green">349$ /доба</p>
+              <a class="group js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text overflow-hidden mt-auto h-12 w-full text-base" href="../pages/cars/toyota-2000gt-1967.html" aria-label="Обрати авто Toyota 2000GT 1967">
+                <span class="transition duration-200 group-hover:-translate-y-2 group-hover:opacity-0">Обрати авто</span>
+                <span class="absolute inset-0 flex translate-y-2 items-center justify-center opacity-0 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">Перейти</span>
               </a>
             </div>
           </article>
         </div>
 
-        <p class="fleet__empty" data-filter-empty hidden>У цій категорії поки немає авто.</p>
+        <p class="mt-10 text-center text-muted" data-filter-empty hidden>У цій категорії поки немає авто.</p>
       </div>
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img class="footer__logo" src="../assets/icons/logo_white.svg" alt="RetroRent">
-        <p class="footer__slogan">Оренда ретро-автомобіля без дрібного шрифту</p>
+  <!-- ===== FOOTER =====  Mobile: 1 колонка · md: 2 · lg: 4 -->
+  <footer class="bg-navy text-white">
+    <div class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-10 px-5 pb-11 pt-10 text-center md:grid-cols-2 md:px-8 md:text-left lg:grid-cols-4 lg:gap-8 xl:px-20">
+
+      <div class="flex flex-col items-center text-center lg:pt-6">
+        <img class="w-48 xl:w-56" src="../assets/icons/logo_white.svg" alt="RetroRent" width="216" height="216" loading="lazy">
+        <p class="mt-2.5 max-w-[260px] font-head text-lg font-extrabold leading-6 text-muted">Оренда ретро-автомобіля без дрібного шрифту</p>
       </div>
 
-      <div class="footer__nav">
-        <div class="footer__col">
-          <h4 class="footer__heading">Меню</h4>
-          <ul class="footer__list">
-            <li><a href="../index.html">Головна</a></li>
-            <li><a href="../pages/about.html#advantages">Переваги</a></li>
-            <li><a href="../pages/cars.html">Автомобілі</a></li>
-            <li><a href="../index.html#services">Послуги</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__col">
-          <h4 class="footer__heading">Зв’язок</h4>
-          <ul class="footer__list">
-            <li>Номер телефону: <a href="tel:08002232245">0 800 223 224 5</a></li>
-            <li>Email: <a href="mailto:RetroRent@gmail.com">RetroRent@gmail.com</a></li>
-            <li>
-              <a class="social" href="#">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
-                Retro_Rent
-              </a>
-            </li>
-            <li>
-              <a class="social" href="#">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.9 8.2-2 9.3c-.1.7-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.5-5c.2-.2 0-.3-.4-.1l-6.8 4.3-2.9-.9c-.6-.2-.6-.6.1-.9l11.4-4.4c.5-.2 1 .1.8.9Z"/></svg>
-                RR_Auto
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="lg:pt-14">
+        <h2 class="mb-3 font-head text-2xl font-extrabold md:text-3xl">Меню</h2>
+        <ul>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../index.html">Головна</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../pages/about.html#advantages">Переваги</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../pages/cars.html">Автомобілі</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="../index.html#services">Послуги</a></li>
+        </ul>
       </div>
 
-      <div class="footer__legal">
-        <p class="footer__rights">Всі права<br>захищено</p>
-        <p class="footer__copy">© 2026 RetroRent</p>
-        <a class="footer__policy" href="#">Політика конфіденційності</a>
+      <div class="lg:pt-14">
+        <h2 class="mb-3 font-head text-2xl font-extrabold md:text-3xl">Зв’язок</h2>
+        <ul>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted">Номер телефону: <a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="tel:08002232245">0 800 223 224 5</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted">Email: <a class="transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="mailto:RetroRent@gmail.com">RetroRent@gmail.com</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="inline-flex items-center gap-2 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg> Retro_Rent</a></li>
+          <li class="font-head text-sm font-extrabold leading-7 text-muted"><a class="inline-flex items-center gap-2 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.9 8.2-2 9.3c-.1.7-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3 5.5-5c.2-.2 0-.3-.4-.1l-6.8 4.3-2.9-.9c-.6-.2-.6-.6.1-.9l11.4-4.4c.5-.2 1 .1.8.9Z"/></svg> RR_Auto</a></li>
+        </ul>
       </div>
+
+      <div class="flex flex-col items-center border-t border-line pt-8 text-center md:border-l md:border-t-0 md:pt-0 lg:min-h-[258px] lg:pt-6">
+        <p class="font-head text-2xl font-extrabold leading-tight 2xl:text-3xl">Всі права<br>захищено</p>
+        <p class="mt-6 font-head text-2xl font-bold 2xl:text-3xl">© 2026 RetroRent</p>
+        <a class="mt-6 font-head text-sm font-extrabold text-muted lg:mt-16 transition-colors hover:text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="#">Політика конфіденційності</a>
+      </div>
+
     </div>
   </footer>
 
