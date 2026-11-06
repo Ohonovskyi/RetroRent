@@ -47,7 +47,6 @@
     <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-11 shrink-0 px-4 text-sm md:w-[149px] md:px-0 md:text-[17px]" href="#cars">Бронювати</a>
   </header>
 
-  <div class="md:mx-[15px]">
     <main>
 
       <!-- ===== HERO ===== фон — клас .hero-bg у css/style.css -->
@@ -63,40 +62,82 @@
         <a class="inline-flex items-center justify-center rounded bg-white text-center uppercase text-royal transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-10 h-20 w-full max-w-md font-head text-lg font-extrabold md:mt-12 md:h-24 md:text-2xl" href="#cars">Обрати авто під подію</a>
       </section>
 
-      <!-- ===== ПЕРЕВАГИ ===== Mobile: 1 колонка · lg: 3 -->
-      <section class="px-4 pb-14 pt-8 lg:px-6 lg:pb-16" id="benefits">
-        <h2 class="text-center font-head text-3xl font-black uppercase leading-tight md:text-5xl lg:text-6xl">Оренда без дрібного шрифту</h2>
+      <!-- ===== БЛОК 1 (світлий): чому RetroRent — переваги й послуги ===== -->
+      <section class="px-4 pb-10 pt-16 md:px-8 md:pt-24" id="benefits" aria-labelledby="benefits-title">
+        <div class="mx-auto max-w-6xl">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="benefits-title">Оренда без дрібного шрифту</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed mx-auto text-center text-gray-500 [@media(hover:none)]:hidden">Наведіть на картку, щоб дізнатися подробиці.</p>
 
-        <div class="mx-auto mt-12 grid max-w-md grid-cols-1 gap-7 md:mt-16 lg:max-w-none lg:grid-cols-3">
-          <article class="flex min-h-[460px] flex-col items-center rounded-xl bg-navy px-5 pb-12 pt-10 text-center text-white shadow-card lg:min-h-[553px] lg:pb-16 lg:pt-12">
-            <div class="flex h-60 w-full items-center justify-center">
-              <img class="max-h-56 w-auto" src="assets/icons/shield.svg" alt="" loading="lazy">
+          <!-- Вікна при наведенні: стилі .benefit у css/style.css. Mobile: 1 колонка · lg: 3 -->
+          <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <!-- tabindex: вікно відкривається і з клавіатури -->
+          <article class="benefit relative rounded-xl bg-navy p-6 text-white shadow-card transition-shadow duration-200 hover:shadow-xl focus:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange lg:p-7" tabindex="0">
+            <div class="flex items-center gap-4">
+              <img class="h-14 w-14 flex-none" src="assets/icons/shield.svg" alt="" loading="lazy">
+              <h3 class="font-head text-xl font-extrabold leading-tight lg:text-2xl">Перевірені застраховані авто</h3>
             </div>
-            <h3 class="flex min-h-32 items-center justify-center font-head text-3xl font-extrabold leading-tight lg:text-4xl lg:leading-tight">Перевірені застраховані авто</h3>
-            <p class="mt-6 max-w-sm font-head text-lg font-extrabold leading-snug text-muted lg:mt-auto">Повне КАСКО та регулярний техогляд вже включені у вартість</p>
-          </article>
-          <article class="flex min-h-[460px] flex-col items-center rounded-xl bg-navy px-5 pb-12 pt-10 text-center text-white shadow-card lg:min-h-[553px] lg:pb-16 lg:pt-12">
-            <div class="flex h-60 w-full items-center justify-center">
-              <img class="max-h-56 w-auto" src="assets/icons/calendar.svg" alt="" loading="lazy">
+            <p class="mt-4 leading-relaxed text-muted">Регулярний техогляд і страхування на вибір: базове, повне або преміум.</p>
+
+            <div class="benefit__more">
+              <div class="benefit__panel rounded-xl border border-gray-200 bg-white p-5 text-navy shadow-pop">
+                <h4 class="font-head text-lg font-extrabold">Що перевіряємо перед видачею</h4>
+                <ul class="mt-3 flex flex-col gap-2 text-sm leading-snug">
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Гальма, рульове й шини</span></li>
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Рідини, електрику та освітлення</span></li>
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Кузов і салон: фотофіксація разом із вами</span></li>
+                </ul>
+                <p class="mt-3 border-t border-gray-200 pt-3 text-sm leading-snug text-gray-500">Що вищий рівень страхування, то менші франшиза й застава.</p>
+              </div>
             </div>
-            <h3 class="flex min-h-32 items-center justify-center font-head text-3xl font-extrabold leading-tight lg:text-4xl lg:leading-tight">Зручний вибір дат</h3>
-            <p class="mt-6 max-w-sm font-head text-lg font-extrabold leading-snug text-muted lg:mt-auto">Бронюйте авто на один вечір, стильні вихідні або цілий місяць</p>
           </article>
-          <article class="flex min-h-[460px] flex-col items-center rounded-xl bg-navy px-5 pb-12 pt-10 text-center text-white shadow-card lg:min-h-[553px] lg:pb-16 lg:pt-12">
-            <div class="flex h-60 w-full items-center justify-center">
-              <img class="max-h-56 w-auto" src="assets/icons/wheel.svg" alt="" loading="lazy">
+          <!-- tabindex: вікно відкривається і з клавіатури -->
+          <article class="benefit relative rounded-xl bg-navy p-6 text-white shadow-card transition-shadow duration-200 hover:shadow-xl focus:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange lg:p-7" tabindex="0">
+            <div class="flex items-center gap-4">
+              <img class="h-14 w-14 flex-none" src="assets/icons/calendar.svg" alt="" loading="lazy">
+              <h3 class="font-head text-xl font-extrabold leading-tight lg:text-2xl">Зручний вибір дат</h3>
             </div>
-            <h3 class="flex min-h-32 items-center justify-center font-head text-3xl font-extrabold leading-tight lg:text-4xl lg:leading-tight">Керуйте авто самостійно</h3>
-            <p class="mt-6 max-w-sm font-head text-lg font-extrabold leading-snug text-muted lg:mt-auto">Жодних спецкатегорій! Підійде ваше посвідчення категорії B</p>
+            <p class="mt-4 leading-relaxed text-muted">Бронюйте авто на один вечір, стильні вихідні або цілий місяць.</p>
+
+            <div class="benefit__more">
+              <div class="benefit__panel rounded-xl border border-gray-200 bg-white p-5 text-navy shadow-pop">
+                <h4 class="font-head text-lg font-extrabold">Коли краще бронювати</h4>
+                <ul class="mt-3 flex flex-col gap-2 text-sm leading-snug">
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Весілля: за 2–3 місяці, особливо на травень–вересень</span></li>
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Фотосесія: за 1–2 тижні</span></li>
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Мінімальний термін оренди: 1 доба</span></li>
+                </ul>
+                <p class="mt-3 border-t border-gray-200 pt-3 text-sm leading-snug text-gray-500">Порада: найкраще світло для кадрів із хромом буває за годину до заходу сонця.</p>
+              </div>
+            </div>
           </article>
+          <!-- tabindex: вікно відкривається і з клавіатури -->
+          <article class="benefit relative rounded-xl bg-navy p-6 text-white shadow-card transition-shadow duration-200 hover:shadow-xl focus:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange lg:p-7" tabindex="0">
+            <div class="flex items-center gap-4">
+              <img class="h-14 w-14 flex-none" src="assets/icons/wheel.svg" alt="" loading="lazy">
+              <h3 class="font-head text-xl font-extrabold leading-tight lg:text-2xl">Керуйте авто самостійно</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-muted">Жодних спецкатегорій: підійде ваше посвідчення категорії B.</p>
+
+            <div class="benefit__more">
+              <div class="benefit__panel rounded-xl border border-gray-200 bg-white p-5 text-navy shadow-pop">
+                <h4 class="font-head text-lg font-extrabold">Що потрібно для self-drive</h4>
+                <ul class="mt-3 flex flex-col gap-2 text-sm leading-snug">
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Посвідчення категорії B</span></li>
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Вік від 21 року та стаж від 2 років</span></li>
+                  <li class="flex gap-2"><span class="text-brand-green" aria-hidden="true">✓</span><span>Онлайн-перевірка посвідчення перед бронюванням</span></li>
+                </ul>
+                <p class="mt-3 border-t border-gray-200 pt-3 text-sm leading-snug text-gray-500">Перед виїздом менеджер проведе короткий інструктаж: ретро-авто кермуються інакше, ніж сучасні.</p>
+              </div>
+            </div>
+          </article>
+          </div>
         </div>
       </section>
 
-      <!-- ===== ПОСЛУГИ ===== Mobile: 1 · sm: 2 · lg: 4 колонки -->
-      <section class="bg-cream px-4 py-16 md:px-8 md:py-20" id="services" aria-labelledby="services-title">
+      <section class="px-4 pb-16 pt-10 md:px-8 md:pb-24" id="services" aria-labelledby="services-title">
         <div class="mx-auto max-w-6xl">
           <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="services-title">Послуги</h2>
-          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Підберемо ретро-авто під ваш сценарій — від весільного кортежу до фотосесії чи подорожі вихідного дня.</p>
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Підберемо ретро-авто під ваш сценарій: від весілля до фотосесії чи подорожі вихідного дня.</p>
 
           <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -127,15 +168,16 @@
         </div>
       </section>
 
-      <!-- ===== ОБЕРИ СВОЄ РЕТРО ===== сюди скролить «Бронювати» (id="cars") -->
-      <section class="flex flex-col items-center bg-navy px-5 pb-20 pt-16 text-white md:pb-28 md:pt-24" id="cars">
-        <h2 class="text-center text-4xl font-light leading-tight md:text-5xl lg:text-6xl">Обери своє ретро</h2>
+      <!-- ===== БЛОК 2 (темний): автопарк і відео ===== сюди скролить «Бронювати» (id="cars") -->
+      <div class="bg-navy text-white">
+        <section class="flex flex-col items-center px-4 pb-10 pt-16 md:px-8 md:pt-24" id="cars" aria-labelledby="cars-title">
+          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="cars-title">Обери своє ретро</h2>
 
-        <!-- Сітка карток: 1 → sm: 2 → lg: 3 колонки, без фіксованої ширини -->
-        <div class="mt-8 grid w-full max-w-sm grid-cols-1 gap-6 sm:max-w-2xl sm:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 lg:gap-12">
-          <article class="flex flex-col overflow-hidden rounded-xl bg-cream text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <!-- Сітка карток: 1 → sm: 2 → lg: 3 колонки, без фіксованої ширини -->
+          <div class="mt-10 grid w-full max-w-sm grid-cols-1 gap-6 sm:max-w-2xl sm:grid-cols-2 lg:max-w-6xl lg:grid-cols-3">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <div class="media aspect-[16/11] bg-placeholder">
-              <img class="h-full w-full object-cover" src="assets/images/cars/1967mustang.jpg" alt="Ford Mustang 1967" loading="lazy">
+              <img class="h-full w-full object-cover" src="assets/images/cars/ford-mustang-1967_1.jpg" alt="Ford Mustang 1967" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-5 pb-5 pt-8">
               <div class="flex flex-wrap items-center gap-2">
@@ -149,9 +191,9 @@
               </a>
             </div>
           </article>
-          <article class="flex flex-col overflow-hidden rounded-xl bg-cream text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <div class="media aspect-[16/11] bg-placeholder">
-              <img class="h-full w-full object-cover" src="assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+              <img class="h-full w-full object-cover" src="assets/images/cars/mercedes-benz-220se_1.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-5 pb-5 pt-8">
               <div class="flex flex-wrap items-center gap-2">
@@ -165,9 +207,9 @@
               </a>
             </div>
           </article>
-          <article class="flex flex-col overflow-hidden rounded-xl bg-cream text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl">
             <div class="media aspect-[16/11] bg-placeholder">
-              <img class="h-full w-full object-cover" src="assets/images/cars/mercedes_c140.jpg" alt="Mercedes-Benz C140" loading="lazy">
+              <img class="h-full w-full object-cover" src="assets/images/cars/mercedes-benz-c140_1.jpg" alt="Mercedes-Benz C140" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-5 pb-5 pt-8">
               <div class="flex flex-wrap items-center gap-2">
@@ -181,48 +223,22 @@
               </a>
             </div>
           </article>
-        </div>
+          </div>
 
-        <a class="js-press rounded bg-white text-royal hover:bg-royal hover:text-white active:bg-ink active:text-white relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text mt-8 h-20 w-full max-w-md font-head text-lg font-extrabold md:h-24 md:text-2xl" href="pages/cars.html">Більше автомобілів</a>
-      </section>
+          <a class="js-press rounded bg-white text-royal hover:bg-royal hover:text-white active:bg-ink active:text-white relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text mt-10 h-14 w-full px-10 font-head text-base font-extrabold sm:w-auto" href="pages/cars.html">Більше автомобілів</a>
+        </section>
 
-
-      <!-- ===== ЯК ЦЕ ПРАЦЮЄ ===== Mobile: 1 · md: 3 колонки -->
-      <section class="px-4 py-16 md:px-8 md:py-20" id="how" aria-labelledby="how-title">
-        <div class="mx-auto max-w-6xl">
-          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center md:text-left" id="how-title">Як це працює</h2>
-
-          <ol class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-          <li class="flex flex-col items-center text-center md:items-start md:text-left">
-            <span class="grid h-14 w-14 place-items-center rounded-full bg-royal font-head text-2xl font-black text-white" aria-hidden="true">1</span>
-            <h3 class="mt-5 font-head text-xl font-extrabold">Оберіть авто</h3>
-            <p class="mt-2 max-w-xs leading-relaxed text-gray-500">Перегляньте автопарк і відфільтруйте авто за подією: весілля, фотосесія чи self-drive.</p>
-          </li>
-          <li class="flex flex-col items-center text-center md:items-start md:text-left">
-            <span class="grid h-14 w-14 place-items-center rounded-full bg-royal font-head text-2xl font-black text-white" aria-hidden="true">2</span>
-            <h3 class="mt-5 font-head text-xl font-extrabold">Вкажіть дати</h3>
-            <p class="mt-2 max-w-xs leading-relaxed text-gray-500">Оберіть дату отримання та повернення в календарі — вартість з КАСКО порахується одразу.</p>
-          </li>
-          <li class="flex flex-col items-center text-center md:items-start md:text-left">
-            <span class="grid h-14 w-14 place-items-center rounded-full bg-royal font-head text-2xl font-black text-white" aria-hidden="true">3</span>
-            <h3 class="mt-5 font-head text-xl font-extrabold">Підтвердіть бронювання</h3>
-            <p class="mt-2 max-w-xs leading-relaxed text-gray-500">Натисніть «Забронювати», і менеджер зв’яжеться з вами протягом 10 хвилин.</p>
-          </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- ===== ВІДЕО ===== адаптивний плеєр — клас .embed у css/style.css -->
-      <section class="bg-navy-deep px-4 py-16 text-white md:px-8 md:py-20" id="video" aria-labelledby="video-title">
-        <div class="mx-auto max-w-6xl">
-          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="video-title">Ретро-авто в русі</h2>
-          <p class="mt-4 max-w-2xl text-lg leading-relaxed mx-auto text-center text-slate-300">Подивіться, як класичні автомобілі виглядають на дорозі, — саме такі емоції чекають і на вас.</p>
+        <!-- Відео: адаптивний плеєр — клас .embed у css/style.css -->
+        <section class="px-4 pb-16 pt-10 md:px-8 md:pb-24" id="video" aria-labelledby="video-title">
+          <div class="mx-auto max-w-6xl">
+            <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="video-title">Ретро-авто в русі</h2>
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed mx-auto text-center text-slate-300">Подивіться, як класичні автомобілі виглядають на дорозі: саме такі емоції чекають і на вас.</p>
 
           <figure class="mt-10">
             <div class="embed">
               <!-- ВІДЕО: YouTube → «Поділитися» → «Вбудувати», скопіюйте ID з адреси
                    (частина після /embed/) і вставте замість VIDEO_ID -->
-              <iframe src="https://www.youtube-nocookie.com/embed/-rbHpTKYxx4?si=HyTNN9BKV8DeDOV6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>"
+              <iframe src="https://www.youtube-nocookie.com/embed/-rbHpTKYxx4?si=HyTNN9BKV8DeDOV6"
                       title="Відео: ретро-автомобілі в русі"
                       loading="lazy"
                       allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -231,28 +247,60 @@
             </div>
             <figcaption class="mt-3 text-center text-sm text-muted">Відео відтворюється з YouTube.</figcaption>
           </figure>
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
 
-      <!-- ===== ЧАСТІ ЗАПИТАННЯ ===== details/summary — розгортається без JavaScript -->
-      <section class="bg-cream px-4 py-16 md:px-8 md:py-20" id="faq" aria-labelledby="faq-title">
-        <div class="mx-auto max-w-3xl">
-          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl text-center" id="faq-title">Часті запитання</h2>
+      <!-- ===== БЛОК 3 (світлий): як це працює, питання, зв'язок ===== -->
+      <div class="px-4 py-16 md:px-8 md:py-24">
+        <div class="mx-auto max-w-6xl">
 
-          <div class="mt-10 flex flex-col gap-3">
+          <!-- Як це працює + часті запитання. Mobile: 1 колонка · lg: 2 -->
+          <div class="grid grid-cols-1 gap-14 lg:grid-cols-2">
+            <section id="how" aria-labelledby="how-title">
+              <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="how-title">Як це працює</h2>
+              <ol class="mt-8 flex flex-col gap-8">
+            <li class="flex gap-4">
+              <span class="grid h-12 w-12 flex-none place-items-center rounded-full bg-navy font-head text-xl font-black text-white" aria-hidden="true">1</span>
+              <div>
+                <h3 class="font-head text-xl font-extrabold">Оберіть авто</h3>
+                <p class="mt-1 leading-relaxed text-gray-500">Перегляньте автопарк і відфільтруйте авто за подією: весілля, фотосесія чи self-drive.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="grid h-12 w-12 flex-none place-items-center rounded-full bg-navy font-head text-xl font-black text-white" aria-hidden="true">2</span>
+              <div>
+                <h3 class="font-head text-xl font-extrabold">Вкажіть дати й страхування</h3>
+                <p class="mt-1 leading-relaxed text-gray-500">Вартість у доларах і гривнях порахується одразу. Для self-drive пройдіть онлайн-перевірку посвідчення.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="grid h-12 w-12 flex-none place-items-center rounded-full bg-navy font-head text-xl font-black text-white" aria-hidden="true">3</span>
+              <div>
+                <h3 class="font-head text-xl font-extrabold">Підтвердіть бронювання</h3>
+                <p class="mt-1 leading-relaxed text-gray-500">Натисніть «Забронювати», і менеджер зв’яжеться з вами протягом 10 хвилин.</p>
+              </div>
+            </li>
+              </ol>
+            </section>
+
+            <!-- details/summary розгортаються без JavaScript -->
+            <section id="faq" aria-labelledby="faq-title">
+              <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="faq-title">Часті запитання</h2>
+              <div class="mt-8 flex flex-col gap-3">
             <details class="group rounded-xl border border-gray-200 bg-white" open>
               <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
                 Яке посвідчення потрібне для self-drive?
                 <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </summary>
-              <p class="px-5 pb-5 leading-relaxed text-gray-500">Достатньо звичайного посвідчення категорії B — жодних спецкатегорій не потрібно.</p>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">Посвідчення категорії B, вік від 21 року й стаж від 2 років. Перевірка проходить онлайн на сторінці авто.</p>
             </details>
             <details class="group rounded-xl border border-gray-200 bg-white">
               <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
-                Чи входить страховка у вартість?
+                Які є варіанти страхування?
                 <svg class="flex-none transition-transform duration-200 group-open:rotate-45" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </summary>
-              <p class="px-5 pb-5 leading-relaxed text-gray-500">Так. Повне КАСКО вже включене у вартість оренди, без прихованих доплат.</p>
+              <p class="px-5 pb-5 leading-relaxed text-gray-500">На вибір: без страхування, Базове КАСКО, Повне КАСКО або Преміум. Що вищий рівень, то менші франшиза й застава, а ціна перераховується одразу.</p>
             </details>
             <details class="group rounded-xl border border-gray-200 bg-white">
               <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-4 font-head text-lg font-extrabold transition-colors hover:text-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange [&::-webkit-details-marker]:hidden">
@@ -275,50 +323,124 @@
               </summary>
               <p class="px-5 pb-5 leading-relaxed text-gray-500">Протягом 10 хвилин після заявки менеджер зв’яжеться з вами, щоб підтвердити деталі.</p>
             </details>
+              </div>
+            </section>
           </div>
-        </div>
-      </section>
 
-      <!-- ===== ЗАКЛИК ДО ДІЇ ===== -->
-      <section class="bg-royal px-4 py-16 text-white md:px-8 md:py-20" aria-labelledby="cta-title">
-        <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="cta-title">Готові до поїздки в стилі ретро?</h2>
-          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-blue-100">Оберіть авто, вкажіть дати — і бронювання буде готове за кілька хвилин.</p>
+          <!-- Заклик до дії -->
+          <section class="mt-16 flex flex-col items-center rounded-2xl bg-navy px-6 py-12 text-center text-white md:mt-24 md:py-16" aria-labelledby="cta-title">
+            <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="cta-title">Готові до поїздки в стилі ретро?</h2>
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted">Оберіть авто, вкажіть дати, і бронювання буде готове за кілька хвилин.</p>
 
-          <div class="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <a class="js-press relative inline-flex h-14 items-center justify-center rounded-md bg-white px-8 font-head text-lg font-extrabold uppercase text-royal shadow-md transition duration-200 hover:bg-cream hover:shadow-xl active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" href="pages/cars.html">Обрати авто</a>
+            <div class="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <a class="js-press relative inline-flex h-14 items-center justify-center rounded-md bg-white px-8 font-head text-lg font-extrabold uppercase text-royal shadow-md transition duration-200 hover:bg-gray-100 hover:shadow-xl active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" href="pages/cars.html">Обрати авто</a>
             <a class="inline-flex h-14 items-center justify-center rounded-md border-2 border-white/70 px-8 font-head text-lg font-extrabold text-white transition duration-200 hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" href="tel:08002232245" title="Зателефонувати в RetroRent">0 800 223 224 5</a>
           </div>
-        </div>
-      </section>
+          </section>
 
-      <!-- ===== КОНТАКТИ + КАРТА ===== Mobile: 1 колонка · lg: 2 -->
-      <section class="px-4 py-16 md:px-8 md:py-20" id="contacts" aria-labelledby="contacts-title">
-        <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch">
-          <div>
-            <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="contacts-title">Контакти</h2>
-            <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Приїжджайте подивитися авто наживо або зв’яжіться з нами зручним способом.</p>
+          <!-- Форма зв'язку + контакти. Mobile: 1 колонка · lg: 5 (форма 3, контакти 2) -->
+          <div class="mt-16 grid grid-cols-1 gap-12 md:mt-24 lg:grid-cols-5">
+            <section class="lg:col-span-3" id="feedback" aria-labelledby="feedback-title">
+              <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="feedback-title">Напишіть нам</h2>
+              <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Підкажемо, яке авто підійде під вашу подію, і відповімо на запитання щодо оренди.</p>
 
-            <address class="mt-8 flex flex-col gap-5 not-italic">
+          <!-- novalidate: перевірку й тексти помилок робить js/validation.js, а не браузер -->
+          <form class="mt-8 grid grid-cols-1 gap-x-6 gap-y-2 rounded-xl border border-gray-200 bg-white p-5 sm:p-7 md:grid-cols-2" id="feedbackForm" novalidate>
+            <div>
+              <label class="mb-1.5 block text-sm font-semibold" for="username">Ім’я <span class="text-red-700" aria-hidden="true">*</span></label>
+              <div class="relative">
+                <input class="block h-12 px-4 pr-11 w-full rounded-md border border-gray-300 bg-white text-base text-navy transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="text" id="username" name="username" autocomplete="name" placeholder="Ірина Коваль" maxlength="60"
+                       required aria-required="true" aria-invalid="false" aria-describedby="usernameError">
+                <svg class="pointer-events-none absolute right-3.5 top-3.5 hidden text-green-600" data-check width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <p class="mt-1 min-h-5 text-sm text-red-700" id="usernameError" aria-live="polite"></p>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-sm font-semibold" for="email">Email <span class="text-red-700" aria-hidden="true">*</span></label>
+              <div class="relative">
+                <input class="block h-12 px-4 pr-11 w-full rounded-md border border-gray-300 bg-white text-base text-navy transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="email" id="email" name="email" autocomplete="email" placeholder="name@domain.com" maxlength="100" inputmode="email"
+                       required aria-required="true" aria-invalid="false" aria-describedby="emailError">
+                <svg class="pointer-events-none absolute right-3.5 top-3.5 hidden text-green-600" data-check width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <p class="mt-1 min-h-5 text-sm text-red-700" id="emailError" aria-live="polite"></p>
+            </div>
+            <div>
+              <label class="mb-1.5 block text-sm font-semibold" for="phone">Телефон <span class="text-red-700" aria-hidden="true">*</span></label>
+              <div class="relative">
+                <input class="block h-12 px-4 pr-11 w-full rounded-md border border-gray-300 bg-white text-base text-navy transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+380501234567" maxlength="20" inputmode="tel"
+                       required aria-required="true" aria-invalid="false" aria-describedby="phoneHint phoneError">
+                <svg class="pointer-events-none absolute right-3.5 top-3.5 hidden text-green-600" data-check width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <p class="mt-1 text-sm text-gray-500" id="phoneHint">Формат: +380 та 9 цифр</p>
+              <p class="mt-1 min-h-5 text-sm text-red-700" id="phoneError" aria-live="polite"></p>
+              <button class="mb-1 hidden min-h-11 rounded-sm text-sm font-semibold text-royal underline transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" type="button" id="phoneFix"></button>
+            </div>
+
+            <div>
+              <label class="mb-1.5 block text-sm font-semibold" for="topic">Тема звернення</label>
+              <select class="block h-12 px-4 w-full rounded-md border border-gray-300 bg-white text-base text-navy transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" id="topic" name="topic">
+                <option value="Загальне питання">Загальне питання</option>
+                <option value="Весілля">Весілля</option>
+                <option value="Фотосесія">Фотосесія</option>
+                <option value="Self-drive">Self-drive</option>
+                <option value="Співпраця">Співпраця</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="mb-1.5 block text-sm font-semibold" for="message">Повідомлення <span class="text-red-700" aria-hidden="true">*</span></label>
+              <div class="relative">
+                <textarea class="block min-h-32 resize-y px-4 py-3 pr-11 w-full rounded-md border border-gray-300 bg-white text-base text-navy transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" id="message" name="message" rows="4" maxlength="500" placeholder="Наприклад: шукаю кабріолет на весілля 14 червня"
+                          required aria-required="true" aria-invalid="false" aria-describedby="messageCounter messageError"></textarea>
+                <svg class="pointer-events-none absolute right-3.5 top-3.5 hidden text-green-600" data-check width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div class="mt-1 flex items-start justify-between gap-4">
+                <p class="min-h-5 text-sm text-red-700" id="messageError" aria-live="polite"></p>
+                <p class="flex-none text-sm text-gray-500" id="messageCounter">0 / 500 символів</p>
+              </div>
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="flex min-h-11 cursor-pointer items-start gap-3 rounded-md border border-transparent p-2 transition-colors" data-field-box for="agreement">
+                <input class="mt-0.5 h-5 w-5 flex-none cursor-pointer rounded accent-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2" type="checkbox" id="agreement" name="agreement"
+                       required aria-required="true" aria-invalid="false" aria-describedby="agreementError">
+                <span class="text-sm leading-6">Погоджуюсь з політикою конфіденційності та обробкою моїх персональних даних <span class="text-red-700" aria-hidden="true">*</span></span>
+              </label>
+              <p class="mt-1 min-h-5 text-sm text-red-700" id="agreementError" aria-live="polite"></p>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 md:col-span-2">
+              <button class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange h-12 w-full px-10 text-sm font-bold md:w-auto" type="submit" id="feedbackSubmit">Надіслати</button>
+              <p class="min-h-5 text-center text-sm text-red-700" id="formStatus" role="status"></p>
+            </div>
+          </form>
+            </section>
+
+            <section class="lg:col-span-2" id="contacts" aria-labelledby="contacts-title">
+              <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="contacts-title">Контакти</h2>
+
+            <address class="mt-6 flex flex-col gap-4 not-italic">
               <p class="flex gap-3"><svg class="mt-0.5 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><b class="block">Адреса</b><span class="text-gray-500">Львів, площа Ринок</span></span></p>
               <p class="flex gap-3"><svg class="mt-0.5 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><span><b class="block">Телефон</b><a class="text-gray-500 transition-colors hover:text-royal rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="tel:08002232245" title="Зателефонувати">0 800 223 224 5</a></span></p>
               <p class="flex gap-3"><svg class="mt-0.5 flex-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span><b class="block">Email</b><a class="text-gray-500 transition-colors hover:text-royal rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" href="mailto:RetroRent@gmail.com" title="Написати на email">RetroRent@gmail.com</a></span></p>
             </address>
 
-            <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-8 h-12 w-full px-6 text-sm font-bold sm:w-auto"
-               href="https://www.google.com/maps/search/?api=1&amp;query=Rynok+Square,+Lviv" target="_blank" rel="noopener" title="Відкрити маршрут у Google Maps (нова вкладка)">Прокласти маршрут</a>
-          </div>
-
           <!-- КАРТА: Google Maps → «Поділитися» → «Вбудовування карти» — можна замінити src на свій -->
-          <figure class="embed embed--map">
+          <figure class="embed embed--map mt-6">
             <iframe src="https://maps.google.com/maps?q=Rynok+Square,+Lviv&amp;z=16&amp;hl=uk&amp;output=embed"
                     title="Карта: RetroRent, Львів, площа Ринок"
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                     allowfullscreen></iframe>
           </figure>
+
+              <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-4 h-12 w-full px-6 text-sm font-bold"
+               href="https://www.google.com/maps/search/?api=1&amp;query=Rynok+Square,+Lviv" target="_blank" rel="noopener" title="Відкрити маршрут у Google Maps (нова вкладка)">Прокласти маршрут</a>
+            </section>
+          </div>
+
         </div>
-      </section>
+      </div>
 
     </main>
 
@@ -359,8 +481,29 @@
 
     </div>
   </footer>
+
+  <!-- ===== МОДАЛКА: ФОРМА ПРОЙШЛА ВАЛІДАЦІЮ ===== (клас is-visible додає js/validation.js) -->
+  <div class="group fixed inset-0 z-[100] flex items-center justify-center bg-navy-deep/90 p-4 opacity-0 transition-opacity duration-300 [&.is-visible]:opacity-100 sm:p-6"
+       id="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" aria-describedby="feedbackModalText" hidden>
+    <div class="max-h-full w-full max-w-md translate-y-3 scale-98 overflow-y-auto rounded-xl bg-white px-6 py-8 text-center text-navy transition-transform duration-300 group-[.is-visible]:translate-y-0 group-[.is-visible]:scale-100 sm:p-10">
+      <div class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-green-600">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="font-head text-2xl font-extrabold leading-tight" id="feedbackModalTitle">Дякуємо!</h2>
+      <p class="mt-3 text-sm leading-relaxed text-gray-500" id="feedbackModalText">Форма успішно пройшла клієнтську валідацію. Це демонстрація надсилання: дані нікуди не передаються.</p>
+
+      <dl class="mt-5 rounded-md bg-gray-100 p-4 text-left text-sm">
+        <div class="flex justify-between gap-4 py-1"><dt class="text-gray-500">Ім’я</dt><dd class="break-all text-right font-semibold" id="summaryName"></dd></div>
+        <div class="flex justify-between gap-4 py-1"><dt class="text-gray-500">Email</dt><dd class="break-all text-right font-semibold" id="summaryEmail"></dd></div>
+        <div class="flex justify-between gap-4 py-1"><dt class="text-gray-500">Телефон</dt><dd class="text-right font-semibold" id="summaryPhone"></dd></div>
+        <div class="flex justify-between gap-4 py-1"><dt class="text-gray-500">Статус</dt><dd class="text-right font-semibold text-green-700">Валідно</dd></div>
+      </dl>
+
+      <button class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-6 h-12 w-full text-sm font-bold" type="button" id="feedbackModalClose">Закрити</button>
+    </div>
   </div>
 
   <script src="js/main.js" defer></script>
+  <script src="js/validation.js" defer></script>
 </body>
 </html>

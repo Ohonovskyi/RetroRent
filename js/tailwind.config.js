@@ -14,14 +14,22 @@ tailwind.config = {
   // hover: спрацьовує лише на пристроях з мишкою (на телефоні не «залипає»)
   future: { hoverOnlyWhenSupported: true },
 
-  // Класи, яких немає в HTML — їх додає JS у календар (js/booking.js).
-  // Генеруємо заздалегідь, щоб календар не «блимав» без стилів.
+  // Класи, яких немає в HTML — їх додає JS (календар і стани полів форми).
+  // Генеруємо заздалегідь, щоб елементи не «блимали» без стилів.
   safelist: [
     'grid-cols-7', 'gap-y-0.5', 'aspect-square', 'text-[13px]',
     'rounded-none', 'bg-brand-blue-soft', 'text-royal', 'font-extrabold',
     'disabled:cursor-not-allowed', 'disabled:cursor-default', 'disabled:bg-transparent',
     'disabled:text-gray-300', 'disabled:opacity-30', 'disabled:hover:bg-transparent',
     'focus-visible:ring-2', 'focus-visible:ring-inset',
+    // стани полів форми (js/validation.js)
+    'border-red-500', 'bg-red-50', 'border-green-500', 'border-transparent',
+    // варіанти страхування (js/booking.js)
+    'has-[:checked]:border-navy', 'has-[:checked]:bg-gray-100',
+    'has-[:focus-visible]:ring-2', 'has-[:focus-visible]:ring-brand-orange',
+    'border-brand-orange/60', 'bg-gradient-to-br', 'from-navy', 'to-royal', 'text-brand-orange',
+    'hover:border-brand-orange', 'hover:shadow-lg', 'has-[:checked]:border-brand-orange',
+    'has-[:checked]:ring-2', 'has-[:checked]:ring-brand-orange', 'accent-brand-orange', 'accent-navy',
   ],
 
   theme: {

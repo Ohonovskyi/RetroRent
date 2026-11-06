@@ -8,7 +8,8 @@
      3. плейсхолдер для зображень, яких ще немає;
      4. стани кнопок, які вмикає JavaScript (.is-pressed, .is-loading);
      5. анімація спінера;
-     6. адаптивні вбудовані відео та карта (iframe).
+     6. адаптивні вбудовані відео та карта (iframe);
+     7. вікна з подробицями на картках переваг.
    Усе інше (кольори, відступи, сітки, адаптив, hover/focus)
    зроблено класами Tailwind прямо в HTML.
    ========================================================= */
@@ -19,7 +20,7 @@
   --embed-radius: 12px;
   --embed-shadow: 0 8px 24px rgba(13, 21, 38, .25);
   --embed-bg: #0a0f1a;
-  --embed-map-min-height: 360px;
+  --embed-map-height: 360px;
 }
 
 /* ---------- 1. hidden ----------
@@ -110,7 +111,7 @@
   border: 0;
 }
 
-/* Карта: на телефоні пропорція 4:3, на десктопі — на всю висоту колонки */
+/* Карта: на телефоні пропорція 4:3, на десктопі — фіксована висота */
 .embed--map {
   max-width: none;
   margin: 0;
@@ -120,6 +121,59 @@
 @media (min-width: 1024px) {
   .embed--map {
     aspect-ratio: auto;
-    min-height: var(--embed-map-min-height);
+    height: var(--embed-map-height);
+  }
+}
+
+/* Плейсхолдер у мініатюрах галереї: дрібніший текст */
+[data-gallery-thumb].media--empty::after {
+  padding: 2px;
+  font-size: 8px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ---------- 7. Картки переваг: вікно при наведенні ----------
+   Вікно лежить поверх сторінки й не зсуває сусідні блоки.
+   padding-top — невидимий «місток»: курсор не губить картку дорогою до вікна. */
+.benefit {
+  z-index: 1;
+}
+.benefit:hover,
+.benefit:focus-within {
+  z-index: 30;
+}
+
+.benefit__more {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+
+.benefit:hover .benefit__more,
+.benefit:focus .benefit__more,
+.benefit:focus-within .benefit__more {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* Телефони й планшети без миші: наводити нічим, тому подробиці видно одразу */
+@media (hover: none) {
+  .benefit__more {
+    position: static;
+    padding-top: 16px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .benefit__panel {
+    box-shadow: none;
   }
 }

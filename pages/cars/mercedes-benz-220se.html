@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mercedes-Benz 220SE — оренда | RetroRent</title>
-  <meta name="description" content="Оренда Mercedes-Benz 220SE від 399$ за добу. КАСКО включено, без прихованих доплат.">
+  <meta name="description" content="Оренда Mercedes-Benz 220SE від 399$ за добу. Страхування на вибір, ціна в доларах і гривнях.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,22 +59,151 @@
       <!-- Mobile: фото → бронювання → опис.  lg: 5 колонок — фото й опис (3) | бронювання (2) -->
       <div class="mt-6 grid grid-cols-1 items-start gap-4 lg:grid-cols-5 lg:grid-rows-[auto_1fr] lg:gap-x-6">
 
-        <div class="media aspect-[16/10] overflow-hidden bg-placeholder lg:col-span-3 lg:row-start-1">
-          <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes_benz_w111.jpg" alt="Mercedes-Benz 220SE">
+        <!-- ГАЛЕРЕЯ: додаткові фото кладіть у assets/images/cars/mercedes-benz-220se/ (1.jpg … 4.jpg) -->
+        <div class="lg:col-span-3 lg:row-start-1">
+          <div class="media aspect-[16/10] overflow-hidden bg-placeholder" data-gallery-main>
+            <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes-benz-220se_1.jpg" alt="Mercedes-Benz 220SE">
+          </div>
+          <div class="mt-2 grid grid-cols-5 gap-2" role="group" aria-label="Фото авто">
+            <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="true" aria-label="Фото 1: Mercedes-Benz 220SE">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes-benz-220se_1.jpg" alt="" loading="lazy">
+            </button>
+            <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 2: Mercedes-Benz 220SE">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes-benz-220se_2.jpg" alt="" loading="lazy">
+            </button>
+            <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 3: Mercedes-Benz 220SE">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes-benz-220se_3.jpg" alt="" loading="lazy">
+            </button>
+            <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 4: Mercedes-Benz 220SE">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes-benz-220se_4.jpg" alt="" loading="lazy">
+            </button>
+            <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 5: Mercedes-Benz 220SE">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/mercedes-benz-220se_5.jpg" alt="" loading="lazy">
+            </button>
+          </div>
         </div>
 
         <!-- ===== БРОНЮВАННЯ ===== data-price — ціна за добу для js/booking.js -->
-        <form class="rounded bg-white px-4 pb-5 pt-6 text-navy sm:px-6 lg:sticky lg:top-28 lg:col-span-2 lg:col-start-4 lg:row-span-2 lg:row-start-1"
-              id="booking" data-booking data-car="Mercedes-Benz 220SE" data-price="399" novalidate>
+        <form class="rounded bg-white px-4 pt-5 text-navy sm:px-6 lg:sticky lg:top-24 lg:col-span-2 lg:col-start-4 lg:row-span-2 lg:row-start-1"
+              id="booking" data-booking data-car="Mercedes-Benz 220SE" data-price="399" data-default-mode="driver" novalidate>
           <input type="hidden" name="car" value="mercedes-benz-220se">
 
           <div class="flex flex-wrap items-center gap-2.5">
             <h1 class="font-head text-2xl font-extrabold leading-tight">Mercedes-Benz 220SE</h1>
             <span class="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide text-white bg-brand-brown">Весілля</span>
           </div>
-          <p class="mt-2 font-head text-3xl font-extrabold text-brand-green">399$<span class="text-sm font-semibold">/доба</span></p>
+          <p class="mt-1 font-head text-3xl font-extrabold text-brand-green">399$<span class="text-sm font-semibold">/доба</span> <span class="text-base font-semibold text-gray-500" data-price-uah></span></p>
 
-          <ul class="mt-5 grid grid-cols-3 gap-3 border-b border-gray-200 pb-5">
+          <fieldset class="mt-4">
+            <legend class="flex w-full items-baseline justify-between gap-2 text-sm font-bold">Хто за кермом</legend>
+
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <label class="flex min-h-11 cursor-pointer items-center gap-2 rounded-md border border-gray-200 px-3 py-2 text-sm transition-colors hover:border-gray-400 has-[:checked]:border-navy has-[:checked]:bg-gray-100 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-orange">
+                <input class="h-4 w-4 flex-none accent-navy focus:outline-none" type="radio" name="mode" value="self">
+                <b>Самостійно</b>
+              </label>
+              <label class="flex min-h-11 cursor-pointer items-center gap-2 rounded-md border border-gray-200 px-3 py-2 text-sm transition-colors hover:border-gray-400 has-[:checked]:border-navy has-[:checked]:bg-gray-100 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-orange">
+                <input class="h-4 w-4 flex-none accent-navy focus:outline-none" type="radio" name="mode" value="driver">
+                <span class="leading-tight"><b>З водієм</b> <small class="whitespace-nowrap text-xs text-gray-500">+50$/доба</small></span>
+              </label>
+            </div>
+
+            <div class="mt-2 flex items-center justify-between gap-3 rounded-md bg-gray-100 px-3" data-license-block hidden>
+              <p class="text-xs" data-license-status></p>
+              <button class="min-h-11 flex-none rounded-sm text-sm font-semibold text-royal underline transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" type="button" data-license-open></button>
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-4">
+            <legend class="flex w-full items-baseline justify-between gap-2 text-sm font-bold">Дати оренди <span class="text-xs font-normal text-gray-500" data-booking-note></span></legend>
+
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <div class="relative" data-datepicker="pickup">
+                <span class="mb-1 block text-xs font-semibold" id="pickup-label">Дата отримання</span>
+                <button class="flex h-11 w-full items-center justify-between gap-2 rounded border border-gray-200 bg-white px-2.5 text-left text-[13px] text-navy transition hover:border-gray-400 focus-visible:border-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-royal/15 aria-expanded:border-royal aria-expanded:ring-3 aria-expanded:ring-royal/15 sm:px-3 sm:text-sm"
+                        type="button" data-datepicker-field aria-haspopup="dialog" aria-expanded="false" aria-labelledby="pickup-label pickup-value">
+                  <span id="pickup-value" data-datepicker-value>Оберіть дату</span>
+                  <svg class="flex-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </button>
+                <input type="hidden" name="pickup">
+                <div class="absolute left-0 top-full z-20 mt-1.5 w-72 rounded-xl border border-gray-200 bg-white p-3.5 shadow-pop"
+                     data-datepicker-popover role="dialog" aria-label="Календар: дата отримання" hidden></div>
+              </div>
+
+              <div class="relative" data-datepicker="return">
+                <span class="mb-1 block text-xs font-semibold" id="return-label">Дата повернення</span>
+                <button class="flex h-11 w-full items-center justify-between gap-2 rounded border border-gray-200 bg-white px-2.5 text-left text-[13px] text-navy transition hover:border-gray-400 focus-visible:border-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-royal/15 aria-expanded:border-royal aria-expanded:ring-3 aria-expanded:ring-royal/15 sm:px-3 sm:text-sm"
+                        type="button" data-datepicker-field aria-haspopup="dialog" aria-expanded="false" aria-labelledby="return-label return-value">
+                  <span id="return-value" data-datepicker-value>Оберіть дату</span>
+                  <svg class="flex-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </button>
+                <input type="hidden" name="return">
+                <div class="absolute right-0 top-full z-20 mt-1.5 w-72 rounded-xl border border-gray-200 bg-white p-3.5 shadow-pop"
+                     data-datepicker-popover role="dialog" aria-label="Календар: дата повернення" hidden></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-4">
+            <legend class="flex w-full items-baseline justify-between gap-2 text-sm font-bold">Страхування</legend>
+            <!-- Варіанти малює js/booking.js з масиву INSURANCE -->
+            <div class="mt-2 grid grid-cols-2 gap-2" data-insurance-options></div>
+            <p class="mt-2 text-xs leading-snug text-gray-500" data-insurance-terms></p>
+          </fieldset>
+
+          <fieldset class="mt-4">
+            <legend class="flex w-full items-baseline justify-between gap-2 text-sm font-bold">Ваші контакти</legend>
+
+            <div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold" for="bookingName">Ім’я</label>
+                <input class="block h-11 w-full scroll-mb-28 rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="text" id="bookingName" name="bookingName" autocomplete="name" maxlength="60" placeholder="Ірина Коваль" required aria-required="true" aria-invalid="false" aria-describedby="bookingNameError">
+                <p class="mt-1 text-xs text-red-700 empty:hidden" id="bookingNameError" aria-live="polite"></p>
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold" for="bookingPhone">Телефон</label>
+                <input class="block h-11 w-full scroll-mb-28 rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="tel" id="bookingPhone" name="bookingPhone" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+380501234567" required aria-required="true" aria-invalid="false" aria-describedby="bookingPhoneError">
+                <p class="mt-1 text-xs text-red-700 empty:hidden" id="bookingPhoneError" aria-live="polite"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-3 border-t border-gray-200 pt-3 text-sm">
+            <dl class="flex flex-col gap-1.5">
+            <div class="flex justify-between gap-4 text-gray-500">
+              <dt data-summary-rent-label></dt>
+              <dd class="font-bold text-navy" data-summary-rent></dd>
+            </div>
+            <div class="flex justify-between gap-4 text-gray-500">
+              <dt data-summary-insurance-label></dt>
+              <dd class="font-bold text-navy" data-summary-insurance></dd>
+            </div>
+            <div class="flex justify-between gap-4 text-gray-500" data-summary-driver-row hidden>
+              <dt data-summary-driver-label></dt>
+              <dd class="font-bold text-navy" data-summary-driver></dd>
+            </div>
+          </dl>
+            <p class="mt-2 pb-3 text-xs text-gray-500"><span data-rate-note></span>. Без прихованих доплат.</p>
+          </div>
+
+          <!-- Ціна й кнопка закріплені внизу: їх видно, поки форма на екрані -->
+          <div class="sticky bottom-0 z-10 -mx-4 flex items-center justify-between gap-3 rounded-b border-t border-gray-200 bg-white px-4 py-3 sm:-mx-6 sm:px-6">
+            <div class="min-w-0">
+              <p class="text-xs text-gray-500">Разом</p>
+              <p class="font-head text-2xl font-extrabold leading-tight" data-summary-total></p>
+              <p class="text-xs font-semibold text-gray-500" data-summary-total-uah></p>
+            </div>
+            <button class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-12 flex-none px-5 text-sm font-bold" type="submit">Забронювати</button>
+          </div>
+        </form>
+
+        <!-- ===== ОПИС ===== -->
+        <article class="rounded bg-white px-4 py-6 text-navy sm:px-6 sm:py-7 lg:col-span-3 lg:row-start-2">
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-500">Класика 60-х · Кабріолет</p>
+          <h2 class="mt-2.5 font-head text-2xl font-extrabold leading-tight">Елегантність, створена для свята.</h2>
+          <p class="mt-3.5 leading-relaxed text-gray-500">Світлий салон, м’який складаний дах і хром, що виблискує на сонці. 220SE додає весільному дню тієї самої кінематографічної розкоші — і чудово виглядає як на фото біля РАЦСу, так і в кадрах першого танцю.</p>
+
+          <ul class="mt-5 grid grid-cols-3 gap-3">
             <li class="flex flex-col">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <b class="mt-2 text-sm">4 місця</b>
@@ -91,77 +220,6 @@
               <span class="mt-0.5 text-xs text-gray-500">Посвідчення</span>
             </li>
           </ul>
-
-          <fieldset>
-            <legend class="mt-5 font-head text-lg font-extrabold">Оберіть дати оренди</legend>
-
-            <div class="mt-3.5 grid grid-cols-2 gap-2 sm:gap-3">
-              <div class="relative" data-datepicker="pickup">
-                <span class="mb-2 block text-xs font-semibold" id="pickup-label">Дата отримання</span>
-                <button class="flex h-11 w-full items-center justify-between gap-2 rounded border border-gray-200 bg-white px-2.5 text-left text-[13px] text-navy transition hover:border-gray-400 focus-visible:border-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-royal/15 aria-expanded:border-royal aria-expanded:ring-3 aria-expanded:ring-royal/15 sm:px-3 sm:text-sm"
-                        type="button" data-datepicker-field aria-haspopup="dialog" aria-expanded="false" aria-labelledby="pickup-label pickup-value">
-                  <span id="pickup-value" data-datepicker-value>Оберіть дату</span>
-                  <svg class="flex-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                </button>
-                <input type="hidden" name="pickup">
-                <div class="absolute left-0 top-full z-20 mt-1.5 w-72 rounded-xl border border-gray-200 bg-white p-3.5 shadow-pop"
-                     data-datepicker-popover role="dialog" aria-label="Календар: дата отримання" hidden></div>
-              </div>
-
-              <div class="relative" data-datepicker="return">
-                <span class="mb-2 block text-xs font-semibold" id="return-label">Дата повернення</span>
-                <button class="flex h-11 w-full items-center justify-between gap-2 rounded border border-gray-200 bg-white px-2.5 text-left text-[13px] text-navy transition hover:border-gray-400 focus-visible:border-royal focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-royal/15 aria-expanded:border-royal aria-expanded:ring-3 aria-expanded:ring-royal/15 sm:px-3 sm:text-sm"
-                        type="button" data-datepicker-field aria-haspopup="dialog" aria-expanded="false" aria-labelledby="return-label return-value">
-                  <span id="return-value" data-datepicker-value>Оберіть дату</span>
-                  <svg class="flex-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                </button>
-                <input type="hidden" name="return">
-                <div class="absolute right-0 top-full z-20 mt-1.5 w-72 rounded-xl border border-gray-200 bg-white p-3.5 shadow-pop"
-                     data-datepicker-popover role="dialog" aria-label="Календар: дата повернення" hidden></div>
-              </div>
-            </div>
-
-            <p class="mt-3 flex items-center gap-2 text-xs text-gray-500">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              <span data-booking-note>3 доби · повернення в той самий час</span>
-            </p>
-          </fieldset>
-
-          <label class="mt-5 flex cursor-pointer items-center gap-3.5 rounded-md bg-gray-100 p-3.5">
-            <input class="peer sr-only" type="checkbox" name="kasko" data-kasko checked>
-            <span class="grid h-5 w-5 flex-none place-items-center rounded border-[1.5px] border-navy bg-white text-white transition-colors peer-checked:bg-navy peer-focus-visible:ring-3 peer-focus-visible:ring-brand-orange"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <span class="flex flex-1 flex-col gap-0.5">
-              <b class="text-sm">Повне страхування (КАСКО)</b>
-              <small class="text-xs text-gray-500">Включено у вартість оренди</small>
-            </span>
-            <svg class="flex-none text-gray-500" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
-          </label>
-
-          <dl class="mt-5 flex flex-col gap-2.5 text-sm">
-            <div class="flex justify-between gap-4 text-gray-500">
-              <dt data-summary-rent-label>Оренда · 399$ × 3 доби</dt>
-              <dd class="font-bold text-navy" data-summary-rent>1197$</dd>
-            </div>
-            <div class="flex justify-between gap-4 text-gray-500">
-              <dt>Повне КАСКО</dt>
-              <dd class="font-bold text-navy" data-summary-kasko>Включено</dd>
-            </div>
-          </dl>
-
-          <div class="mt-4 flex items-center justify-between gap-4 border-t border-gray-200 pt-4 font-head font-extrabold">
-            <span class="text-lg">Загальна вартість</span>
-            <strong class="text-3xl" data-summary-total>1197$</strong>
-          </div>
-
-          <button class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text mt-5 h-12 w-full text-sm font-bold" type="submit">Забронювати</button>
-          <p class="mt-3 text-center text-xs text-gray-500">Без дрібного шрифту. Без прихованих доплат.</p>
-        </form>
-
-        <!-- ===== ОПИС ===== -->
-        <article class="rounded bg-white px-4 py-6 text-navy sm:px-6 sm:py-7 lg:col-span-3 lg:row-start-2">
-          <p class="text-xs font-bold uppercase tracking-widest text-gray-500">Класика 60-х · Кабріолет</p>
-          <h2 class="mt-2.5 font-head text-2xl font-extrabold leading-tight">Елегантність, створена для свята.</h2>
-          <p class="mt-3.5 leading-relaxed text-gray-500">Світлий салон, м’який складаний дах і хром, що виблискує на сонці. 220SE додає весільному дню тієї самої кінематографічної розкоші — і чудово виглядає як на фото біля РАЦСу, так і в кадрах першого танцю.</p>
 
           <div class="mt-5 grid grid-cols-1 gap-3 border-t border-gray-200 pt-5 sm:grid-cols-4 sm:gap-6">
             <p class="font-head text-lg font-extrabold">
@@ -194,13 +252,65 @@
       <div class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-green-600"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h2 class="font-head text-2xl font-extrabold leading-tight sm:text-[26px]" id="success-title">Бронювання<br>підтверджено!</h2>
       <p class="mt-3 text-sm leading-relaxed text-gray-500">
-        Дякуємо! Ваша заявка на Mercedes-Benz 220SE успішно прийнята. Наш менеджер зв’яжеться з вами протягом 10 хвилин.
+        Дякуємо! Ваша заявка на Mercedes-Benz 220SE успішно прийнята. Наш менеджер зателефонує на номер <b class="whitespace-nowrap text-navy" data-modal-phone></b> протягом 10 хвилин.
       </p>
       <a class="inline-flex items-center justify-center rounded-md border border-navy bg-white text-navy transition duration-200 hover:border-royal hover:bg-royal hover:text-white active:scale-98 active:border-ink active:bg-ink active:text-white focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-7 h-12 w-full text-base font-medium" href="../../index.html" data-modal-focus>Повернутися на головну</a>
     </div>
   </div>
 
+  <!-- ===== МОДАЛКА: ПЕРЕВІРКА ПОСВІДЧЕННЯ ===== логіка — js/license.js -->
+  <div class="group fixed inset-0 z-[100] flex items-center justify-center bg-navy-deep/90 p-4 opacity-0 transition-opacity duration-300 [&.is-visible]:opacity-100 sm:p-6"
+       id="licenseModal" role="dialog" aria-modal="true" aria-labelledby="licenseTitle" aria-describedby="licenseText" hidden>
+    <div class="max-h-full w-full max-w-lg translate-y-3 scale-98 overflow-y-auto rounded-xl bg-white p-5 text-navy transition-transform duration-300 group-[.is-visible]:translate-y-0 group-[.is-visible]:scale-100 sm:p-8">
+      <h2 class="font-head text-2xl font-extrabold leading-tight" id="licenseTitle">Перевірка посвідчення</h2>
+      <p class="mt-2 text-sm leading-relaxed text-gray-500" id="licenseText">Для self-drive потрібні категорія B, вік від 21 року й стаж від 2 років. Це попередня перевірка: дані не зберігаються, оригінал менеджер звірить при видачі авто.</p>
+
+      <form class="mt-5 grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-2" id="licenseForm" novalidate>
+        <div>
+          <label class="mb-1 block text-sm font-semibold" for="licenseName">Прізвище та ім’я</label>
+          <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="text" id="licenseName" name="licenseName" autocomplete="name" maxlength="80" required aria-required="true" aria-invalid="false" aria-describedby="licenseNameError">
+          <p class="mt-1 min-h-5 text-sm text-red-700" id="licenseNameError" aria-live="polite"></p>
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-semibold" for="licenseNumber">Серія та номер</label>
+          <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="text" id="licenseNumber" name="licenseNumber" autocomplete="off" maxlength="11" placeholder="ВХА123456" required aria-required="true" aria-invalid="false" aria-describedby="licenseNumberError">
+          <p class="mt-1 min-h-5 text-sm text-red-700" id="licenseNumberError" aria-live="polite"></p>
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-semibold" for="birthDate">Дата народження</label>
+          <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="date" id="birthDate" name="birthDate" autocomplete="bday" required aria-required="true" aria-invalid="false" aria-describedby="birthDateError">
+          <p class="mt-1 min-h-5 text-sm text-red-700" id="birthDateError" aria-live="polite"></p>
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-semibold" for="issueDate">Дата видачі</label>
+          <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="date" id="issueDate" name="issueDate" required aria-required="true" aria-invalid="false" aria-describedby="issueDateError">
+          <p class="mt-1 min-h-5 text-sm text-red-700" id="issueDateError" aria-live="polite"></p>
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-semibold" for="expiryDate">Дійсне до</label>
+          <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="date" id="expiryDate" name="expiryDate" required aria-required="true" aria-invalid="false" aria-describedby="expiryDateError">
+          <p class="mt-1 min-h-5 text-sm text-red-700" id="expiryDateError" aria-live="polite"></p>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="flex min-h-11 cursor-pointer items-center gap-3 rounded-md border border-transparent p-2 transition-colors" data-field-box for="licenseCategory">
+            <input class="h-5 w-5 flex-none cursor-pointer accent-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2" type="checkbox" id="licenseCategory" name="licenseCategory" required aria-required="true" aria-invalid="false" aria-describedby="licenseCategoryError">
+            <span class="text-sm">У посвідченні відкрита категорія B</span>
+          </label>
+          <p class="mt-1 min-h-5 text-sm text-red-700" id="licenseCategoryError" aria-live="polite"></p>
+        </div>
+
+        <div class="mt-1 flex flex-col-reverse gap-2 sm:col-span-2 sm:flex-row sm:justify-end">
+          <button class="inline-flex h-12 items-center justify-center rounded-md border border-navy bg-white px-6 text-sm font-bold uppercase text-navy transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" type="button" id="licenseClose">Скасувати</button>
+          <button class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange h-12 px-6 text-sm font-bold" type="submit">Перевірити</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="../../js/main.js" defer></script>
   <script src="../../js/booking.js" defer></script>
+  <script src="../../js/gallery.js" defer></script>
+  <script src="../../js/license.js" defer></script>
 </body>
 </html>
