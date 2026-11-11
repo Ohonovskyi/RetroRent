@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
+  <!-- Темна тема: вмикається до відмальовування сторінки -->
+  <script src="../js/theme.js"></script>
+
   <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../js/tailwind.config.js"></script>
@@ -35,16 +38,24 @@
 
       <ul id="nav-list" data-nav-list
           class="absolute left-1/2 top-full mt-3 hidden min-w-[200px] -translate-x-1/2 rounded-xl border border-gray-200 bg-white p-2 shadow-pop
-                 md:static md:mt-0 md:flex md:min-w-0 md:translate-x-0 md:gap-7 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none">
-        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-semibold text-royal hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../pages/cars.html" aria-current="page">Автомобілі</a></li>
-        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../index.html#services">Послуги</a></li>
-        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../pages/about.html">Про нас</a></li>
-        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block py-1.5 text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../index.html#contacts">Контакти</a></li>
+                 md:static md:mt-0 md:flex md:min-w-0 md:translate-x-0 md:gap-5 lg:gap-7 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block whitespace-nowrap py-1.5 text-lg md:text-base lg:text-lg font-semibold text-royal hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../pages/cars.html" aria-current="page">Автомобілі</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block whitespace-nowrap py-1.5 text-lg md:text-base lg:text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../index.html#services">Послуги</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block whitespace-nowrap py-1.5 text-lg md:text-base lg:text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../pages/about.html">Про нас</a></li>
+        <li class="px-3.5 py-1.5 md:p-0"><a class="relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 inline-block whitespace-nowrap py-1.5 text-lg md:text-base lg:text-lg font-medium text-navy hover:after:scale-x-100 focus-visible:outline-none focus-visible:after:scale-x-100" href="../index.html#contacts">Контакти</a></li>
+        <li class="px-3.5 py-1.5 sm:hidden"><button class="inline-flex min-h-11 items-center gap-2 rounded-sm text-lg font-medium text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" type="button" data-theme-toggle aria-pressed="false" aria-label="Увімкнути темну тему"><svg class="dark:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg><svg class="hidden dark:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><span data-theme-label>Темна тема</span></button></li>
       </ul>
     </nav>
 
-    <!-- CTA «Бронювати»: куди скролить — задається в href -->
-    <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-11 shrink-0 px-4 text-sm md:w-[149px] md:px-0 md:text-[17px]" href="#fleet">Бронювати</a>
+    <!-- Перемикач теми (sm+) і CTA «Бронювати»: куди скролить — задається в href -->
+    <div class="flex shrink-0 items-center gap-2">
+      <button class="hidden h-11 w-11 place-items-center rounded-md border border-gray-200 text-navy transition-colors hover:border-gray-400 sm:grid focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange"
+              type="button" data-theme-toggle aria-pressed="false" aria-label="Увімкнути темну тему" title="Змінити тему">
+        <svg class="dark:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        <svg class="hidden dark:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-text h-11 shrink-0 px-4 text-sm md:w-[149px] md:px-0 md:text-[17px]" href="#fleet">Бронювати</a>
+    </div>
   </header>
 
   <main class="bg-navy-deep text-white">

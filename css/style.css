@@ -41,6 +41,7 @@
    не знайдено. Тоді замість «битої» картинки — сірий блок. */
 .media {
   position: relative;
+  overflow: hidden; /* без цього фото з іншими пропорціями розтягує блок і aspect-ratio не діє */
 }
 .media--empty img {
   visibility: hidden;
@@ -177,3 +178,153 @@
     box-shadow: none;
   }
 }
+
+/* ---------- 8. Плагіни: Swiper і Typed.js ---------- */
+.cars-swiper {
+  padding-block: 4px;
+}
+
+/* Кольори крапок задаються CSS-змінними Swiper. Пагінація стоїть поза
+   .cars-swiper (у рядку зі стрілками), тому змінні — на ній самій */
+.cars-pagination {
+  --swiper-pagination-color: #f5a33a;
+  --swiper-pagination-bullet-inactive-color: #ffffff;
+  --swiper-pagination-bullet-inactive-opacity: .4;
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+}
+
+/* До ініціалізації картки вже мають потрібну ширину: без «стрибка» (FOUC) */
+.cars-swiper:not(.swiper-initialized) .swiper-slide {
+  margin-right: 24px;
+}
+@media (min-width: 768px) {
+  .cars-swiper:not(.swiper-initialized) .swiper-slide { width: calc((100% - 24px) / 2); }
+}
+@media (min-width: 1024px) {
+  .cars-swiper:not(.swiper-initialized) .swiper-slide { width: calc((100% - 48px) / 3); }
+}
+
+/* Крапки пагінації — зручна для пальця зона натискання */
+.cars-pagination .swiper-pagination-bullet {
+  margin: 0 var(--swiper-pagination-bullet-horizontal-gap);
+}
+.cars-pagination.swiper-pagination-bullets {
+  position: static;
+  width: auto;
+}
+
+.cars-prev.swiper-button-disabled,
+.cars-next.swiper-button-disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* Курсор Typed.js — тонкий і світлий, щоб не відволікав від тексту */
+.typed-cursor {
+  margin-left: 2px;
+  color: rgba(255, 255, 255, .6);
+  font-weight: 300;
+}
+
+/* ---------- 9. Темна тема ----------
+   Клас .dark на <html> ставить js/theme.js. Усі кольори темної теми
+   зібрані у змінних нижче, а правила перефарбовують ті самі класи
+   Tailwind, що й у світлій темі, тому розмітку дублювати не треба.
+   Кнопки з класом .keep-light лишаються білими: вони стоять на фото
+   або на темному блоці й мають бути помітними. */
+:root.dark {
+  --d-bg: #0b111d;           /* фон сторінки */
+  --d-surface: #131b2c;      /* картки, панелі, хедер */
+  --d-soft: #1b2539;         /* поля вводу, підкладки */
+  --d-line: #2a3652;         /* рамки й розділювачі */
+  --d-line-hover: #4b587a;
+  --d-text: #e6e9f0;         /* основний текст (контраст ≈ 15:1) */
+  --d-muted: #9aa4b8;        /* другорядний текст (≈ 7:1) */
+  --d-link: #9db2ff;         /* посилання, активний пункт меню */
+  --d-accent: #3557d0;       /* основні кнопки */
+  --d-accent-hover: #4a6be4;
+  --d-accent-active: #2a46b0;
+  color-scheme: dark;
+}
+
+/* Кільце фокусу з відступом має «вирізати» темний, а не білий фон */
+.dark * {
+  --tw-ring-offset-color: var(--d-surface);
+}
+
+/* Поверхні */
+.dark .bg-white { background-color: var(--d-surface); }
+.dark .bg-gray-100,
+.dark .bg-placeholder,
+.dark .bg-cream { background-color: var(--d-soft); }
+.dark input.bg-white,
+.dark select.bg-white,
+.dark textarea.bg-white { background-color: var(--d-soft); }
+.dark body.bg-white,
+.dark body.bg-navy-deep,
+.dark .bg-navy-deep { background-color: var(--d-bg); }
+
+.dark article.bg-white { box-shadow: 0 0 0 1px var(--d-line); }
+.dark .shadow-header { box-shadow: 0 1px 0 var(--d-line); }
+.dark footer { border-top: 1px solid var(--d-line); }
+
+/* Текст */
+.dark .text-navy { color: var(--d-text); }
+.dark .text-gray-400,
+.dark .text-gray-500 { color: var(--d-muted); }
+.dark .text-royal { color: var(--d-link); }
+.dark .text-brand-green { color: #4ade80; }
+.dark .text-red-700 { color: #f87171; }
+.dark .text-green-600,
+.dark .text-green-700 { color: #4ade80; }
+.dark .placeholder\:text-gray-400::placeholder { color: #6b7590; }
+
+/* Рамки */
+.dark .border-gray-200,
+.dark .border-gray-300 { border-color: var(--d-line); }
+.dark .border-navy { border-color: var(--d-muted); }
+
+/* Наведення: світло-сірий фон замінюємо темнішим */
+.dark .hover\:bg-gray-100:hover,
+.dark .hover\:bg-slate-200:hover { background-color: var(--d-soft); }
+.dark .hover\:border-gray-400:hover { border-color: var(--d-line-hover); }
+.dark .hover\:text-navy:hover { color: #ffffff; }
+
+/* Темно-сині елементи на темному фоні стають синім акцентом */
+.dark .js-press.bg-navy { background-color: var(--d-accent); }
+.dark .js-press.bg-navy:hover { background-color: var(--d-accent-hover); }
+.dark .js-press.bg-navy:active { background-color: var(--d-accent-active); }
+.dark .rounded-full.bg-navy,
+.dark [data-day].bg-navy,
+.dark .aria-pressed\:bg-royal[aria-pressed="true"] { background-color: var(--d-accent); }
+
+.dark .benefit {
+  background-color: var(--d-surface);
+  box-shadow: 0 0 0 1px var(--d-line);
+}
+.dark .cta-card {
+  background: linear-gradient(135deg, #16224a, #0d2a7a);
+  box-shadow: inset 0 0 0 1px rgba(157, 178, 255, .18);
+}
+
+/* Вибір у плитках (хто за кермом, страхування) і радіо/чекбокси */
+.dark .has-\[\:checked\]\:bg-gray-100:has(:checked) { background-color: var(--d-soft); }
+.dark .has-\[\:checked\]\:border-navy:has(:checked) { border-color: var(--d-link); }
+.dark .accent-navy { accent-color: var(--d-link); }
+
+/* Стани помилки/успіху та світлі підкладки */
+.dark .bg-red-50 { background-color: rgba(248, 113, 113, .1); }
+.dark .border-red-500 { border-color: #f87171; }
+.dark .bg-green-100 { background-color: rgba(74, 222, 128, .15); }
+.dark .bg-brand-blue-soft { background-color: rgba(157, 178, 255, .16); }
+.dark .disabled\:text-gray-300:disabled { color: #4b5570; }
+
+/* Логотип у хедері темно-синій — у темній темі робимо його світлим */
+.dark header img[src$="logo.svg"] { filter: invert(1) hue-rotate(180deg) brightness(1.05); }
+
+/* Кнопки, що лишаються світлими */
+.dark .keep-light.bg-white { background-color: #ffffff; }
+.dark .keep-light.text-royal { color: #0d2a7a; }
+.dark .keep-light.hover\:bg-royal:hover { background-color: #0d2a7a; color: #ffffff; }
+.dark .keep-light.hover\:bg-gray-100:hover { background-color: #f3f4f6; }

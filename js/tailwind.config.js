@@ -11,6 +11,9 @@
    ========================================================= */
 
 tailwind.config = {
+  // Темна тема вмикається класом .dark на <html> (див. js/theme.js)
+  darkMode: 'class',
+
   // hover: спрацьовує лише на пристроях з мишкою (на телефоні не «залипає»)
   future: { hoverOnlyWhenSupported: true },
 
