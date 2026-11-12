@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Збірка tailwind.css</title>
+  <!--
+    Службова сторінка розробника (на сайті не використовується).
+    Генерує css/tailwind.css — той самий CSS, який Tailwind Play CDN
+    будував у браузері відвідувача на кожному завантаженні сторінки.
+
+    Як оновити після зміни класів у HTML/JS:
+      1. Відкрити цю сторінку через Live Server (fetch не працює з file://).
+      2. Натиснути «Згенерувати» → «Завантажити tailwind.css».
+      3. Замінити файл css/tailwind.css.
+    Додали нову сторінку чи JS-файл — допишіть шлях у FILES нижче.
+
+    Альтернатива з Node.js: Tailwind CLI v3
+      npx tailwindcss@3.4.17 -c tailwind.config.cjs -o css/tailwind.css --minify
+  -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="../js/tailwind.config.js"></script>
+  <style>
+    body { margin: 0; padding: 32px; font: 16px/1.5 system-ui, sans-serif; background: #fff; color: #0d1526; }
+    button, a.btn { display: inline-block; margin-right: 8px; padding: 10px 18px; border: 0; border-radius: 6px; background: #0d1526; color: #fff; font: inherit; text-decoration: none; cursor: pointer; }
+    pre { max-height: 50vh; overflow: auto; padding: 12px; background: #f3f4f6; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Збірка css/tailwind.css</h1>
+  <p>Сторінка сканує файли проєкту, як Tailwind CLI, і збирає лише ті класи, що справді використовуються.</p>
+  <p>
+    <button type="button" id="build">Згенерувати</button>
+    <a class="btn" id="download" href="#" download="tailwind.css" hidden>Завантажити tailwind.css</a>
+  </p>
+  <pre id="log" aria-live="polite"></pre>
+  <!-- Сюди потрапляють усі знайдені «кандидати в класи». Tailwind CDN генерує CSS для тих, що існують -->
+  <div id="probe" hidden></div>
+
+  <script>
+    'use strict';
+    const FILES = [
+      '../index.html', '../pages/cars.html', '../pages/about.html',
+      '../pages/cars/cadillac-eldorado-1959.html', '../pages/cars/chevrolet-bel-air-1957.html',
+      '../pages/cars/ford-mustang-1967.html', '../pages/cars/jaguar-e-type-1961.html',
+      '../pages/cars/mercedes-benz-220se.html', '../pages/cars/mercedes-benz-c140.html',
+      '../pages/cars/porsche-911-1973.html', '../pages/cars/toyota-2000gt-1967.html',
+      '../pages/cars/volkswagen-beetle-1967.html',
+      '../js/main.js', '../js/theme.js', '../js/catalog-filter.js', '../js/booking.js',
+      '../js/gallery.js', '../js/license.js', '../js/validation.js', '../js/widget.js',
+      '../js/plugins.js', '../js/phone-input.js',
+    ];
+    const log = document.getElementById('log');
+    const say = (text) => { log.textContent += text + '\n'; };
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    // Як стандартний extractor Tailwind: рядки між пробілами й лапками.
+    // Другий прохід ріже ще й по ${}(); — для класів усередині шаблонних рядків JS.
+    function candidates(text) {
+      const found = new Set();
+      for (const m of text.matchAll(/[^\s"'`<>=]+/g)) found.add(m[0]);
+      for (const m of text.matchAll(/[^\s"'`<>=${}();,]+/g)) found.add(m[0]);
+      return found;
+    }
+
+    // Обережна мініфікація: прибираємо коментарі (крім ліцензії) і зайві відступи
+    function minify(css) {
+      return css
+        .replace(/\/\*(?!!)[\s\S]*?\*\//g, '')
+        .replace(/\s*\n\s*/g, '')
+        .replace(/\{\s+/g, '{')
+        .replace(/;\s*\}/g, '}')
+        .replace(/\s+\}/g, '}')
+        .replace(/;\s+/g, ';')
+        .trim() + '\n';
+    }
+
+    async function build() {
+      log.textContent = '';
+      const classes = new Set();
+      for (const file of FILES) {
+        const response = await fetch(file, { cache: 'no-cache' });
+        if (!response.ok) { say(`Пропущено ${file}: HTTP ${response.status}`); continue; }
+        candidates(await response.text()).forEach((c) => classes.add(c));
+        say(`Проскановано ${file}`);
+      }
+      document.getElementById('probe').className = [...classes].join(' ');
+      await wait(1500); // Tailwind CDN генерує стилі після зміни DOM
+      const css = [...document.querySelectorAll('style')]
+        .map((s) => s.textContent)
+        .filter((t) => t.includes('tailwindcss'))
+        .join('\n');
+      if (!css) { say('Tailwind не згенерував CSS. Перевірте підключення до інтернету.'); return ''; }
+      const result = '/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com — згенеровано tools/tailwind-build.html */\n' + minify(css);
+      window.__tailwindCss = result;
+      const link = document.getElementById('download');
+      link.href = URL.createObjectURL(new Blob([result], { type: 'text/css' }));
+      link.hidden = false;
+      say(`Готово: ${(result.length / 1024).toFixed(1)} KB, кандидатів у класи: ${classes.size}`);
+      return result;
+    }
+
+    document.getElementById('build').addEventListener('click', build);
+  </script>
+</body>
+</html>

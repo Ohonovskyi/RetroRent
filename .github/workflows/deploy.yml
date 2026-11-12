@@ -1,0 +1,92 @@
+# CI/CD: перевірка коду й автоматичний деплой на Vercel при кожному push у main.
+#
+# Секрети репозиторію (GitHub → Settings → Secrets and variables → Actions):
+#   VERCEL_TOKEN      — Vercel → Account Settings → Tokens → Create
+#   VERCEL_ORG_ID     — Vercel → Project → Settings → General («Team ID» / ID власника)
+#   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
+# Поки секретів немає, перевірка все одно виконується, а деплой пропускається з попередженням.
+# Якщо проєкт у Vercel ще й підключений до GitHub напряму (Git Integration), вимкніть її,
+# інакше кожен коміт деплоїтиметься двічі.
+
+name: CI/CD Production Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Новий push скасовує ще не завершений попередній деплой
+concurrency:
+  group: production-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Перевірка коду
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check HTML, links, images and data.json
+        run: python scripts/check_site.py
+
+  deploy:
+    name: Деплой на Vercel
+    needs: check
+    # Pull request лише перевіряється; у продакшн іде тільки main
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://retrorent.vercel.app
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Check Vercel secrets
+        id: vercel
+        run: |
+          if [ -n "$VERCEL_TOKEN" ] && [ -n "$VERCEL_ORG_ID" ] && [ -n "$VERCEL_PROJECT_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Деплой пропущено::Додайте секрети VERCEL_TOKEN, VERCEL_ORG_ID і VERCEL_PROJECT_ID у налаштуваннях репозиторію."
+          fi
+
+      - name: Checkout Code
+        if: steps.vercel.outputs.ready == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        if: steps.vercel.outputs.ready == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Vercel CLI
+        if: steps.vercel.outputs.ready == 'true'
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        if: steps.vercel.outputs.ready == 'true'
+        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Build Project Artifacts
+        if: steps.vercel.outputs.ready == 'true'
+        run: vercel build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy Project Artifacts to Vercel
+        if: steps.vercel.outputs.ready == 'true'
+        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"

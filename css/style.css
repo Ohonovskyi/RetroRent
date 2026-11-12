@@ -33,7 +33,27 @@
 
 /* ---------- 2. Фон Hero ---------- */
 .hero-bg {
-  background-image: url("../assets/images/home/hero_bg.jpg");
+  background-image: url("../assets/images/home/hero_bg.webp");
+}
+
+/* Телефон (< 640 px): фото горизонтальне, а Hero вузький і високий,
+   тому bg-cover обрізав Porsche по краю. Тут фото масштабується за
+   шириною (230 %), притискається до низу й праворуч — авто стає
+   повністю між текстом і кнопкою. Верхній край фото плавно зливається
+   з фоном секції. Висота фото = 230 % × 572/1024 ≈ 128.6vw.
+   Від 640 px працюють bg-cover bg-center, як і раніше. */
+@media (max-width: 639.98px) {
+  section.hero-bg {
+    background-image:
+      linear-gradient(to top, transparent calc(128.6vw - 140px), #0a0f1a 128.6vw),
+      url("../assets/images/home/hero_bg.webp");
+    background-size: 100% 100%, 230% auto;
+    background-position: 0 0, 99% 100%;
+  }
+  /* Місце під авто: дах на висоті ≈ 81.7vw від низу, кнопка займає нижні 120 px */
+  .hero-bg .hero-cta {
+    margin-top: max(2.5rem, calc(82vw - 100px));
+  }
 }
 
 /* ---------- 3. Плейсхолдер зображення ----------
@@ -190,12 +210,25 @@
   --swiper-pagination-color: #f5a33a;
   --swiper-pagination-bullet-inactive-color: #ffffff;
   --swiper-pagination-bullet-inactive-opacity: .4;
-  --swiper-pagination-bullet-size: 10px;
-  --swiper-pagination-bullet-horizontal-gap: 5px;
+  /* ЛР №12 (Lighthouse «Області дотику»): крапка 12 px + відступи 6 px → центри через 24 px,
+     тож кожна має зону натискання 24×24 px за WCAG 2.2 і не перекриває сусідню */
+  --swiper-pagination-bullet-size: 12px;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+  row-gap: 12px;
 }
 
-/* До ініціалізації картки вже мають потрібну ширину: без «стрибка» (FOUC) */
+/* До ініціалізації картки вже мають потрібну ширину: без «стрибка» (FOUC).
+   CSS Swiper тепер підвантажується разом зі скриптом (js/plugins.js),
+   тому базову розкладку в рядок задаємо тут самі */
+.cars-swiper:not(.swiper-initialized) {
+  overflow: hidden;
+}
+.cars-swiper:not(.swiper-initialized) .swiper-wrapper {
+  display: flex;
+}
 .cars-swiper:not(.swiper-initialized) .swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
   margin-right: 24px;
 }
 @media (min-width: 768px) {
@@ -303,7 +336,8 @@
   background-color: var(--d-surface);
   box-shadow: 0 0 0 1px var(--d-line);
 }
-.dark .cta-card {
+.dark .cta-card,
+.dark .rc-result {
   background: linear-gradient(135deg, #16224a, #0d2a7a);
   box-shadow: inset 0 0 0 1px rgba(157, 178, 255, .18);
 }

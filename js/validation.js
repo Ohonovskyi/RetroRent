@@ -23,15 +23,13 @@
   const REGEX_NAME = /^\p{L}+(?:[\s'’-]+\p{L}+)*$/u;
   // Ім'я користувача @ домен . зона (мінімум 2 літери)
   const REGEX_EMAIL = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
-  // Рівно +380 і 9 цифр, без пробілів, дужок і дефісів
-  const REGEX_PHONE = /^\+380\d{9}$/;
+  // Телефон: код країни обирається у списку, довжину номера для кожної країни перевіряє js/phone-input.js
+  // (для України — рівно +380 і 9 цифр: /^\+380\d{9}$/)
 
   const MIN_NAME_LENGTH = 2;
   const MIN_MESSAGE_LENGTH = 10;
   const MAX_MESSAGE_LENGTH = 500;
   const FAKE_REQUEST_MS = 800; // імітація надсилання
-
-  const PHONE_FORMAT_ERROR = 'Формат: +380 та 9 цифр (наприклад, +380971234567).';
 
   // Кількість символів (емоджі рахується як один символ)
   const countChars = (text) => Array.from(text).length;
@@ -54,12 +52,10 @@
     return '';
   }
 
-  function validatePhone(value) {
-    const phone = value.trim();
-    if (!phone) return 'Вкажіть номер телефону.';
-    if (REGEX_PHONE.test(phone)) return '';
-    if (/[^\d+\s()-]/.test(phone)) return `Номер не може містити літери. ${PHONE_FORMAT_ERROR}`;
-    return PHONE_FORMAT_ERROR;
+  function validatePhone(input) {
+    if (!window.PhoneInput) return input.value.trim() ? '' : 'Вкажіть номер телефону.';
+    if (!window.PhoneInput.getNumber(input).digits) return 'Вкажіть номер телефону.';
+    return window.PhoneInput.validate(input);
   }
 
   function validateMessage(value) {
@@ -72,16 +68,6 @@
 
   function validateAgreement(checked) {
     return checked ? '' : 'Потрібно дати згоду для продовження.';
-  }
-
-  /* Пропозиція виправити номер. Сам номер не змінюється:
-     користувач вирішує, чи натиснути кнопку. RegEx при цьому не послаблюється. */
-  function suggestPhone(value) {
-    const cleaned = value.replace(/[\s().-]/g, '');
-    if (REGEX_PHONE.test(cleaned)) return cleaned;
-    if (/^380\d{9}$/.test(cleaned)) return `+${cleaned}`;
-    if (/^0\d{9}$/.test(cleaned)) return `+38${cleaned}`;
-    return '';
   }
 
   /* ---------- Опис полів ---------- */
@@ -101,11 +87,15 @@
   }
 
   const agreementInput = document.getElementById('agreement');
+  const phoneInput = document.getElementById('phone');
 
   const fields = [
     createField('username', validateName),
     createField('email', validateEmail),
-    createField('phone', validatePhone),
+    createField('phone', validatePhone, {
+      getValue: () => phoneInput,
+      box: phoneInput.closest('[data-phone]') || phoneInput, // рамка — у всього поля разом із кодом країни
+    }),
     createField('message', validateMessage),
     createField('agreement', validateAgreement, {
       getValue: () => agreementInput.checked,
@@ -115,8 +105,6 @@
     }),
   ];
 
-  const phoneField = fields[2];
-  const phoneFix = document.getElementById('phoneFix');
   const counter = document.getElementById('messageCounter');
   const formStatus = document.getElementById('formStatus');
   const submitBtn = document.getElementById('feedbackSubmit');
@@ -152,14 +140,6 @@
     if (field.check) field.check.classList.remove('hidden');
   }
 
-  function updatePhoneFix() {
-    const value = phoneField.input.value;
-    const suggestion = REGEX_PHONE.test(value.trim()) ? '' : suggestPhone(value);
-    phoneFix.classList.toggle('hidden', !suggestion);
-    phoneFix.textContent = suggestion ? `Замінити на ${suggestion}` : '';
-    phoneFix.dataset.value = suggestion;
-  }
-
   function updateCounter() {
     counter.textContent = `${countChars(form.elements.message.value)} / ${MAX_MESSAGE_LENGTH} символів`;
   }
@@ -169,7 +149,6 @@
     const message = field.validate(field.getValue());
     if (message) showError(field, message);
     else showSuccess(field);
-    if (field === phoneField) updatePhoneFix();
     return !message;
   }
 
@@ -184,8 +163,6 @@
     field.input.addEventListener('input', () => {
       formStatus.textContent = '';
       if (field.input.id === 'message') updateCounter();
-      // Кнопка-підказка з'являється ще під час введення, щоб Tab з поля вів саме на неї
-      if (field === phoneField) updatePhoneFix();
       if (isCheckbox) return;
 
       if (field.touched) {
@@ -212,12 +189,6 @@
     }
   });
 
-  phoneFix.addEventListener('click', () => {
-    phoneField.input.value = phoneFix.dataset.value;
-    checkField(phoneField);
-    phoneField.input.focus();
-  });
-
   /* ---------- 5. Submit ---------- */
   function resetForm() {
     form.reset();
@@ -225,7 +196,6 @@
       field.touched = false;
       clearError(field);
     });
-    updatePhoneFix();
     updateCounter();
     formStatus.textContent = '';
   }
@@ -258,7 +228,8 @@
     const summary = {
       name: form.elements.username.value.trim(),
       email: form.elements.email.value.trim(),
-      phone: form.elements.phone.value.trim(),
+      // +380 97 123 45 67; для сервера є PhoneInput.getNumber(phoneInput).e164
+      phone: window.PhoneInput ? window.PhoneInput.getNumber(phoneInput).display : phoneInput.value.trim(),
     };
 
     /*

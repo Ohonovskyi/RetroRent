@@ -3,26 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RetroRent — оренда ретро-авто без дрібного шрифту</title>
+  <title>RetroRent</title>
   <meta name="description" content="Оренда ретро-автомобілів для весіль, фотосесій та стильних вікендів. З водієм або self-drive.">
+  <link rel="canonical" href="https://retrorent.vercel.app/">
+  <meta name="theme-color" content="#0d1526">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Open Graph: картка сайту в месенджерах і соцмережах -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RetroRent">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:title" content="RetroRent — оренда ретро-авто без дрібного шрифту">
+  <meta property="og:description" content="Оренда ретро-автомобілів для весіль, фотосесій та стильних вікендів. З водієм або self-drive.">
+  <meta property="og:url" content="https://retrorent.vercel.app/">
+  <meta property="og:image" content="https://retrorent.vercel.app/assets/images/home/hero_bg.webp">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <!-- Темна тема: вмикається до відмальовування сторінки -->
-  <script src="js/theme.js"></script>
+  <!-- Темна тема вмикається ще до відмальовування (без «спалаху» світлої теми).
+       Inline, щоб не чекати окремий файл; перемикач і збереження — js/theme.js -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('retrorent-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = t;
+    })();
+  </script>
 
-  <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="js/tailwind.config.js"></script>
 
-  <!-- Плагіни через CDN (jsDelivr): CSS — у <head>, JS — перед </body> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css">
+  <!-- LCP: фон Hero браузер знаходить лише після CSS, тому підказуємо завантажити його першим -->
+  <link rel="preload" as="image" href="assets/images/home/hero_bg.webp" type="image/webp" fetchpriority="high">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Стилі Swiper і Fancybox не блокують відображення: js/plugins.js підключає їх разом зі скриптами,
+       коли слайдер чи галерея наближаються до екрана -->
 
   <!-- Власні стилі: лише те, що незручно робити класами Tailwind -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Tailwind CSS: готовий файл замість CDN (класи з дизайн-системи, js/tailwind.config.js).
+       Стоїть після style.css — у тому ж порядку, у якому стилі додавав CDN.
+       Оновлення після зміни класів: tools/tailwind-build.html -->
+  <link rel="stylesheet" href="css/tailwind.css">
 </head>
 <body class="bg-white font-sans text-navy antialiased">
 
@@ -80,7 +108,7 @@
         <p class="mt-3 max-w-md text-lg leading-snug text-zinc-300">
           Обирай авто за сценарієм: від весільних кабріолетів до культових JDM та American Muscle для стильних вікендів. З водієм або self-drive.
         </p>
-        <a class="keep-light inline-flex items-center justify-center rounded bg-white text-center uppercase text-royal transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-10 h-20 w-full max-w-md font-head text-lg font-extrabold md:mt-12 md:h-24 md:text-2xl" href="#cars">Обрати авто під подію</a>
+        <a class="hero-cta keep-light inline-flex items-center justify-center rounded bg-white text-center uppercase text-royal transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-10 h-20 w-full max-w-md font-head text-lg font-extrabold md:mt-12 md:h-24 md:text-2xl" href="#cars">Обрати авто під подію</a>
       </section>
 
       <!-- ===== БЛОК 1 (світлий): чому RetroRent — переваги й послуги ===== -->
@@ -203,7 +231,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/ford-mustang-1967_1.jpg" alt="Ford Mustang 1967" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/ford-mustang-1967_1.webp" alt="Ford Mustang 1967" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Ford Mustang 1967</h3>
@@ -219,7 +247,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/mercedes-benz-220se_1.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/mercedes-benz-220se_1.webp" alt="Mercedes-Benz 220SE" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Mercedes-Benz 220SE</h3>
@@ -235,7 +263,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/mercedes-benz-c140_1.jpg" alt="Mercedes-Benz C140" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/mercedes-benz-c140_1.webp" alt="Mercedes-Benz C140" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Mercedes-Benz C140</h3>
@@ -251,7 +279,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/chevrolet-bel-air-1957_1.jpg" alt="Chevrolet Bel Air 1957" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/chevrolet-bel-air-1957_1.webp" alt="Chevrolet Bel Air 1957" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Chevrolet Bel Air 1957</h3>
@@ -267,7 +295,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/jaguar-e-type-1961_1.jpg" alt="Jaguar E-Type 1961" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/jaguar-e-type-1961_1.webp" alt="Jaguar E-Type 1961" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Jaguar E-Type 1961</h3>
@@ -283,7 +311,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/toyota-2000gt-1967_1.jpg" alt="Toyota 2000GT 1967" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/toyota-2000gt-1967_1.webp" alt="Toyota 2000GT 1967" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Toyota 2000GT 1967</h3>
@@ -299,7 +327,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/porsche-911-1973_1.jpg" alt="Porsche 911 1973" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/porsche-911-1973_1.webp" alt="Porsche 911 1973" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Porsche 911 1973</h3>
@@ -315,7 +343,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/cadillac-eldorado-1959_1.jpg" alt="Cadillac Eldorado 1959" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/cadillac-eldorado-1959_1.webp" alt="Cadillac Eldorado 1959" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Cadillac Eldorado 1959</h3>
@@ -331,7 +359,7 @@
               <div class="swiper-slide !h-auto">
               <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white text-navy">
                 <div class="media aspect-video bg-placeholder">
-                  <img class="h-full w-full object-cover" src="assets/images/cars/volkswagen-beetle-1967_1.jpg" alt="Volkswagen Beetle 1967" loading="lazy">
+                  <img class="h-full w-full object-cover" src="assets/images/cars/volkswagen-beetle-1967_1.webp" alt="Volkswagen Beetle 1967" loading="lazy">
                 </div>
                 <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
                   <h3 class="text-lg font-semibold">Volkswagen Beetle 1967</h3>
@@ -347,12 +375,12 @@
               </div>
             </div>
 
-            <div class="mt-8 flex items-center justify-center gap-4">
-              <button class="cars-prev grid h-11 w-11 flex-none place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-brand-orange hover:text-brand-orange focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" type="button" aria-label="Попереднє авто">
+            <div class="mt-8 flex items-center justify-center gap-3 sm:gap-4">
+              <button class="cars-prev grid h-12 w-12 flex-none place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-brand-orange hover:text-brand-orange focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" type="button" aria-label="Попереднє авто">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
               </button>
               <div class="cars-pagination flex flex-wrap justify-center"></div>
-              <button class="cars-next grid h-11 w-11 flex-none place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-brand-orange hover:text-brand-orange focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" type="button" aria-label="Наступне авто">
+              <button class="cars-next grid h-12 w-12 flex-none place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-brand-orange hover:text-brand-orange focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" type="button" aria-label="Наступне авто">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
               </button>
             </div>
@@ -368,23 +396,23 @@
             <p class="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-slate-300">Натисніть на фото, щоб відкрити його на весь екран, гортати й наближати.</p>
 
             <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
-            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/ford-mustang-1967_2.jpg" data-fancybox="retro-gallery" data-caption="Ford Mustang 1967">
-              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/ford-mustang-1967_2.jpg" alt="Ford Mustang 1967" loading="lazy">
+            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/ford-mustang-1967_2.webp" data-fancybox="retro-gallery" data-caption="Ford Mustang 1967">
+              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/ford-mustang-1967_2.webp" alt="Ford Mustang 1967" loading="lazy">
             </a>
-            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/mercedes-benz-220se_2.jpg" data-fancybox="retro-gallery" data-caption="Mercedes-Benz 220SE">
-              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/mercedes-benz-220se_2.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/mercedes-benz-220se_2.webp" data-fancybox="retro-gallery" data-caption="Mercedes-Benz 220SE">
+              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/mercedes-benz-220se_2.webp" alt="Mercedes-Benz 220SE" loading="lazy">
             </a>
-            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/jaguar-e-type-1961_3.jpg" data-fancybox="retro-gallery" data-caption="Jaguar E-Type 1961">
-              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/jaguar-e-type-1961_3.jpg" alt="Jaguar E-Type 1961" loading="lazy">
+            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/jaguar-e-type-1961_3.webp" data-fancybox="retro-gallery" data-caption="Jaguar E-Type 1961">
+              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/jaguar-e-type-1961_3.webp" alt="Jaguar E-Type 1961" loading="lazy">
             </a>
-            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/cadillac-eldorado-1959_2.jpg" data-fancybox="retro-gallery" data-caption="Cadillac Eldorado 1959">
-              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/cadillac-eldorado-1959_2.jpg" alt="Cadillac Eldorado 1959" loading="lazy">
+            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/cadillac-eldorado-1959_2.webp" data-fancybox="retro-gallery" data-caption="Cadillac Eldorado 1959">
+              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/cadillac-eldorado-1959_2.webp" alt="Cadillac Eldorado 1959" loading="lazy">
             </a>
-            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/toyota-2000gt-1967_2.jpg" data-fancybox="retro-gallery" data-caption="Toyota 2000GT 1967">
-              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/toyota-2000gt-1967_2.jpg" alt="Toyota 2000GT 1967" loading="lazy">
+            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/toyota-2000gt-1967_2.webp" data-fancybox="retro-gallery" data-caption="Toyota 2000GT 1967">
+              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/toyota-2000gt-1967_2.webp" alt="Toyota 2000GT 1967" loading="lazy">
             </a>
-            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/volkswagen-beetle-1967_3.jpg" data-fancybox="retro-gallery" data-caption="Volkswagen Beetle 1967">
-              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/volkswagen-beetle-1967_3.jpg" alt="Volkswagen Beetle 1967" loading="lazy">
+            <a class="group block overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange" href="assets/images/cars/volkswagen-beetle-1967_3.webp" data-fancybox="retro-gallery" data-caption="Volkswagen Beetle 1967">
+              <img class="aspect-[4/3] w-full cursor-zoom-in object-cover transition duration-300 group-hover:scale-105" src="assets/images/cars/volkswagen-beetle-1967_3.webp" alt="Volkswagen Beetle 1967" loading="lazy">
             </a>
             </div>
           </div>
@@ -416,6 +444,105 @@
       <!-- ===== БЛОК 3 (світлий): як це працює, питання, зв'язок ===== -->
       <div class="px-4 py-16 md:px-8 md:py-24">
         <div class="mx-auto max-w-6xl">
+
+          <!-- ===== ЛР №11. Віджет «Калькулятор оренди» =====
+               Логіка — js/widget.js, список авто й тарифи — data/data.json (fetch).
+               JS шукає елементи всередині [data-rent-calc] за атрибутом data-rc,
+               id потрібні лише для label і aria-describedby. -->
+          <section class="mb-16 md:mb-24" id="calculator" aria-labelledby="calculator-title" data-rent-calc data-src="data/data.json">
+            <h2 class="font-head text-3xl font-black leading-tight md:text-4xl lg:text-5xl" id="calculator-title">Калькулятор оренди</h2>
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">Оберіть авто, тривалість і пробіг — вартість перерахується одразу, без кнопки «Розрахувати».</p>
+
+            <!-- Статус завантаження data.json: показується лише під час завантаження або при помилці -->
+            <div class="mt-6 flex flex-wrap items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm" data-rc="status" role="status" aria-live="polite">
+              <span data-rc="status-text">Завантажуємо автопарк…</span>
+              <button class="min-h-11 rounded-sm font-semibold text-royal underline transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" type="button" data-rc="retry" hidden>Спробувати ще раз</button>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-5">
+              <!-- Параметри. novalidate: тексти помилок показує js/widget.js -->
+              <form class="rounded-xl border border-gray-200 bg-white p-5 sm:p-7 lg:col-span-3" data-rc="form" novalidate>
+                <fieldset class="grid grid-cols-1 gap-x-6 gap-y-5 disabled:opacity-60 md:grid-cols-2" data-rc="fields" disabled>
+                  <legend class="sr-only">Параметри оренди</legend>
+
+                  <!-- 1. Авто (select, варіанти з data.json) -->
+                  <div class="md:col-span-2">
+                    <label class="mb-1.5 block text-sm font-semibold" for="rc-car">Автомобіль <span class="font-normal text-gray-500">(ціна за добу)</span></label>
+                    <select class="block h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-base text-navy transition-colors duration-200 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" id="rc-car" data-rc="car" aria-describedby="rc-car-error" aria-invalid="false">
+                      <option value="">Завантаження…</option>
+                    </select>
+                    <p class="mt-1 min-h-5 text-sm text-red-700" id="rc-car-error" data-rc="car-error" aria-live="polite"></p>
+                  </div>
+
+                  <!-- 2. Кількість діб (number) -->
+                  <div>
+                    <label class="mb-1.5 block text-sm font-semibold" for="rc-days">Кількість діб</label>
+                    <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-base text-navy transition-colors duration-200 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="number" id="rc-days" data-rc="days" value="3" min="1" max="30" step="1" inputmode="numeric" required aria-describedby="rc-days-hint rc-days-error" aria-invalid="false">
+                    <p class="mt-1 text-sm text-gray-500" id="rc-days-hint" data-rc="days-hint">Від 1 до 30 діб. Від 7 діб — знижка 10 %.</p>
+                    <p class="mt-1 min-h-5 text-sm text-red-700" id="rc-days-error" data-rc="days-error" aria-live="polite"></p>
+                  </div>
+
+                  <!-- 3. Пробіг (range + поточне значення) -->
+                  <div>
+                    <div class="mb-1.5 flex items-baseline justify-between gap-3">
+                      <label class="text-sm font-semibold" for="rc-distance">Запланований пробіг</label>
+                      <output class="font-head font-extrabold" for="rc-distance" data-rc="distance-value">600 км</output>
+                    </div>
+                    <input class="block h-12 w-full cursor-pointer accent-navy" type="range" id="rc-distance" data-rc="distance" value="600" min="0" max="3000" step="50" aria-describedby="rc-distance-hint">
+                    <p class="mt-1 text-sm text-gray-500" id="rc-distance-hint" data-rc="distance-hint">200 км на добу включено, далі 0,5 $/км.</p>
+                  </div>
+
+                  <!-- 4–5. Додаткові послуги (checkbox) -->
+                  <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-gray-300 p-4 transition-colors hover:border-gray-400 has-[:checked]:border-navy has-[:checked]:bg-gray-100 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-orange">
+                    <input class="mt-0.5 h-5 w-5 flex-none accent-navy focus:outline-none" type="checkbox" id="rc-driver" data-rc="driver">
+                    <span>
+                      <span class="block font-semibold">Авто з водієм</span>
+                      <span class="block text-sm text-gray-500" data-rc="driver-price">+50 $ за добу</span>
+                    </span>
+                  </label>
+                  <label class="flex cursor-pointer items-start gap-3 rounded-lg border border-gray-300 p-4 transition-colors hover:border-gray-400 has-[:checked]:border-navy has-[:checked]:bg-gray-100 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-orange">
+                    <input class="mt-0.5 h-5 w-5 flex-none accent-navy focus:outline-none" type="checkbox" id="rc-decor" data-rc="decor">
+                    <span>
+                      <span class="block font-semibold">Весільний декор</span>
+                      <span class="block text-sm text-gray-500" data-rc="decor-price">+40 $ разово</span>
+                    </span>
+                  </label>
+
+                  <!-- 6. Промокод (текст) -->
+                  <div class="md:col-span-2">
+                    <label class="mb-1.5 block text-sm font-semibold" for="rc-promo">Промокод <span class="font-normal text-gray-500">(необов’язково)</span></label>
+                    <input class="block h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-base uppercase text-navy transition-colors duration-200 placeholder:normal-case placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1 md:max-w-xs" type="text" id="rc-promo" data-rc="promo" maxlength="20" autocomplete="off" spellcheck="false" placeholder="Наприклад, RETRO5" aria-describedby="rc-promo-msg" aria-invalid="false">
+                    <p class="mt-1 min-h-5 text-sm" id="rc-promo-msg" data-rc="promo-msg" aria-live="polite"></p>
+                  </div>
+                </fieldset>
+              </form>
+
+              <!-- Результат -->
+              <aside class="rc-result flex flex-col rounded-xl bg-navy p-5 text-white shadow-card sm:p-7 lg:col-span-2" aria-labelledby="rc-result-title">
+                <h3 class="sr-only" id="rc-result-title">Розрахунок вартості</h3>
+                <div class="flex items-center gap-4">
+                  <div class="aspect-[4/3] w-24 flex-none overflow-hidden rounded-lg bg-line">
+                    <!-- src підставляє js/widget.js; до завантаження фото приховане -->
+                    <img class="h-full w-full object-cover" data-rc="photo" alt="" width="96" height="72" style="visibility: hidden">
+                  </div>
+                  <div class="min-w-0">
+                    <p class="break-words font-head text-lg font-extrabold leading-tight" data-rc="car-name">Автомобіль</p>
+                    <p class="mt-1 text-sm text-muted" data-rc="car-meta"></p>
+                  </div>
+                </div>
+
+                <ul class="mt-6 flex flex-col gap-2.5 border-t border-line pt-5 text-sm empty:hidden" data-rc="lines"></ul>
+
+                <div class="mt-auto border-t border-line pt-5">
+                  <p class="text-sm text-muted">Разом до сплати</p>
+                  <!-- aria-live: екранний читач озвучує нову суму -->
+                  <p class="mt-1 break-words font-head text-4xl font-black leading-tight" data-rc="total" aria-live="polite">—</p>
+                  <p class="mt-1 min-h-5 text-sm text-muted" data-rc="total-note"></p>
+                  <a class="keep-light mt-5 inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-4 text-center font-head font-extrabold uppercase text-royal transition-opacity duration-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange" href="pages/cars.html" data-rc="book" hidden>Забронювати це авто</a>
+                </div>
+              </aside>
+            </div>
+          </section>
 
           <!-- Як це працює + часті запитання. Mobile: 1 колонка · lg: 2 -->
           <div class="grid grid-cols-1 gap-14 lg:grid-cols-2">
@@ -528,14 +655,21 @@
             </div>
             <div>
               <label class="mb-1.5 block text-sm font-semibold" for="phone">Телефон <span class="text-red-700" aria-hidden="true">*</span></label>
-              <div class="relative">
-                <input class="block h-12 px-4 pr-11 w-full rounded-md border border-gray-300 bg-white text-base text-navy transition-colors duration-200 placeholder:text-gray-400 hover:border-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+380501234567" maxlength="20" inputmode="tel"
+              <!-- Код країни + номер. Форматування й перевірка довжини — js/phone-input.js -->
+              <div class="relative flex h-12 w-full rounded-md border border-gray-300 bg-white transition-colors duration-200 hover:border-gray-400 focus-within:ring-2 focus-within:ring-royal focus-within:ring-offset-1" data-phone>
+                <div class="relative flex flex-none items-center border-r border-gray-300 pl-3 pr-2.5">
+                  <span class="pointer-events-none whitespace-nowrap text-base text-navy" data-phone-code aria-hidden="true">🇺🇦 +380</span>
+                  <svg class="pointer-events-none ml-1 text-gray-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  <select class="absolute inset-0 h-full w-full cursor-pointer opacity-0" data-phone-country aria-label="Код країни">
+                    <option value="UA">🇺🇦 Україна +380</option>
+                  </select>
+                </div>
+                <input class="block h-full min-w-0 flex-1 rounded-r-md bg-transparent px-3 pr-11 text-base text-navy placeholder:text-gray-400 focus:outline-none" type="tel" id="phone" name="phone" autocomplete="tel-national" placeholder="97 123 45 67" maxlength="20" inputmode="tel" data-phone-input
                        required aria-required="true" aria-invalid="false" aria-describedby="phoneHint phoneError">
                 <svg class="pointer-events-none absolute right-3.5 top-3.5 hidden text-green-600" data-check width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               </div>
-              <p class="mt-1 text-sm text-gray-500" id="phoneHint">Формат: +380 та 9 цифр</p>
+              <p class="mt-1 text-sm text-gray-500" id="phoneHint">Код країни вже підставлено — введіть номер без нуля попереду.</p>
               <p class="mt-1 min-h-5 text-sm text-red-700" id="phoneError" aria-live="polite"></p>
-              <button class="mb-1 hidden min-h-11 rounded-sm text-sm font-semibold text-royal underline transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange" type="button" id="phoneFix"></button>
             </div>
 
             <div>
@@ -597,7 +731,7 @@
           </figure>
 
               <a class="js-press rounded-md bg-navy font-medium text-white hover:bg-royal hover:shadow-lg active:bg-ink relative inline-flex items-center justify-center gap-2 text-center uppercase transition duration-200 active:scale-98 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-brand-orange mt-4 h-12 w-full px-6 text-sm font-bold"
-               href="https://www.google.com/maps/search/?api=1&amp;query=Rynok+Square,+Lviv" target="_blank" rel="noopener" title="Відкрити маршрут у Google Maps (нова вкладка)">Прокласти маршрут</a>
+               href="https://www.google.com/maps/search/?api=1&amp;query=Rynok+Square,+Lviv" target="_blank" rel="noopener noreferrer" title="Відкрити маршрут у Google Maps (нова вкладка)">Прокласти маршрут</a>
             </section>
           </div>
 
@@ -666,12 +800,14 @@
   </div>
 
   <!-- JS плагінів (CDN) у кінці сторінки, а потім файл з їхніми налаштуваннями -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="js/plugins.js"></script>
+  <!-- Typed.js потрібен у Hero одразу; Swiper і Fancybox js/plugins.js завантажує за потреби -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js" defer></script>
+  <script src="js/plugins.js" defer></script>
 
+  <script src="js/theme.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/phone-input.js" defer></script>
   <script src="js/validation.js" defer></script>
+  <script src="js/widget.js" defer></script>
 </body>
 </html>

@@ -5,20 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Автопарк — RetroRent</title>
   <meta name="description" content="Каталог ретро-автомобілів RetroRent: весілля, фотосесії та self-drive.">
+  <link rel="canonical" href="https://retrorent.vercel.app/pages/cars.html">
+  <meta name="theme-color" content="#0d1526">
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <!-- Темна тема: вмикається до відмальовування сторінки -->
-  <script src="../js/theme.js"></script>
+  <!-- Темна тема вмикається ще до відмальовування (без «спалаху» світлої теми).
+       Inline, щоб не чекати окремий файл; перемикач і збереження — js/theme.js -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('retrorent-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = t;
+    })();
+  </script>
 
-  <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../js/tailwind.config.js"></script>
 
   <!-- Власні стилі: лише те, що незручно робити класами Tailwind -->
   <link rel="stylesheet" href="../css/style.css">
+  <!-- Tailwind CSS: готовий файл замість CDN (класи з дизайн-системи, js/tailwind.config.js).
+       Стоїть після style.css — у тому ж порядку, у якому стилі додавав CDN.
+       Оновлення після зміни класів: tools/tailwind-build.html -->
+  <link rel="stylesheet" href="../css/tailwind.css">
 </head>
 <body class="bg-navy-deep font-sans text-navy antialiased">
 
@@ -75,7 +90,7 @@
         <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="self-drive">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/ford-mustang-1967_1.jpg" alt="Ford Mustang 1967" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/ford-mustang-1967_1.webp" alt="Ford Mustang 1967" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Ford Mustang 1967</h2>
@@ -89,7 +104,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="wedding">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/mercedes-benz-220se_1.jpg" alt="Mercedes-Benz 220SE" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/mercedes-benz-220se_1.webp" alt="Mercedes-Benz 220SE" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Mercedes-Benz 220SE</h2>
@@ -103,7 +118,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="photo">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/mercedes-benz-c140_1.jpg" alt="Mercedes-Benz C140" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/mercedes-benz-c140_1.webp" alt="Mercedes-Benz C140" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Mercedes-Benz C140</h2>
@@ -117,7 +132,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="self-drive">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/chevrolet-bel-air-1957_1.jpg" alt="Chevrolet Bel Air 1957" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/chevrolet-bel-air-1957_1.webp" alt="Chevrolet Bel Air 1957" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Chevrolet Bel Air 1957</h2>
@@ -131,7 +146,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="wedding">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/jaguar-e-type-1961_1.jpg" alt="Jaguar E-Type 1961" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/jaguar-e-type-1961_1.webp" alt="Jaguar E-Type 1961" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Jaguar E-Type 1961</h2>
@@ -145,7 +160,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="photo">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/toyota-2000gt-1967_1.jpg" alt="Toyota 2000GT 1967" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/toyota-2000gt-1967_1.webp" alt="Toyota 2000GT 1967" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Toyota 2000GT 1967</h2>
@@ -159,7 +174,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="self-drive">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/porsche-911-1973_1.jpg" alt="Porsche 911 1973" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/porsche-911-1973_1.webp" alt="Porsche 911 1973" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Porsche 911 1973</h2>
@@ -173,7 +188,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="wedding">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/cadillac-eldorado-1959_1.jpg" alt="Cadillac Eldorado 1959" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/cadillac-eldorado-1959_1.webp" alt="Cadillac Eldorado 1959" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Cadillac Eldorado 1959</h2>
@@ -187,7 +202,7 @@
           </article>
           <article class="flex flex-col overflow-hidden rounded-xl bg-white text-navy transition duration-300 hover:-translate-y-1 hover:shadow-xl" data-category="photo">
             <div class="media aspect-video bg-placeholder">
-              <img class="h-full w-full object-cover" src="../assets/images/cars/volkswagen-beetle-1967_1.jpg" alt="Volkswagen Beetle 1967" loading="lazy">
+              <img class="h-full w-full object-cover" src="../assets/images/cars/volkswagen-beetle-1967_1.webp" alt="Volkswagen Beetle 1967" loading="lazy">
             </div>
             <div class="flex flex-1 flex-col px-4 pb-4 pt-5">
               <h2 class="text-lg font-semibold">Volkswagen Beetle 1967</h2>
@@ -244,6 +259,7 @@
     </div>
   </footer>
 
+  <script src="../js/theme.js" defer></script>
   <script src="../js/main.js" defer></script>
   <script src="../js/catalog-filter.js" defer></script>
 </body>

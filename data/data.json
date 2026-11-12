@@ -1,0 +1,24 @@
+{
+  "currency": "$",
+  "cars": [
+    { "id": "ford-mustang-1967", "name": "Ford Mustang 1967", "category": "Self-Drive", "pricePerDay": 159, "image": "assets/images/cars/ford-mustang-1967_1.webp", "page": "pages/cars/ford-mustang-1967.html" },
+    { "id": "mercedes-benz-220se", "name": "Mercedes-Benz 220SE", "category": "Весілля", "pricePerDay": 399, "image": "assets/images/cars/mercedes-benz-220se_1.webp", "page": "pages/cars/mercedes-benz-220se.html" },
+    { "id": "mercedes-benz-c140", "name": "Mercedes-Benz C140", "category": "Фотосесія", "pricePerDay": 299, "image": "assets/images/cars/mercedes-benz-c140_1.webp", "page": "pages/cars/mercedes-benz-c140.html" },
+    { "id": "chevrolet-bel-air-1957", "name": "Chevrolet Bel Air 1957", "category": "Self-Drive", "pricePerDay": 189, "image": "assets/images/cars/chevrolet-bel-air-1957_1.webp", "page": "pages/cars/chevrolet-bel-air-1957.html" },
+    { "id": "jaguar-e-type-1961", "name": "Jaguar E-Type 1961", "category": "Весілля", "pricePerDay": 499, "image": "assets/images/cars/jaguar-e-type-1961_1.webp", "page": "pages/cars/jaguar-e-type-1961.html" },
+    { "id": "toyota-2000gt-1967", "name": "Toyota 2000GT 1967", "category": "Фотосесія", "pricePerDay": 349, "image": "assets/images/cars/toyota-2000gt-1967_1.webp", "page": "pages/cars/toyota-2000gt-1967.html" },
+    { "id": "porsche-911-1973", "name": "Porsche 911 1973", "category": "Self-Drive", "pricePerDay": 279, "image": "assets/images/cars/porsche-911-1973_1.webp", "page": "pages/cars/porsche-911-1973.html" },
+    { "id": "cadillac-eldorado-1959", "name": "Cadillac Eldorado 1959", "category": "Весілля", "pricePerDay": 459, "image": "assets/images/cars/cadillac-eldorado-1959_1.webp", "page": "pages/cars/cadillac-eldorado-1959.html" },
+    { "id": "volkswagen-beetle-1967", "name": "Volkswagen Beetle 1967", "category": "Фотосесія", "pricePerDay": 129, "image": "assets/images/cars/volkswagen-beetle-1967_1.webp", "page": "pages/cars/volkswagen-beetle-1967.html" }
+  ],
+  "rules": {
+    "days": { "min": 1, "max": 30 },
+    "distance": { "min": 0, "max": 3000, "step": 50 },
+    "kmIncludedPerDay": 200,
+    "extraKmPrice": 0.5,
+    "driverPerDay": 50,
+    "decorPrice": 40,
+    "longRent": { "fromDays": 7, "percent": 10 },
+    "promoCodes": { "RETRO5": 5, "WEDDING10": 10 }
+  }
+}

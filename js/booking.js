@@ -305,6 +305,8 @@
     rateNoteEl.textContent = state.rateNote;
 
     licenseBlock.hidden = state.mode !== 'self';
+    // З водієм посвідчення клієнта не потрібне — ховаємо пов’язані пункти сторінки
+    document.querySelectorAll('[data-self-only]').forEach((el) => { el.hidden = state.mode !== 'self'; });
   }
 
   /* Варіанти страхування малюються з масиву INSURANCE.
@@ -364,7 +366,7 @@
      Контакти клієнта
      ========================================================= */
   const REGEX_NAME = /^\p{L}+(?:[\s'’-]+\p{L}+)*$/u;
-  const REGEX_PHONE = /^\+380\d{9}$/;
+  // Телефон: код країни й довжину номера перевіряє js/phone-input.js (для України — /^\+380\d{9}$/)
 
   const contactRules = {
     bookingName(value) {
@@ -373,20 +375,21 @@
       if (Array.from(name).length < 2) return 'Ім’я має містити щонайменше 2 символи.';
       return REGEX_NAME.test(name) ? '' : 'Ім’я може містити лише літери, пробіл, апостроф і дефіс.';
     },
-    bookingPhone(value) {
-      const phone = value.trim();
-      if (!phone) return 'Вкажіть номер, щоб менеджер міг вам зателефонувати.';
-      return REGEX_PHONE.test(phone) ? '' : 'Формат: +380 та 9 цифр (наприклад, +380971234567).';
+    bookingPhone(value, input) {
+      const empty = window.PhoneInput ? !window.PhoneInput.getNumber(input).digits : !value.trim();
+      if (empty) return 'Вкажіть номер, щоб менеджер міг вам зателефонувати.';
+      return window.PhoneInput ? window.PhoneInput.validate(input) : '';
     },
   };
 
   const contactInputs = Object.keys(contactRules).map((id) => document.getElementById(id));
 
   function checkContact(input) {
-    const message = contactRules[input.id](input.value);
-    input.classList.toggle('border-red-500', Boolean(message));
-    input.classList.toggle('bg-red-50', Boolean(message));
-    input.classList.toggle('border-gray-300', !message);
+    const message = contactRules[input.id](input.value, input);
+    const box = input.closest('[data-phone]') || input; // у телефону рамка — на всьому полі з кодом країни
+    box.classList.toggle('border-red-500', Boolean(message));
+    box.classList.toggle('bg-red-50', Boolean(message));
+    box.classList.toggle('border-gray-300', !message);
     input.setAttribute('aria-invalid', String(Boolean(message)));
     document.getElementById(`${input.id}Error`).textContent = message;
     return !message;
@@ -407,7 +410,10 @@
 
   function openModal() {
     lastFocused = document.activeElement;
-    modal.querySelector('[data-modal-phone]').textContent = form.elements.bookingPhone.value.trim();
+    const phoneInput = document.getElementById('bookingPhone');
+    modal.querySelector('[data-modal-phone]').textContent = window.PhoneInput
+      ? window.PhoneInput.getNumber(phoneInput).display // +380 97 123 45 67
+      : phoneInput.value.trim();
     modal.hidden = false;
     document.documentElement.classList.add('overflow-hidden'); // блокуємо скрол сторінки
     requestAnimationFrame(() => modal.classList.add('is-visible'));
@@ -460,6 +466,7 @@
       TODO (бекенд): тут буде реальний запит, наприклад:
       fetch('/api/bookings', { method: 'POST', body: new FormData(form) })
       У FormData вже є: pickup, return (YYYY-MM-DD), mode, insurance, car, bookingName, bookingPhone.
+      Номер у міжнародному форматі: PhoneInput.getNumber(input).e164 → +380971234567.
     */
     window.setTimeout(() => {
       submitBtn.classList.remove('is-loading');

@@ -33,6 +33,8 @@ tailwind.config = {
     'border-brand-orange/60', 'bg-gradient-to-br', 'from-navy', 'to-royal', 'text-brand-orange',
     'hover:border-brand-orange', 'hover:shadow-lg', 'has-[:checked]:border-brand-orange',
     'has-[:checked]:ring-2', 'has-[:checked]:ring-brand-orange', 'accent-brand-orange', 'accent-navy',
+    // стани полів калькулятора оренди (js/widget.js)
+    'focus-visible:ring-red-500', 'text-green-700',
   ],
 
   theme: {
@@ -49,7 +51,7 @@ tailwind.config = {
         line: '#4a5063',        // лінії-розділювачі на темному
         placeholder: '#eef0f3', // фон під зображення, поки фото немає
         brand: {
-          green: '#0a9a0a',
+          green: '#087f08',     // ціни й бейджі; затемнено в ЛР №12 до контрасту 5.2:1 на білому (WCAG AA)
           brown: '#b87a30',
           blue: '#1a6fe0',
           'blue-soft': '#e1eafc',

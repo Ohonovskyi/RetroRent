@@ -5,20 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chevrolet Bel Air 1957 — оренда | RetroRent</title>
   <meta name="description" content="Оренда Chevrolet Bel Air 1957 від 189$ за добу. Страхування на вибір, ціна в доларах і гривнях.">
+  <link rel="canonical" href="https://retrorent.vercel.app/pages/cars/chevrolet-bel-air-1957.html">
+  <meta name="theme-color" content="#0d1526">
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&amp;family=Nunito+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-  <!-- Темна тема: вмикається до відмальовування сторінки -->
-  <script src="../../js/theme.js"></script>
+  <!-- Темна тема вмикається ще до відмальовування (без «спалаху» світлої теми).
+       Inline, щоб не чекати окремий файл; перемикач і збереження — js/theme.js -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('retrorent-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = t;
+    })();
+  </script>
 
-  <!-- Tailwind CSS (CDN) + тема проєкту (кольори, шрифти, тіні з дизайн-системи) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../../js/tailwind.config.js"></script>
 
   <!-- Власні стилі: лише те, що незручно робити класами Tailwind -->
   <link rel="stylesheet" href="../../css/style.css">
+  <!-- Tailwind CSS: готовий файл замість CDN (класи з дизайн-системи, js/tailwind.config.js).
+       Стоїть після style.css — у тому ж порядку, у якому стилі додавав CDN.
+       Оновлення після зміни класів: tools/tailwind-build.html -->
+  <link rel="stylesheet" href="../../css/tailwind.css">
 </head>
 <body class="bg-navy-deep font-sans text-navy antialiased">
 
@@ -70,26 +85,26 @@
       <!-- Mobile: фото → бронювання → опис.  lg: 5 колонок — фото й опис (3) | бронювання (2) -->
       <div class="mt-6 grid grid-cols-1 items-start gap-4 lg:grid-cols-5 lg:grid-rows-[auto_1fr] lg:gap-x-6">
 
-        <!-- ГАЛЕРЕЯ: додаткові фото кладіть у assets/images/cars/chevrolet-bel-air-1957/ (1.jpg … 4.jpg) -->
+        <!-- ГАЛЕРЕЯ: додаткові фото кладіть у assets/images/cars/chevrolet-bel-air-1957/ (1.webp … 4.webp) -->
         <div class="lg:col-span-3 lg:row-start-1">
           <div class="media aspect-[16/10] overflow-hidden bg-placeholder" data-gallery-main>
-            <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_1.jpg" alt="Chevrolet Bel Air 1957">
+            <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_1.webp" alt="Chevrolet Bel Air 1957">
           </div>
           <div class="mt-2 grid grid-cols-5 gap-2" role="group" aria-label="Фото авто">
             <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="true" aria-label="Фото 1: Chevrolet Bel Air 1957">
-              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_1.jpg" alt="" loading="lazy">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_1.webp" alt="" loading="lazy">
             </button>
             <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 2: Chevrolet Bel Air 1957">
-              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_2.jpg" alt="" loading="lazy">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_2.webp" alt="" loading="lazy">
             </button>
             <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 3: Chevrolet Bel Air 1957">
-              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_3.jpg" alt="" loading="lazy">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_3.webp" alt="" loading="lazy">
             </button>
             <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 4: Chevrolet Bel Air 1957">
-              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_4.jpg" alt="" loading="lazy">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_4.webp" alt="" loading="lazy">
             </button>
             <button class="media aspect-[4/3] overflow-hidden rounded bg-placeholder transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-orange aria-pressed:ring-3 aria-pressed:ring-brand-orange" type="button" data-gallery-thumb aria-pressed="false" aria-label="Фото 5: Chevrolet Bel Air 1957">
-              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_5.jpg" alt="" loading="lazy">
+              <img class="h-full w-full object-cover" src="../../assets/images/cars/chevrolet-bel-air-1957_5.webp" alt="" loading="lazy">
             </button>
           </div>
         </div>
@@ -165,7 +180,7 @@
           <fieldset class="mt-4">
             <legend class="flex w-full items-baseline justify-between gap-2 text-sm font-bold">Ваші контакти</legend>
 
-            <div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
               <div>
                 <label class="mb-1 block text-xs font-semibold" for="bookingName">Ім’я</label>
                 <input class="block h-11 w-full scroll-mb-28 rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="text" id="bookingName" name="bookingName" autocomplete="name" maxlength="60" placeholder="Ім'я Прізвище" required aria-required="true" aria-invalid="false" aria-describedby="bookingNameError">
@@ -173,7 +188,17 @@
               </div>
               <div>
                 <label class="mb-1 block text-xs font-semibold" for="bookingPhone">Телефон</label>
-                <input class="block h-11 w-full scroll-mb-28 rounded-md border border-gray-300 bg-white px-3 text-base text-navy transition-colors placeholder:text-gray-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-1" type="tel" id="bookingPhone" name="bookingPhone" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+380501234567" required aria-required="true" aria-invalid="false" aria-describedby="bookingPhoneError">
+                <!-- Код країни + номер: js/phone-input.js -->
+                <div class="relative flex h-11 w-full scroll-mb-28 rounded-md border border-gray-300 bg-white transition-colors focus-within:ring-2 focus-within:ring-royal focus-within:ring-offset-1" data-phone>
+                  <div class="relative flex flex-none items-center border-r border-gray-300 pl-2.5 pr-2">
+                    <span class="pointer-events-none whitespace-nowrap text-base text-navy" data-phone-code aria-hidden="true">🇺🇦 +380</span>
+                    <svg class="pointer-events-none ml-1 text-gray-500" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    <select class="absolute inset-0 h-full w-full cursor-pointer opacity-0" data-phone-country aria-label="Код країни">
+                      <option value="UA">🇺🇦 Україна +380</option>
+                    </select>
+                  </div>
+                  <input class="block h-full min-w-0 flex-1 rounded-r-md bg-transparent px-3 text-base text-navy placeholder:text-gray-400 focus:outline-none" type="tel" id="bookingPhone" name="bookingPhone" autocomplete="tel-national" inputmode="tel" maxlength="20" placeholder="97 123 45 67" data-phone-input required aria-required="true" aria-invalid="false" aria-describedby="bookingPhoneError">
+                </div>
                 <p class="mt-1 text-xs text-red-700 empty:hidden" id="bookingPhoneError" aria-live="polite"></p>
               </div>
             </div>
@@ -214,7 +239,7 @@
           <h2 class="mt-2.5 font-head text-2xl font-extrabold leading-tight">Хром, плавники і рок-н-рол.</h2>
           <p class="mt-3.5 leading-relaxed text-gray-500">Двоколірний кузов, гострі задні «плавники» і стільки хрому, що в ньому можна роздивитись захід сонця. Bel Air — це подорож у 50-ті без машини часу: сідайте за кермо і відчуйте атмосферу американських хайвеїв.</p>
 
-          <ul class="mt-5 grid grid-cols-3 gap-3">
+          <ul class="mt-5 grid auto-cols-fr grid-flow-col gap-3">
             <li class="flex flex-col">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               <b class="mt-2 text-sm">5 місць</b>
@@ -225,7 +250,8 @@
               <b class="mt-2 text-sm">Автомат</b>
               <span class="mt-0.5 text-xs text-gray-500">Трансмісія</span>
             </li>
-            <li class="flex flex-col">
+            <!-- Посвідчення потрібне лише для self-drive: з водієм пункт ховає js/booking.js -->
+            <li class="flex flex-col" data-self-only>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7.5 18a4.5 4.5 0 0 1 9 0"/><path d="M10 3v2h4V3"/></svg>
               <b class="mt-2 text-sm">Категорія B</b>
               <span class="mt-0.5 text-xs text-gray-500">Посвідчення</span>
@@ -319,7 +345,9 @@
     </div>
   </div>
 
+  <script src="../../js/theme.js" defer></script>
   <script src="../../js/main.js" defer></script>
+  <script src="../../js/phone-input.js" defer></script>
   <script src="../../js/booking.js" defer></script>
   <script src="../../js/gallery.js" defer></script>
   <script src="../../js/license.js" defer></script>
